@@ -67,12 +67,12 @@ The following priorities are available:
 3. Configurable collectibles categories
 ---------------------------------------
 
-Although readers may choose to simply earn Rewardial credits for the sake of tracking their „performance” versus other website users, we actually encourage them to engage on a higher level, by participating in a collectibles hunt game. Collectibles are images of any kind (depending on various users’ interests) displayed on a stamp-like canvas and accompanied by a short wiki article. Similar to real life, the Rewardial shop does not sell the collectibles per se, but „stamp envelopes”, where the list of collectibles is randomly generated from within the list of collections attached to the website. Apart from the surprise element:
-- It then becomes more difficult and hence a challenge for the user to complete the collections. Psychologically, we humans enjoy the sense of completion and don’t like „unfinished businesses”. So, once the users will start a collection, they will be eager to come back to your website for more credits > envelopes > collectibles, until they complete that collection.
+Although readers may choose to simply earn Rewardial credits for the sake of tracking their „performance” versus other website users, we actually encourage them to engage on a higher level, by participating in a collectibles hunt game. Collectibles are images of any kind (depending on various users' interests) displayed on a stamp-like canvas and accompanied by a short wiki article. Similar to real life, the Rewardial shop does not sell the collectibles per se, but „stamp envelopes”, where the list of collectibles is randomly generated from within the list of collections attached to the website. Apart from the surprise element:
+- It then becomes more difficult and hence a challenge for the user to complete the collections. Psychologically, we humans enjoy the sense of completion and don't like „unfinished businesses”. So, once the users will start a collection, they will be eager to come back to your website for more credits > envelopes > collectibles, until they complete that collection.
 - Users acquire duplicates of available collectibles. Again, similar to real life, users will be able to trade duplicates within the community. While they may resort to this trade channel as a means of completing collections with the missing images, they are at the same time connecting with each other and creating stronger bonds within the community.
 
-To foster readers’ engagement in the collectibles hunt game, publishers are encouraged to configure the collectibles categories that will be on sale in their Rewardial Engagement shop, according to their readers’ interests. We want readers to become engaged in the game based on their likes and passions, offering them meaningful rewards that they will enjoy to discover and collect. 
-So far we’ve implemented a few categories – Plants / Painting / Sculpture / Sports / Crafts, but many more are planned to be added.
+To foster readers' engagement in the collectibles hunt game, publishers are encouraged to configure the collectibles categories that will be on sale in their Rewardial Engagement shop, according to their readers' interests. We want readers to become engaged in the game based on their likes and passions, offering them meaningful rewards that they will enjoy to discover and collect. 
+So far we've implemented a few categories – Plants / Painting / Sculpture / Sports / Crafts, but many more are planned to be added.
 At any time, the plugin shop may offer your readers 3 "envelopes" (collectibles categories). You may rotate categories every 30 days. 
 Out of the 3 envelopes available in the plugin shop, one may be a website branded envelope. The difference between standard Rewardial envelopes and branded ones is that the former will be available for use by all our partner websites, while the latter will only be available in the shop on the website that owns it. Hence, to complete the respective collections, users would always have to come back to the owner website for more branded envelopes.
 
@@ -97,7 +97,7 @@ Through its set of functionalities, Rewardial Engagement aims at improving impor
 == Installation ==
 
 1. Upload the folder containing the plugin to the `/wp-content/plugins/` directory
-2. Open the website’s WordPress Dashboard, go to the Modules section where you will find the list of all installed plugins, identify the Rewardial plugin and press the Activate button.
+2. Open the website's WordPress Dashboard, go to the Modules section where you will find the list of all installed plugins, identify the Rewardial plugin and press the Activate button.
 After having successfully performed above steps, you should now be able to see a distinct Rewardial menu on the left-hand side of your WordPress Dashboard. 
 3. Validate the plugin by inserting or creating a new user on the Rewardial server. In order to use our plugin, you need a valid account from the Rewardial server and have to accept our terms and conditions stating that the plugin communicates and sends data to the Rewardial server. The Rewardial platform will store user data required for running the plugin - such as user login data, user credits and attributes status, users' stockbook (acquired collectibles / duplicates), collectibles exchange status. To perform the validation process:
   3.1.	Click on the Rewardial menu option on the left-hand side of the WordPress Dashboard. You will have 2 available forms:
@@ -119,14 +119,12 @@ After having successfully performed above steps, you should now be able to see a
 
 == Frequently Asked Questions ==
 
-
-
 == Screenshots ==
 
-1. This is an example of how the reader profile looks like: RPG-style_reader_profile.png
-2. This is where you may configure user actions priorities: Configurable_action_priorities.png
-3. This is how a collectible looks like (*Famous people* category): Collectible_example-Famous_people.png
-4. And another collectible example, from the *Plants* category: Collectible_example-Plants.png
+1. This is an example of how the reader profile looks like.
+2. This is where you may configure user actions priorities.
+3. This is how a collectible looks like (*Famous people* category).
+4. And another collectible example, from the *Plants* category.
 
 == Changelog ==
 
