@@ -14,6 +14,7 @@ Boosting user engagement through gamification, beyond badges and leaderboards.
 
 Rewardial Engagement is an on-line reader loyalty plug-in for WordPress websites. It functions on gamification principles, which means applying game-like mechanics in real life processes. 
 Within Rewardial Engagement, on-line readers can join a collectibles hunt game where:
+
 * They feel rewarded for their time spent on-line via credits earned for meaningful actions;
 * They enjoy the thrill of discovery when spending their credits to acquire surprise collectibles;
 * They feel socially engaged while connecting with other website users to exchange duplicate collectibles.
