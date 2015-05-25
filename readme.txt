@@ -1,5 +1,5 @@
 === Rewardial Engagement ===
-Contributors: Rewardial
+Contributors: Rewardial, complimentmedia
 Donate link:
 Tags: gamification, reward, engagement, loyalty, trophy hunting, collections, arts, un-intrusive advertising
 Requires at least: 3.0.1
