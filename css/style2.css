@@ -1,0 +1,3292 @@
+@charset "UTF-8";
+			/*
+======================================
+Reset and Fonts
+======================================
+*/
+/*{
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	border: none;
+	list-style: none;
+	line-height: 1.0em;
+}*/
+@font-face {
+  font-family: 'Proxima Regular';
+  src: url("fonts/proxima-regular-webfont.eot");
+  src: url("fonts/proxima-regular-webfont.ttf") format("truetype"), url("fonts/proxima-regular-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/proxima-regular-webfont.woff") format("woff"), url("fonts/proxima-regular-webfont.svg#proxima_nova_rgregular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'Proxima Bold';
+  src: url("fonts/proxima-bold-webfont.eot");
+  src: url("fonts/proxima-bold-webfont.ttf") format("truetype"), url("fonts/proxima-bold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/proxima-bold-webfont.woff") format("woff"), url("fonts/proxima-bold-webfont.svg#proxima_nova_rgbold") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'Proxima Extrabold';
+  src: url("fonts/proximanova-xbold-webfont.eot");
+  src: url("fonts/proximanova-xbold-webfont.ttf") format("truetype"), url("fonts/proximanova-xbold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/proximanova-xbold-webfont.woff") format("woff"), url("fonts/proximanova-xbold-webfont.svg#proxima_nova_thextrabold") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+#rewardial-plugin {
+	font-family: 'Proxima Regular';
+	font-size: 14px;
+  /*
+  ======================================
+  Login Box
+  ======================================
+  */
+  /*body {
+  	font: 12px 'Proxima Regular', sans-serif;
+  }*/
+  /* Signup */
+  /* Buttons */
+  /*
+  .fs-credits:hover {
+  	background: url('../img/btn-credits-hover.png') no-repeat center center;
+  }
+  */
+  /* Login Form */
+  /*
+  ======================================
+  Box - Shop
+  ======================================
+  */
+  /*
+  ======================================
+  Friends
+  ======================================
+  */
+  /*
+  ======================================
+  Logado
+  ======================================
+  */
+  /*
+  ======================================
+  COMMUNITY
+  ======================================
+  */
+  /*
+  ======================================
+  STEPS
+  ======================================
+  */
+  /******************
+  	New bought Envelope
+  *******************/
+  /*** Grid system ***/
+  /*** Grid system ***/
+  /************ User levels ***************/
+  /****************************************/
+  /*New styles*/
+  /*.fs-account-credits-logado {
+  	margin-top: -20px;
+  }
+  */
+  /*  Pop-up TRADE container┬á*/
+  /* Trade popup */ 
+  }
+  #rewardial-plugin .error {
+    color: #FF0000;
+    margin-left: 15px;
+    padding: 5px; }
+  #rewardial-plugin .fs-large {
+    font-size: 16px; }
+  #rewardial-plugin .fs-divisor {
+    border: 1px solid #dbdbdb;
+    margin-top: 20px; }
+  #rewardial-plugin .fs-divisor-lighter {
+    border: 1px solid #fafbfb;
+    margin-bottom: 40px; }
+  #rewardial-plugin .fs-login {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    width: 221px;
+    height: 48px;
+    background: url("../img/bg-login.png") no-repeat center center;
+    position: fixed;
+    right: 0;
+    bottom: 1px;
+    z-index: 9999; }
+  #rewardial-plugin .fs-sign-up {
+    width: 221px;
+    height: 48px;
+    background: url("../img/bg-login.png") no-repeat center center;
+    position: fixed;
+    right: 0;
+    bottom: 1px;
+    z-index: 9999; }
+  #rewardial-plugin .fs-logged {
+    /*background: url("../img/bg-login.png") no-repeat scroll center center rgba(0, 0, 0, 0);*/
+    height: 48px;
+    position: fixed;
+    right: 0;
+    width: 221px;
+    bottom: 1px;
+    z-index: 9999; }
+  #rewardial-plugin .fs-logged .fs-btn-login {
+	background: url("../img/logo-new.png") no-repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
+    margin-top: 0px;
+    cursor: pointer;
+    width: 221px;
+    height: 48px; }
+  #rewardial-plugin .fs-login-ttip {
+    position: relative; }
+  #rewardial-plugin .fs-pop-account {
+    position: absolute;
+    width: 218px;
+    color: #333;
+    height: auto;
+    line-height: 30px;
+    bottom: 15px;
+    right: 0 !important;
+    z-index: 999;
+    display: none;
+    background: #ffffff;
+    -webkit-filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.4));
+    -moz-filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.4));
+    -ms-filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.4));
+    -o-filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.4));
+    filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.4));
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4); }
+  #rewardial-plugin .fs-login-ttip span {
+    position: absolute;
+    width: 218px;
+    color: #333;
+    height: auto;
+    line-height: 30px;
+    bottom: 15px;
+    right: 0 !important;
+    z-index: 999;
+    display: none;
+    background: #ffffff;
+    -webkit-filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.4));
+    -moz-filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.4));
+    -ms-filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.4));
+    -o-filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.4));
+    filter: drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.4));
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4); }
+  #rewardial-plugin .fs-login-ttip span:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 10%;
+    margin-left: -8px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid #fefefe;
+    border-right: 8px solid rgba(213, 34, 34, 0);
+    border-left: 8px solid rgba(213, 34, 34, 0); }
+  #rewardial-plugin .fs-signup-title {
+    text-align: center;
+    color: red;
+    padding: 10px;
+    text-transform: uppercase;
+    font: 14px bold; }
+  #rewardial-plugin .fs-first-name {
+    margin-bottom: 5px;
+    border: 1px solid #CACACA;
+    padding: 5px; }
+  #rewardial-plugin .fs-last-name {
+    margin-bottom: 5px;
+    border: 1px solid #CACACA;
+    padding: 5px; }
+  #rewardial-plugin .fs-user-email {
+    margin-bottom: 5px;
+    border: 1px solid #CACACA;
+    padding: 5px; }
+  #rewardial-plugin .fs-signup-password {
+    margin-bottom: 5px;
+    border: 1px solid #CACACA;
+    padding: 5px; }
+  #rewardial-plugin .fs-close-logged {
+    float: right;
+    font: 14px solid 'Proxima Bold';
+    top: 5px;
+    right: 5px;
+    position: absolute;
+    outline: 0; }
+  #rewardial-plugin #fs-signup-back {
+    float: right;
+    margin-top: 15px;
+    color: #C0232A; }
+  #rewardial-plugin .fs-credits,
+  #rewardial-plugin .fs-btn-login {
+    float: left; }
+  #rewardial-plugin .fs-credits {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+	background: url('../img/btn-credits2.png') no-repeat center center;
+    font: 15px 'Proxima Regular', sans-serif;
+    color: #FFF;
+	width: 33px;
+	height: 26px;
+	padding: 5px 13px 0 30px;
+	margin: 10px 10px 0 62px;
+    transition: background 0.3s;
+    -webkit-transition: background 0.3s;
+    text-align: center; }
+  #rewardial-plugin .fs-btn-login {
+    margin-top: 15px;
+    cursor: pointer; }
+  #rewardial-plugin .fs-notifications {
+    background: none repeat scroll 0 0 #F6F6F6; }
+  #rewardial-plugin .fs-notifications-credit {
+    color: #FF0000;
+    float: left;
+    font: 25px/0.9em 'Proxima Regular',sans-serif;
+    margin-right: 10px;
+    margin-left: 10px; }
+  #rewardial-plugin .fs-notifications-text {
+    font: 13px/0.9em 'Proxima Regular',sans-serif;
+    color: #999;
+    padding: 5px; }
+  #rewardial-plugin #fs-notifier {
+    background: #fff;
+	position: absolute;
+	top: -38px;
+	width: auto;
+	height: 20px;
+	padding: 5px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+	color: #FF0000;
+	text-align: center;
+	font: 16px/0.9em 'Proxima Regular',sans-serif; }
+  #rewardial-plugin #fs-notifier:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 15%;
+    margin-left: -8px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid #fefefe;
+    border-right: 8px solid rgba(213, 34, 34, 0);
+    border-left: 8px solid rgba(213, 34, 34, 0); }
+	 #rewardial-plugin #fs-notifier2 {
+	background: none repeat scroll 0 0 #fff;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+	color: #ff0000;
+	display: none;
+	font: 18px/0.9em 'Proxima Regular',sans-serif;
+	height: auto;
+	padding: 5px;
+	position: fixed;
+	text-align: center;
+	bottom: 60px;
+	right: 5px;
+	width: auto;
+	z-index:1000;
+	}
+  #rewardial-plugin #fs-notifier2:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    right: 50px;
+    margin-left: -8px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid #fefefe;
+    border-right: 8px solid rgba(213, 34, 34, 0);
+    border-left: 8px solid rgba(213, 34, 34, 0); }
+	 #rewardial-plugin #fs-notifier3 {
+    background: none repeat scroll 0 0 #fff;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+	color: #ff0000;
+	display: none;
+	font: 18px/0.9em 'Proxima Regular',sans-serif;
+	height: auto;
+	padding: 5px;
+	position: fixed;
+	text-align: center;
+	bottom: 90px;
+	width: auto;
+	right: 5px;
+	z-index:1000;
+	}
+  #rewardial-plugin #fs-notifier3:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    right:50px;
+    margin-left: -8px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid #fefefe;
+    border-right: 8px solid rgba(213, 34, 34, 0);
+    border-left: 8px solid rgba(213, 34, 34, 0); }
+  #rewardial-plugin .fs-inner-box {
+    margin: 18px; }
+  #rewardial-plugin .fs-login-form input[type="text"],
+  #rewardial-plugin .fs-login-form input[type="password"] {
+    background: #f3f3f3;
+    color: #000000;
+    font: 12px 'Proxima Regular', sans-serif;
+    outline: 0; }
+  #rewardial-plugin .fs-user,
+  #rewardial-plugin .fs-pass {
+    padding: 5px 10px;
+    border-radius: 8px;
+    -webkit-box-shadow: inset 1px 1px 1px 1px #c1c1c1;
+    box-shadow: inset 1px 1px 1px 1px #c1c1c1; }
+  #rewardial-plugin .fs-user {
+    width: 160px;
+    margin: 0 auto; }
+  #rewardial-plugin .fs-join-fields {
+    margin-top: 15px; }
+  #rewardial-plugin .fs-pass {
+    width: 107px;
+    float: left;
+    margin: 2px 10px 0 0; }
+  #rewardial-plugin .fs-submit {
+    background: url("../img/btn-submit.png") no-repeat center center;
+    width: 41px;
+    height: 29px;
+    float: left;
+    background-color: #fff !important; }
+  #rewardial-plugin .fs-signup-submit {
+    background: url("../img/btn-register.png") no-repeat center center;
+    width: 77px;
+    height: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    float: left;
+    background-color: #fff !important; }
+  #rewardial-plugin .fs-signup {
+    background: url("../img/btn-register.png") no-repeat center center;
+    width: 77px;
+    height: 20px;
+    margin-top: 15px; }
+  #rewardial-plugin .fs-noaccess {
+    font: 12px 'Proxima Regular', sans-serif;
+    margin: 10px 0px 15px 0px; }
+  #rewardial-plugin .fs-noaccess a {
+    font: 12px 'Proxima Regular', sans-serif;
+    color: #790000;
+    text-decoration: none; }
+  #rewardial-plugin .fs-btn-fb {
+    background: url("../img/btn-fb.png");
+	background-repeat: no-repeat;
+    width: 182px;
+    height: 35px; }
+  #rewardial-plugin .fs-close-shop {
+    float: none;
+    padding: 10px;
+    position: absolute;
+    right: 20px;
+    top: 20px; }
+  #rewardial-plugin .fs-shop-box-inner {
+    border: 10px solid #c7c7c7; }
+  #rewardial-plugin .fs-mobilequest {
+    display: none; }
+  #rewardial-plugin .fs-desktopquest {
+    width: 95%;
+    display: table;
+    margin: 20px; }
+  #rewardial-plugin .fs-desktopquest tr {
+    width: 100%; }
+  #rewardial-plugin .fs-desktopquest td {
+    padding: 5px;
+    width: 20%;
+    vertical-align: middle; }
+  #rewardial-plugin .fs-desktopquest td:last-child {
+    padding: 5px;
+    width: 50%; }
+  #rewardial-plugin .fs-shop-box {
+    background: none repeat scroll 0 0 #fff;
+    box-sizing: content-box;
+    height: auto;
+    left: 50%;
+    margin-left: -490px;
+    margin-top: -280px;
+    position: fixed;
+    top: 50%;
+    width: 980px;
+    z-index: 9999; }
+  #rewardial-plugin .fs-inner-box .fs-account-premium {
+    margin: 0 !important; }
+	#rewardial-plugin #fs-shop-box .fs-shop-content{
+		height: 360px;
+    padding-bottom: 65px;
+	}
+  #rewardial-plugin .fs-shop-content {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+  #rewardial-plugin .fs-shop-header {
+    height: auto;
+    padding-bottom: 20px;
+    background: #fff; }
+  #rewardial-plugin .fs-logo {
+    margin: 30px 15px 0 55px;
+    float: left; }
+  #rewardial-plugin .fs-close-shop span, #rewardial-plugin .fs-close-community span {
+    display: none; }
+  #rewardial-plugin .fs-details {
+    font: 13px 'Proxima Extrabold', sans-serif;
+    text-transform: uppercase; }
+  #rewardial-plugin .fs-account-credits {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    background: url("../img/bg-credits.png") no-repeat center center;
+    font: 18px 'Proxima Regular', sans-serif;
+    width: 120px;
+    height: 52px;
+    line-height: 1em;
+    padding-top: 15px;
+    padding-right: 20px;
+    text-align: right;
+    float: left;
+    margin: 30px 0 0 10px; }
+  #rewardial-plugin .fs-account-premium {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    background: url("../img/bg-premium.png") no-repeat center center;
+    font: 18px 'Proxima Regular', sans-serif;
+    width: 157px;
+    height: 52px;
+    line-height: 1em;
+    padding-top: 15px;
+    padding-right: 18px;
+    text-align: right;
+    float: left;
+    margin: 30px 15px 0; }
+  #rewardial-plugin .fs-account-options {
+    float: left;
+    width: 200px;
+    margin: 50px 0 0 8px;
+    cursor: pointer;
+    }
+  #rewardial-plugin .fs-avatar-container {
+    float: left;
+    width: 64px;
+    height: 64px;
+    position: relative;
+    margin: -20px 15px 0 0;
+	cursor:pointer;
+	}
+  #rewardial-plugin .fs-options {
+    clear: both;
+    margin-left: 80px;
+    margin-top: -10px;
+    font: 14px 'Proxima Regular', sans-serif;
+    position: relative; }
+  #rewardial-plugin .fs-options ul {
+    position: absolute;
+    background: #F0F0F0;
+    padding: 10px;
+    display: none;
+    width: 200px;
+    bottom: auto;
+    left: auto;
+    right: 10px;
+    top: 5px; }
+  #rewardial-plugin .fs-avatar-img {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    z-index: 1;
+    width: 60px;
+    height: 60px; }
+  #rewardial-plugin .fs-avatar-frame {
+    width: 64px;
+    height: 64px;
+    background: url("../img/avatar-frame2.png") no-repeat center center;
+    position: absolute;
+    z-index: 2; }
+  #rewardial-plugin .fs-level {
+    position: absolute;
+    bottom: 3px;
+    right: 6px;
+    font: 11px 'Proxima Extrabold', sans-serif;
+    color: #FFF;
+    z-index: 3; }
+  #rewardial-plugin .fs-headerwrap {
+    height: auto;
+    clear: both;
+    padding-top: 5px;
+    padding-left: 5px; }
+  #rewardial-plugin .fs-username {
+    font: 15px 'Proxima Extrabold', sans-serif;
+    width: auto;
+    line-height: 0.9em;
+    color: #646464;
+    position: relative; }
+  #rewardial-plugin .fs-user-role {
+    font: 12px 'Proxima Regular', sans-serif;
+    margin-top: 0px;
+    color: #A8A8A8; }
+  #rewardial-plugin .fs-section-title {
+    font: 17px 'Proxima Extrabold', sans-serif;
+    text-transform: uppercase;
+    margin: 10px 0 10px 0; }
+  #rewardial-plugin .fs-stamps-carousel .fs-slider {
+    display: inline-flex; }
+  #rewardial-plugin .fs-featured-controls {
+    display: block; }
+  #rewardial-plugin .fs-stamps-carousel {
+    margin: 0 auto;
+    width: 835px; }
+  #rewardial-plugin .fs-stamps-carousel .responsive-shop {
+    display: none; }
+  #rewardial-plugin .fs-stamps-carousel p {
+    font-size: 14px;
+    color: #363636;
+    margin-bottom: 20px; }
+  #rewardial-plugin .fs-stamps-carousel span {
+    font-size: 15px;
+    color: #323232; }
+  #rewardial-plugin .fs-featured-controls {
+    position: relative;
+    top: 165px;
+    margin: 0 auto; }
+  #rewardial-plugin .fs-profile-link a {
+    text-transform: uppercase;
+    color: #616161;
+    font-size: 13px;
+    font-family: 'Proxima Extrabold',sans-serif;
+    margin: 5px 7px 7px 12px; }
+  #rewardial-plugin .fs-profile-link {
+    background: url("../img/profile-link.png") no-repeat scroll 0 0 transparent;
+    height: 30px;
+    line-height: 28px;
+    text-align: center;
+    margin: 5px 7px 7px 12px;
+    float: left;
+    width: 76px; }
+  #rewardial-plugin .fs-next,
+  #rewardial-plugin .fs-prev {
+    width: 27px;
+    height: 99px;
+    cursor: pointer; }
+  #rewardial-plugin .fs-next {
+    background: url("../img/arrow-right.png") no-repeat center center;
+    float: right;
+    margin-right: 5px; }
+  #rewardial-plugin .fs-next:hover {
+    background: url("../img/arrow-right.png") no-repeat center center; }
+  #rewardial-plugin .fs-prev {
+    background: url("../img/arrow-left.png") no-repeat center center;
+    float: left;
+    margin-left: 5px; }
+  #rewardial-plugin .fs-prev:hover {
+    background: url("../img/arrow-left.png") no-repeat center center; }
+  #rewardial-plugin .fs-slider {
+    display: inline-flex;
+    margin: 0 auto; }
+  #rewardial-plugin .fs-stamp {
+    width: 260px !important;
+	-moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 340px;
+    float: left;
+    margin: 0 22px 20px 0;
+    display: inline;
+    text-align: center;
+    padding-top: 20px;
+    background: -moz-linear-gradient(top, #fcfcfc 18%, #ecedee 53%, #ffffff 99%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(18%, #fcfcfc), color-stop(53%, #ecedee), color-stop(99%, #ffffff));
+    background: -webkit-linear-gradient(top, #fcfcfc 18%, #ecedee 53%, #ffffff 99%);
+    background: -o-linear-gradient(top, #fcfcfc 18%, #ecedee 53%, #ffffff 99%);
+    background: -ms-linear-gradient(top, #fcfcfc 18%, #ecedee 53%, #ffffff 99%);
+    background: linear-gradient(to bottom, #fcfcfc 18%, #ecedee 53%, #ffffff 99%);
+    -webkit-box-shadow: 1px 1px 3px 1px rgba(220, 220, 220, 0.6);
+    box-shadow: 1px 1px 4px 1px rgba(220, 220, 220, 0.6); }
+  #rewardial-plugin .fs-inner-stamp {
+    text-align: center;
+    width: 230px;
+    margin: 15px auto 0;
+    background: #fff; }
+  #rewardial-plugin .fs-control-left {
+    background: url("../img/arrow-left.png") no-repeat center center; }
+  #rewardial-plugin .fs-control-right {
+    background: url("../img/arrow-right.png") no-repeat center center; }
+  #rewardial-plugin .fs-stamp-title {
+    font: 16px 'Proxima Extrabold', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 20px;
+    margin-bottom: 15px;
+	margin-top:0; }
+  #rewardial-plugin .fs-light-title {
+    font: 16px 'Proxima Regular', sans-serif; }
+  #rewardial-plugin .fs-buy-now {
+    width: 150px;
+    height: 36px;
+    background: url("../img/btn-buy-now.png") no-repeat center center;
+    margin-top: 10px;
+    cursor: pointer;
+    float: right;
+    margin-right: 15px; }
+	#rewardial-plugin .fs-buy-now:hover{
+		opacity:0.6;
+	}
+  #rewardial-plugin .fs-stamp-index {
+    padding: 11px;
+    width: 30px;
+    height: 30px;
+    background: url("../img/bg-stamp-index.png") no-repeat center center;
+    font: 12px 'Proxima Bold', sans-serif;
+    color: #FFF !important; }
+  #rewardial-plugin .fs-shop-envelope-price {
+    float: left;
+    margin-bottom: 0;
+    margin-left: 10px;
+    margin-top: 20px; }
+  #rewardial-plugin .fs-shop-envelope-credits {
+    float: left;
+    height: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    width: 20px; }
+  #rewardial-plugin .fs-community-header {
+    background: none repeat scroll 0 0 #fff;
+    height: auto;
+    padding-bottom: 15px; }
+  #rewardial-plugin .fs-community-content {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box; 
+	max-height: 450px;
+    min-height: 450px;
+    background:#fff;
+	}	
+  #rewardial-plugin .fs-community-content .fs-divisor {
+    margin-bottom: 0; }
+  #rewardial-plugin .fs-community-content .fs-divisor-lighter {
+    margin-top: 0; }
+  #rewardial-plugin .fs-friends-carousel {
+    width: 835px;
+    height: auto;
+    margin: 0 auto; }
+  #rewardial-plugin .fs-friends-slider {
+    padding-left: 10px;
+    margin: 0 auto; }
+  #rewardial-plugin .flexslider .slides img {
+    position: relative;
+    width: auto !important; }
+  #rewardial-plugin .fs-friend .fs-avatar-img-friend {
+    max-width: 75px; }
+  #rewardial-plugin .fs-friend-wrapper {
+    width: 110px;
+    display: block; }
+  #rewardial-plugin .fs-stamp-index-friends {
+    margin-left: 25px;
+    width: 30px;
+    height: 30px;
+    font: 12px 'Proxima Bold', sans-serif;
+    color: #FFF;
+    z-index: 2;
+    position: relative;
+    vertical-align: sub; }
+  #rewardial-plugin .fs-close-community {
+    float: none;
+    padding: 10px;
+    position: absolute;
+    right: 20px;
+    top: 20px; }
+  #rewardial-plugin .fs-inner-stamp-friends {
+    text-align: center;
+    width: auto;
+    height: auto; }
+  #rewardial-plugin .fs-avatar-nameofuser {
+    height: 40px;
+    padding-top: 10px;
+    color: #646464;
+    font: 15px/0.9em 'Proxima Extrabold',sans-serif; }
+  #rewardial-plugin .fs-local-user-duplicates {
+    background: url("../img/duplicates.png") no-repeat scroll center center/contain transparent;
+    color: #fff;
+    display: inline-block;
+    font-size: 13px;
+    height: 25px;
+    padding: 5px 0 0;
+    position: relative;
+    text-align: center;
+    width: 25px;
+	box-sizing:content-box;}
+  #rewardial-plugin .fs-avatar-img-friend {
+    height: 75px;
+    left: 17px;
+    position: absolute;
+    top: 20px;
+    width: 75px;
+    z-index: 1; }
+  #rewardial-plugin .fs-friend-wrapper .fs-btn-trade {
+    background: url("../img/btn-trade-plugin.png") no-repeat scroll center center/contain transparent;
+    cursor: pointer;
+    float: right;
+    height: 26px;
+    width: 76px; }
+  #rewardial-plugin .fs-btn-trade:hover {
+    opacity: 0.6;
+    cursor: pointer; }
+  #rewardial-plugin .fs-inner-box-logout {
+    text-align: right;
+    margin-bottom: 0; }
+  #rewardial-plugin .fs-inner-box-logout a {
+    color: #a8a8a8;
+    text-decoration: none;
+    margin-right: 15px; }
+  #rewardial-plugin .fs-inner-box-logout a:hover {
+    /*float:right; */
+    color: #a8a8a8;
+    text-decoration: underline; }
+  #rewardial-plugin .fs-account-logado {
+    width: 100%;
+    padding-top: 20px; }
+  #rewardial-plugin .fs-level-logado {
+    margin-bottom: 0;
+    bottom: 3px;
+    color: #FFFFFF;
+    font: 11px 'Proxima Extrabold',sans-serif;
+    position: absolute;
+    right: 6px;
+    z-index: 3; }
+  #rewardial-plugin .fs-account-credits-logado {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    background: url("../img/credits-bg.png") no-repeat right center;
+    font: 18px 'Proxima Bold', sans-serif;
+    width: 100%;
+    height: 33px;
+    padding: 10px 10px 0 0;
+    text-align: right; }
+  #rewardial-plugin .fs-account-credits-logado p {
+    margin-bottom: 0; }
+  #rewardial-plugin .fs-credits-logado,
+  #rewardial-plugin .fs-btn-login {
+    float: left; }
+  #rewardial-plugin .fs-credits-logado {
+    font: 8px 'Proxima Regular', sans-serif;
+    color: #FFF;
+    width: 46px;
+    height: 16px;
+    padding: 14px 0 0 30px;
+    margin: 10px 10px 0 58px;
+    transition: background 0.3s;
+    -webkit-transition: background 0.3s; }
+  #rewardial-plugin .fs-account-menu {
+    clear: both;
+    height: 27px;
+    width: 100%;
+    border-top: 1px solid #cccccc; }
+  #rewardial-plugin .fs-account-menu ul {
+    list-style: none;
+    margin: 0; }
+  #rewardial-plugin .fs-account-menu li {
+    display: inline;
+    float: left;
+    position: relative;
+    border-left: 1px solid #CCC;
+    height: 35px;
+    line-height: 1.0em;
+    font: 12px 'Proxima Regular', sans-serif;
+	margin:0; }
+  #rewardial-plugin .fs-shop {
+    border-left: none !important; }
+  #rewardial-plugin .fs-shop i {
+    float: left;
+    width: 17px;
+    height: 16px;
+    margin-top: -2px; }
+  #rewardial-plugin .fs-quest {
+    width: 75px; }
+  #rewardial-plugin .fs-account-menu li a {
+    color: #363636;
+    display: block;
+    text-decoration: none;
+    height: 23px;
+    padding: 12px 9px 0;
+    outline: 0; }
+  #rewardial-plugin .fs-account-menu li a:hover {
+    color: #FFF; }
+  #rewardial-plugin .fs-account-menu li:hover, #rewardial-plugin .fs-account-menu li.active {
+    color: #FFF;
+    background: url("../img/bg-btns.png") no-repeat center center; }
+  #rewardial-plugin .fs-stamp-community {
+    width: 260px !important;
+    height: 340px;
+    float: left;
+    margin: 0 26px 20px 0;
+    display: inline;
+    text-align: center;
+    padding-top: 20px; }
+  #rewardial-plugin .fs-avatar-frame-community {
+    background: url("../img/Moldura-2-plugin2.png") no-repeat scroll center center/cover transparent;
+    height: 115px;
+    margin-top: -18px;
+    position: relative;
+    width: 110px; }
+  #rewardial-plugin .fs-avatar-frame-friend {
+    background: url("../img/Moldura-2-plugin-fb.png") no-repeat scroll center center/cover transparent; }
+  #rewardial-plugin .fs-steps-boxes {
+    width: 940px;
+    height: 305px;
+    margin: 0 auto;
+    overflow: hidden; }
+  #rewardial-plugin .fs-shop-header-steps {
+    background: #fdfdfd; }
+  #rewardial-plugin .fs-logo-steps {
+    margin: 24px 0px 0px 15px;
+    float: left; }
+  #rewardial-plugin .fs-text-header {
+    float: left;
+    margin: 24px 0px 0px 55px;
+    width: 850px;
+    height: 100px;
+    overflow-y: scroll; }
+  #rewardial-plugin .fs-section-title-steps {
+    font: 25px 'Proxima Extrabold',sans-serif;
+    margin: 10px 0;
+    color: #363636; }
+  #rewardial-plugin .fs-large {
+    font-size: 15px;
+    color: #B3B3B3; }
+  #rewardial-plugin .fs-divisor-lighter-steps {
+    border: 1px solid #fafbfb;
+    margin-bottom: 10px; }
+  #rewardial-plugin .fs-box1 {
+    width: 204px;
+    height: 200px;
+    float: left;
+    margin-right: 5px; }
+  #rewardial-plugin .fs-box1 p {
+    font-size: 15px;
+    color: #B3B3B3; }
+  #rewardial-plugin .fs-box1-topo-gray {
+    background: url("../img/1-step-gray.png") no-repeat scroll center center transparent;
+    width: 204px;
+    height: 47px;
+    display: none;
+    margin-bottom: 15px; }
+  #rewardial-plugin .fs-box1-topo-yellow {
+    background: url("../img/1-step-yellow.png") no-repeat scroll center center transparent;
+    width: 204px;
+    height: 47px;
+    display: none;
+    margin-bottom: 15px; }
+  #rewardial-plugin .fs-box1-topo-green {
+    background: url("../img/1-step-green.png") no-repeat scroll center center transparent;
+    width: 204px;
+    height: 47px;
+    display: none;
+    margin-bottom: 15px; }
+  #rewardial-plugin .fs-box2 {
+    width: 210px;
+    height: 200px;
+    float: left;
+    margin-right: 5px; }
+  #rewardial-plugin .fs-box2-topo-gray {
+    background: url("../img/2-step-gray.png") no-repeat scroll center center transparent;
+    width: 204px;
+    height: 47px;
+    display: none;
+    margin-bottom: 15px; }
+  #rewardial-plugin .fs-box2-topo-yellow {
+    background: url("../img/2-step-yellow.png") no-repeat scroll center center transparent;
+    width: 204px;
+    height: 47px;
+    display: none;
+    margin-bottom: 15px; }
+  #rewardial-plugin .fs-box2-topo-green {
+    background: url("../img/2-step-green.png") no-repeat scroll center center transparent;
+    width: 204px;
+    height: 47px;
+    display: none;
+    margin-bottom: 15px; }
+  #rewardial-plugin .fs-box3 {
+    width: 210px;
+    height: 200px;
+    float: left;
+    margin-right: 5px; }
+  #rewardial-plugin .fs-box3-topo-gray {
+    background: url("../img/3-step-gray.png") no-repeat scroll center center transparent;
+    width: 204px;
+    height: 47px;
+    display: none;
+    margin-bottom: 15px; }
+  #rewardial-plugin .fs-box3-topo-yellow {
+    background: url("../img/3-step-yellow.png") no-repeat scroll center center transparent;
+    width: 204px;
+    height: 47px;
+    display: none;
+    margin-bottom: 15px; }
+  #rewardial-plugin .fs-box3-topo-green {
+    background: url("../img/3-step-green.png") no-repeat scroll center center transparent;
+    width: 204px;
+    height: 47px;
+    display: none;
+    margin-bottom: 15px; }
+  #rewardial-plugin .fs-box4 {
+    width: 210px;
+    height: 200px;
+    float: left;
+    margin-right: 5px; }
+  #rewardial-plugin .fs-box4-topo-gray {
+    background: url("../img/4-step-gray.png") no-repeat scroll center center transparent;
+    width: 204px;
+    height: 47px;
+    display: none;
+    margin-bottom: 15px; }
+  #rewardial-plugin .fs-box4-topo-yellow {
+    background: url("../img/4-step-yellow.png") no-repeat scroll center center transparent;
+    width: 204px;
+    height: 47px;
+    display: none;
+    margin-bottom: 15px; }
+  #rewardial-plugin .fs-box4-topo-green {
+    background: url("../img/4-step-green.png") no-repeat scroll center center transparent;
+    width: 204px;
+    height: 47px;
+    display: none;
+    margin-bottom: 15px; }
+  #rewardial-plugin .fs-box2 span:after {
+    border-left: 8px solid rgba(213, 34, 34, 0);
+    border-right: 8px solid rgba(213, 34, 34, 0);
+    border-top: 8px solid #FEFEFE;
+    content: "";
+    height: 0;
+    left: 10%;
+    margin-left: -8px;
+    position: absolute;
+    top: 100%;
+    width: 0; }
+  #rewardial-plugin .fs-box2 span {
+    background: linear-gradient(to bottom, #FFFFFF 0%, #ECEDEE 52%, #FEFEFE 100%) repeat scroll 0 0 transparent;
+    bottom: 15px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    color: #333333;
+    display: block;
+    height: auto;
+    left: -201px;
+    line-height: 30px;
+    position: absolute;
+    width: 218px;
+    z-index: 999; }
+  #rewardial-plugin .fs-active {
+    display: block; }
+  #rewardial-plugin .fs-inactive {
+    display: none; }
+  #rewardial-plugin .facebook-share-button {
+    background: none repeat scroll 0 0 #354C8C;
+    border-radius: 2px;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2.5px 5px;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 #354C8C;
+    background: linear-gradient(#4C69BA, #3B55A0) repeat scroll 0 0 transparent;
+    cursor: pointer;
+    height: 20px;
+    line-height: 20px;
+    white-space: nowrap; }
+  #rewardial-plugin .fs-bought-img-small {
+    width: 50px;
+    height: 50px; }
+  #rewardial-plugin .fs-bought-img-big {
+    width: 100px;
+    height: 100px; }
+  #rewardial-plugin .fs-bought-frame-portrait {
+    background: url("../img/master-bg-vertical.png") no-repeat scroll 0 0/contain transparent; 
+	position:relative;}
+  #rewardial-plugin .fs-bought-frame-landscape {
+    background: url("../img/master-bg-horizontal.png") no-repeat scroll 0 0/contain transparent;
+	position:relative; }
+  #rewardial-plugin .fs-bought-frame-square {
+    background: url("../img/master-bg-square.png") no-repeat scroll 0 0/contain transparent;
+	position:relative; }
+  #rewardial-plugin .fs-bought-image-portrait {
+    width: 35px;
+    height: 50px; }
+  #rewardial-plugin .fs-bought-image-landscape {
+    width: 50px;
+    height: 35px; }
+  #rewardial-plugin .fs-bought-image-square {
+    width: 50px;
+    height: 50px; }
+  #rewardial-plugin .fs-bought-images-bottom {
+    margin: 0 auto;
+    text-align: center;
+    border-top: 1px solid #e9e9e9;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box; }
+  #rewardial-plugin .fs-bought-images-bottom img {
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box; }
+  #rewardial-plugin .fs-bought-envelope-inner-image {
+    display: inline-block;
+    padding: 10px;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box; }
+  #rewardial-plugin .fs-bought-envelope-inner-image a {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box; }
+  #rewardial-plugin .fs-bought-frame-landscape {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box; }
+  #rewardial-plugin .fs-bought-envelope-content {
+    padding-top: 10px; }
+  #rewardial-plugin .fs-display-image-slide {
+    outline: 0 !important; }
+  #rewardial-plugin .fs-bought-big-image {
+    height: 270px;
+    width: 300px;
+    float: left;
+    text-align: center; }
+  #rewardial-plugin .fs-bought-description {
+    float: left;
+    font: 12px 'Proxima Regular';
+    height: 300px;
+    overflow-y: scroll;
+    width: 330px;
+    padding: 10px; }
+  #rewardial-plugin .fs-bought-envelope-sideinfo {
+    height: 300px;
+    width: 300px;
+    float: right; }
+  #rewardial-plugin .fs-bought-big-frame-portrait {
+    background: url("../img/master-bg-vertical.png") no-repeat scroll 0 0/contain transparent;
+    height: 250px;
+    margin: 0 auto;
+    width: 190px; 
+	position:relative; }
+  #rewardial-plugin .fs-bought-big-frame-landscape {
+    background: url("../img/master-bg-horizontal.png") no-repeat scroll 0 0/contain transparent;
+    margin: 0 auto;
+    height: 190px;
+    width: 250px; 
+	position:relative;}
+  #rewardial-plugin .fs-bought-big-frame-square {
+    background: url("../img/master-bg-square.png") no-repeat scroll 0 0/contain transparent;
+    margin: 0 auto;
+    height: 220px;
+    width: 220px;
+	position:relative; }
+  #rewardial-plugin .fs-bought-envelope-big-portrait {
+    height: 200px;
+    margin: 25px auto 0;
+    width: 150px; }
+  #rewardial-plugin .fs-bought-envelope-big-landscape {
+    width: 200px;
+    height: 150px;
+    margin: 20px auto 0; }
+  #rewardial-plugin .fs-bought-envelope-big-square {
+    height: 170px;
+    margin: 25px auto 0;
+    width: 170px; }
+  #rewardial-plugin .fs-bought-envelope-stamp-value {
+    width: 205px;
+    background: #EDEDEE;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px 0px #606060 inset;
+    clear: both;
+    text-align: right;
+    margin: 0 auto; }
+  #rewardial-plugin .fs-bought-envelope-stamp-value img {
+    display: inline-block;
+    padding: 5px; }
+  #rewardial-plugin .fs-bought-stamp-value-price {
+    display: inline-block;
+    paddding: 5px;
+    margin-right: 10px; }
+  #rewardial-plugin .fs-bought-stamp-value {
+    padding-right: 15px;
+    font: 18px 'Proxima Bold';
+    padding-top: 5px; }
+  #rewardial-plugin .fs-bought-stamp-collection {
+    clear: left;
+    font: 18px 'Proxima Bold';
+    margin-left: 30px; }
+  #rewardial-plugin .fs-bought-envelope-category {
+    font: 18px 'Proxima Regular';
+    text-align: center; }
+	#rewardial-plugin .fs-btn-collect-one{
+		background: url("../img/btn-collect-stamp.png") no-repeat scroll 0 0/contain transparent;
+		height: 30px;
+		width: 205px;
+		margin: 10px auto;
+		cursor: pointer;
+	}
+	#rewardial-plugin .fs-btn-collect-one:hover{
+		opacity:0.6;
+	}
+  #rewardial-plugin .fs-btn-collect {
+    background: url("../img/btn-colect-all.png") no-repeat scroll 0 0/contain transparent;
+    height: 30px;
+    width: 205px;
+    margin: 10px auto;
+    cursor: pointer; }
+  #rewardial-plugin .fs-btn-collect:hover {
+    opacity: 0.6; }
+  #rewardial-plugin .fs-btn-sell-now {
+    background: url("../img/btn-sell-now.png") no-repeat scroll 0 0/contain transparent;
+    height: 30px;
+    width: 205px;
+    margin: 10px auto;
+    cursor: pointer; }
+  #rewardial-plugin .fs-btn-sell-now:hover {
+    opacity: 0.6; }
+  #rewardial-plugin .row {
+    display: block;
+  margin: 0 auto;
+    width: 890px;	}
+  #rewardial-plugin [class*="col-"] {
+    float: left;
+    display: inline;
+    margin-left: 1%; }
+  #rewardial-plugin .col-1-2 {
+    width: 49%; }
+  #rewardial-plugin .col-1-3 {
+    width: 32.33%; }
+  #rewardial-plugin .col-1-4 {
+    width: 24%; }
+  #rewardial-plugin .col-1-5 {
+    width: 19%; }
+  #rewardial-plugin .col-4-5 {
+    width: 70%; }
+  #rewardial-plugin #fs-overlay {
+    /*position: fixed;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    top: 0px;
+    left: 0px;
+    z-index: 999999;*/
+    background: none repeat scroll 0 0 #fff;
+    box-sizing: content-box;
+    height: auto;
+    left: 50%;
+    margin-left: -490px;
+    margin-top: -280px;
+    position: fixed;
+    top: 50%;
+    width: 980px;
+    z-index: 99999; }
+  #rewardial-plugin #fs-quests {
+    display: block;
+    border: 10px solid #c7c7c7;
+    background: #fff;
+    color: #333;
+    line-height: 30px;
+    z-index: 999;
+    /* -webkit-filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.4)); 
+    -moz-filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.4));
+    -ms-filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.4));
+    -o-filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.4));
+    filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.4));
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.4);*/
+    position: relative; }
+  #rewardial-plugin .close-quest {
+    cursor: pointer;
+    padding: 10px 10px 10px;
+    position: absolute;
+    right: 10px;
+    top: 10px; }
+  #rewardial-plugin .close-quest span {
+    display: none; }
+  #rewardial-plugin #quest-list {
+    width: 90%;
+	 max-height: 360px;
+    min-height: 360px;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden; }
+  #rewardial-plugin #fs-quests h2, #rewardial-plugin #quest-list h3 {
+    margin-left: 10%;
+    color: #BB252B;
+    margin-bottom: 0px; }
+  #rewardial-plugin #quest-list .quest {
+    width: 90%;
+    margin-left: 5%;
+    display: inline-block;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+    position: relative;
+    margin-top: 20px;
+    padding-bottom: 20px; }
+  #rewardial-plugin #quest-list .quest h3 {
+    margin-left: 34px;
+    margin-top: 10px;
+    float: left;
+    padding-bottom: 9px; }
+  #rewardial-plugin #quest-list .quest .quest-title {
+    border-bottom: 1px solid #BB252B;
+    margin: 0 auto;
+    width: 95%; }
+  #rewardial-plugin #quest-list .quest .headers {
+    font-weight: bold;
+    border-right: 1px solid #BB252B; }
+  #rewardial-plugin #quest-list .quest p {
+    margin-bottom: 0px; }
+  #rewardial-plugin #quest-list .quest .headers p {
+    width: 80%;
+    margin-right: 10%;
+    text-align: right; }
+  #rewardial-plugin .quest-action {
+    float: right;
+    font-size: 15px;
+    color: #fff;
+    padding: 7px;
+    cursor: pointer;
+    font-weight: normal; }
+  #rewardial-plugin .quest-action:hover {
+    text-decoration: none; }
+	#rewardial-plugin .quest-retry {
+    float: right;
+    font-size: 15px;
+    color: #fff;
+    background: #BB252B;
+    padding: 7px;
+    font-weight: normal; }
+  #rewardial-plugin .quest-finished {
+    float: right;
+    font-size: 15px;
+    color: #fff;
+    background: #BB252B;
+    padding: 7px;
+    font-weight: normal; }
+  #rewardial-plugin .quest-completed {
+    float: right;
+    font-size: 15px;
+    color: #fff;
+    background: #41a62a;
+    padding: 7px;
+    font-weight: normal; }
+  #rewardial-plugin #ajax-loader {
+    display: none;
+    height: 141px;
+    margin: 100px 0 100px 300px;
+    text-align: center;
+    width: 287px; }
+  #rewardial-plugin #question-place .quest-answer {
+    text-align: center;
+    background: #EBE5E5;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 3px 2px 9px -4px #000;
+    padding: 15px;
+    margin-top: 20px;
+    color: #BB252B;
+    font-weight: bold;
+    font-size: 23px;
+    width: 40%;
+    margin-left: 59px; }
+  #rewardial-plugin #question-place .quest-answer:hover, #rewardial-plugin #question-place .quest-answer.active {
+    background: #BB252B;
+    color: #fff; }
+  #rewardial-plugin #fs-quests #question-place .question-text {
+    width: 100%;
+    margin-left: 0px;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 10px!important; }
+  #rewardial-plugin #question-place {
+    display: none; }
+  #rewardial-plugin #question-place .quest-answer.correct {
+    background: #24890d;
+    color: #fff; }
+  #rewardial-plugin #answer-loader {
+    bottom: 50px;
+    display: none;
+    height: 141px;
+    margin-left: 40%;
+    position: absolute;
+    width: 287px; }
+  #rewardial-plugin #back-to-quest {
+    display: block;
+    float: left;
+    background: #BB252B;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 30px;
+    font-size: 17px;
+    clear: both;
+    margin: 30px; }
+  #rewardial-plugin .fs-account-levels {
+    background: none repeat scroll 0 0 #ededee;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px 0 #606060 inset;
+    height: auto;
+    width: 192px;
+    line-height: 20px !important;
+    padding: 10px 0;
+    max-height: 225px;
+    min-height: 100px; }
+  #rewardial-plugin .fs-attribute-level-value {
+    width: 15px;
+    display: inline-block;
+    font-family: 'Proxima Bold';
+    color: #bb252b;
+    font-size: 11px;
+    padding-left: 5px; }
+  #rewardial-plugin .fs-attribute-information {
+    padding: 0 0 5px 10px;
+    font-size: 10px;
+    line-height: 15px; }
+  #rewardial-plugin .attribute-progress-container {
+    display: inline-block;
+    width: 140px;
+    background-color: #fff;
+    border: 1px solid #dddddd;
+    border-radius: 5px; }
+  #rewardial-plugin #fs-level-attribute-fame .fs-level-title {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Proxima Bold';
+    display: inline-block; }
+  #rewardial-plugin .fs-level-attribute .fs-level-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Proxima Bold';
+    display: inline-block;
+    font-size: 11px; }
+  #rewardial-plugin .fs-level-attribute {
+    background-position: 10px center !important;
+    background-repeat: no-repeat !important;
+    display: inline-block;
+    padding: 3px 0 3px 25px;
+    width: 170px; }
+  #rewardial-plugin #fs-level-attribute-fame {
+    width: 170px;
+    background: url("../img/fame-icon.png"); }
+  #rewardial-plugin #fs-level-attribute-fame .attribute-progress-container {
+    display: inline-block;
+    width: 140px;
+    background-color: #fff;
+    border: 1px solid #dddddd;
+    border-radius: 5px; }
+  #rewardial-plugin .attribute-progress-container div {
+    border-radius: 5px; }
+  #rewardial-plugin .fs-close-logged {
+    margin-bottom: 0; }
+  #rewardial-plugin .fs-inner-box-logout {
+    float: right;
+    margin-right: 20px;
+    margin-top: -15px;
+    max-width: 60px; }
+  #rewardial-plugin .fs-inner-box-logout a {
+    margin-right: 8px; }
+  #rewardial-plugin a.close-quest {
+    color: #BB252B; }
+  #rewardial-plugin #fs-overlay h2 {
+    -webkit-filter: none;
+    box-shadow: none; }
+  #rewardial-plugin #quest-list .quest {
+    padding-top: 15px; }
+  #rewardial-plugin #quest-list .quest h3 {
+    padding-bottom: 18px;
+    text-transform: uppercase; }
+  #rewardial-plugin #quest-list .quest .headers {
+    border-right: 1px solid #e6e6e6; }
+  #rewardial-plugin #quest-list .quest .headers p {
+    width: 90%; }
+  #rewardial-plugin .fs-remember-me {
+    margin-right: 10px;
+    margin-left: 5px; }
+  #rewardial-plugin .fs-remember-me-container label {
+    float: left; }
+  #rewardial-plugin .fs-fame-information .attribute-progress-container {
+    display: inline-block;
+    width: 170px;
+    background-color: #fff;
+    border: 1px solid #dddddd;
+    border-radius: 5px; }
+  #rewardial-plugin .fs-fame-information #fs-fame-level-value {
+    font-size: 15px;
+    color: #000;
+    padding-left: 5px; }
+  #rewardial-plugin #fs-level-attribute-persuasion {
+    display: block; }
+  #rewardial-plugin .fs-user-role p {
+    margin: 0; }
+  #rewardial-plugin .fs-logo-steps {
+    float: left;
+    margin: 24px 0 0 15px; }
+  #rewardial-plugin .fs-account-prof.mobile {
+    display: none; }
+  #rewardial-plugin .responsive-account-menu {
+    border-top: 0 none;
+    display: block;
+    height: 38px; }
+  #rewardial-plugin #fs-community-box {
+    background: none repeat scroll 0 0 #e9e9e9;
+    box-sizing: content-box;
+    height: auto;
+    left: 50%;
+    margin-left: -490px;
+    margin-top: -280px;
+    position: fixed;
+    top: 50%;
+    width: 980px;
+    z-index: 9999; }
+  #rewardial-plugin .pop-up-trade.container {
+    display: none; }
+  #rewardial-plugin .pop-up-trade {
+    background: none repeat scroll 0 0 #fff;
+    border: 5px solid grey;
+    /*left: 50%;*/
+    /*top: 50%;*/
+    /*margin-left: -510px;*/
+    /*margin-top: -250px;*/
+    width: 100%;
+    overflow: hidden;
+    opacity: 1;
+    display: none;
+    /*width: 1020px;*/
+    z-index: 50;
+    border: none; }
+  #rewardial-plugin .transparent-white {
+    background-color: rgba(255, 255, 255, 0.6);
+    position: absolute;
+    z-index: 40; }
+  #rewardial-plugin .exit-x {
+    color: red;
+    float: right;
+    font-size: 20px;
+    margin: -4px 5px 0 0; }
+  #rewardial-plugin html body div#container div#content div.pop-up-trade.container div.row.clearfix div.col-md-12.column h2 {
+    background: none repeat scroll 0 0 #fff;
+    color: black;
+    font-size: 18px;
+    font-weight: 900;
+    margin: 20px auto 0;
+    text-align: center; }
+  #rewardial-plugin html body div#container div#content div.pop-up-trade.container div.row.clearfix div.col-md-12.column {
+    width: 100%; }
+  #rewardial-plugin .col-md-6 {
+    width: 50%; }
+  #rewardial-plugin #slideshow {
+    margin: 20px; }
+  #rewardial-plugin #nav {
+    width: 300px;
+    margin: 15px; }
+  #rewardial-plugin #nav li {
+    width: 50px;
+    float: left;
+    margin: 8px;
+    list-style: none; }
+  #rewardial-plugin #nav a {
+    width: 50px;
+    padding: 3px;
+    display: block;
+    border: 1px solid #ccc; }
+  #rewardial-plugin #nav li.activeSlide a {
+    background: #88f; }
+  #rewardial-plugin #nav a:focus {
+    outline: none; }
+  #rewardial-plugin #nav img {
+    border: none;
+    display: block; }
+  #rewardial-plugin .photo-holder-left {
+    float: right; }
+  #rewardial-plugin .photo-holder-right {
+    float: left; }
+  #rewardial-plugin html body div#container div#content div.pop-up-trade.container div.row.clearfix div.col-md-12.column div.row.clearfix div.col-md-6.blood-side.column div.row.clearfix div.nav {
+    float: right;
+    margin-right: 10%;
+    /*margin-top: 20px;*/
+    padding-left: 5px; }
+  #rewardial-plugin .fs-stockbook-trade-away-eme {
+    background: url("/focusstamps/../img/img_ws/btn-trade-away.png") no-repeat scroll center center/cover transparent;
+    cursor: pointer;
+    float: left;
+    height: 32px;
+    margin-left: 25px;
+    margin-top: 18px;
+    width: 150px; }
+  #rewardial-plugin html body div#container div#content div.pop-up-trade.container div.row.clearfix div.col-md-12.column div.row.clearfix div.col-md-6.blood-side.column div.row.clearfix div.nav li img {
+    height: 76px;
+    margin-left: 40px;
+    margin-top: 7px;
+    width: 67px; }
+  #rewardial-plugin html body div#container div#content div.pop-up-trade.container div.row.clearfix div.col-md-12.column div.row.clearfix div.col-md-6.blood-side.column div.row.clearfix div.nav li {
+    margin-bottom: 20px;
+    position: relative; }
+  #rewardial-plugin html body div#container div#content div.pop-up-trade.container div.row.clearfix div.col-md-12.column div.row.clearfix div.col-md-6.crip-side.column div.row.clearfix div.nav {
+    float: left;
+    margin-left: 10%;
+    margin-top: 0; }
+  #rewardial-plugin html body div#container div#content div.pop-up-trade.container div.row.clearfix div.col-md-12.column div.row.clearfix div.col-md-6.crip-side.column div.row.clearfix div.nav li {
+    margin-bottom: 20px;
+    position: relative; }
+  #rewardial-plugin html body div#container div#content div.pop-up-trade.container div.row.clearfix div.col-md-12.column div.row.clearfix div.col-md-6.crip-side.column div.row.clearfix div.nav li a img {
+    height: 76px;
+    margin-left: 40px;
+    margin-top: 7px;
+    width: 67px; }
+  #rewardial-plugin html body div#container div#content div.pop-up-trade.container div.row.clearfix div.col-md-12.column div.fs-stockbook-trade-away-eme {
+    float: none;
+    margin: 0 auto;
+    text-align: center; }
+  #rewardial-plugin .button-for-pop-up {
+    bottom: 15px;
+    left: 50%;
+    margin-left: -75px;
+    position: absolute;
+    width: auto; }
+  #rewardial-plugin #fs-trade-stamp-original {
+    height: 300px;
+    overflow-y: scroll;
+    width: 200px;
+    float: left;
+    clear: left; }
+  #rewardial-plugin #fs-trade-stamp-original::-webkit-scrollbar {
+    width: 8px;
+    background-color: #fff; }
+  #rewardial-plugin #fs-trade-stamp-original:hover::-webkit-scrollbar {
+    width: 8px;
+    background-color: #ddd; }
+  #rewardial-plugin #fs-trade-stamp-original::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    border-radius: 10px; }
+  #rewardial-plugin #fs-trade-stamp-original::-webkit-scrollbar:hover::-webkit-scrollbar-thumb {
+    background-color: #ccc; }
+  #rewardial-plugin #fs-trade-stamp-original:hover::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border: 1px solid #bbb; }
+  #rewardial-plugin #fs-trade-stamp-original::-webkit-scrollbar-thumb:active {
+    background-color: #ccc;
+    border: 1px solid #333333; }
+  #rewardial-plugin #fs-trade-stamp-receive::-webkit-scrollbar {
+    width: 8px;
+    background-color: #fff; }
+  #rewardial-plugin #fs-trade-stamp-receive:hover::-webkit-scrollbar {
+    width: 8px;
+    background-color: #ddd; }
+  #rewardial-plugin #fs-trade-stamp-receive::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    border-radius: 10px; }
+  #rewardial-plugin #fs-trade-stamp-receive::-webkit-scrollbar:hover::-webkit-scrollbar-thumb {
+    background-color: #ccc; }
+  #rewardial-plugin #fs-trade-stamp-receive:hover::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border: 1px solid #bbb; }
+  #rewardial-plugin #fs-trade-stamp-receive::-webkit-scrollbar-thumb:active {
+    background-color: #ccc;
+    border: 1px solid #333333; }
+  #rewardial-plugin .fs-trade-stamp-area {
+    float: left;
+    width: 535px; }
+  #rewardial-plugin .fs-trade-popup-content {
+    font-family: 'Proxima Regular';
+    font-size: 14px; }
+  #rewardial-plugin #fs-trade-stamp-receive {
+    height: 300px;
+    overflow-y: scroll;
+    width: 200px;
+    float: right;
+    margin-right: 10px; }
+  #rewardial-plugin .fs-trade-popup-content li {
+    /*background: url(../img/trade-stamp.png) repeat scroll 0 0 / 150px 150px rgba(0, 0, 0, 0);*/
+    height: 150px;
+    margin: 5px auto;
+    width: 150px;
+    position: relative;
+    list-style: none; }
+  #rewardial-plugin .fs-trade-popup-content li:hover {
+    box-shadow: 0px 0px 10px 0px #00aaff; }
+  #rewardial-plugin .fs-trade-popup-content li img {
+    position: absolute;
+    bottom: 26px;
+    left: 40px; }
+  #rewardial-plugin .fs-nav-stamp-duplicates {
+    bottom: 5px;
+    left: 5px;
+    position: absolute;
+    background: url(../img/duplicates-bg.png) no-repeat scroll 0 2px transparent;
+    height: 22px;
+    width: 20px;
+    color: #fff;
+    text-align: center;
+    padding-top: 2px; }
+  #rewardial-plugin .fs-nav-stamp-name {
+    font-size: 12px;
+    height: 30px;
+    margin: 0 auto;
+    padding: 5px;
+    text-align: center;
+    line-height: 1.3; }
+  #rewardial-plugin .fs-trade-popup-header {
+    text-align: center;
+    padding-top: 7px; }
+  #rewardial-plugin .fs-trade-popup-header h2 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 900;
+    font-family: 'proxima bold';
+    display: inline-block;
+    margin-top: 0; }
+  #rewardial-plugin .fs-trade-user-name {
+    margin-left: 15px;
+    margin-top: 5px; }
+  #rewardial-plugin .fs-trade-stamp-left {
+    width: 43%;
+    float: left;
+    min-height: 303px;
+    text-align: right;
+    margin-left: 6%; }
+  #rewardial-plugin .fs-trade-stamp-right {
+    width: 41%;
+    float: left;
+    margin-left: 6%;
+    text-align: left;
+    margin-bottom: 15px; }
+  #rewardial-plugin .fs-trade-button-middle {
+    background: url("../img/btn-offer.png") no-repeat scroll 0 0/contain transparent;
+    cursor: pointer;
+    height: 32px;
+    background-size: 100%;
+    margin-left: 140px;
+    width: 138px;
+    clear: both;
+    float: left; }
+	#rewardial-plugin .fs-trade-button-middle:hover{
+		opacity:0.6;
+	}
+  #rewardial-plugin .fs-trade-popup-content .fs-stamp-holder-image:hover {
+    box-shadow: 0px 0px 10px 0px #00aaff; }
+  #rewardial-plugin .fs-trade-stamp-right .fs-stamp-holder-image {
+    float: left; }
+  #rewardial-plugin .fs-stamp-area-image {
+    width: 96px;
+    margin-top: 50px;
+    height: 71px; }
+  #rewardial-plugin .fs-stamp-holder-name {
+    clear: both; }
+  #rewardial-plugin .you-offer, #rewardial-plugin .you-receive {
+    color: #9c9c9c;
+    font-size: 14px;
+    text-align: left;
+    padding-left: 60px;
+    margin-bottom: 1em; }
+  #rewardial-plugin .you-receive {
+    padding: 0; }
+  #rewardial-plugin .fs-trade-popup-user {
+    float: left; }
+  #rewardial-plugin .fs-trade-popup-user img, #rewardial-plugin .fs-trade-popup-friend img {
+    width: 30px;
+    height: 30px; }
+  #rewardial-plugin .fs-trade-offer-stamp {
+    text-align: left;
+    padding-left: 58px; }
+  #rewardial-plugin .fs-stamp-holder-name {
+    height: 30px;
+    padding: 15px 0; }
+  #rewardial-plugin .fs-stamp-holder-category {
+    color: #9c9c9c; }
+  #rewardial-plugin .fs-stamp-holder-category span {
+    color: #2b2b2b; }
+  #rewardial-plugin .fs-stamp-holder-level {
+    color: #9c9c9c;
+    display: inline-block; }
+  #rewardial-plugin .fs-stamp-holder-level span {
+    color: #2b2b2b; }
+  #rewardial-plugin .fs-stamp-holder-level span:after {
+    content: '|';
+    padding: 0 3px; }
+  #rewardial-plugin .fs-stamp-holder-rarity {
+    color: #9c9c9c;
+    display: inline-block;
+    margin-right: -5px; }
+  #rewardial-plugin .fs-stamp-holder-rarity span {
+    color: #2b2b2b; }
+  #rewardial-plugin .fs-trade-message {
+    text-align: center;
+    min-height: 400px; }
+  #rewardial-plugin .fs-trade-back-button {
+    background: url("../img/btn-back.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Proxima Bold';
+    font-size: 18px;
+    font-weight: bold;
+    height: 32px;
+    margin: 15px 0;
+    text-indent: -999999px;
+    text-transform: uppercase;
+    width: 78px; }
+  #rewardial-plugin .fs-trade-back-to-community {
+    background: url("../img/btn-cancel.png");
+    background-repeat: no-repeat;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Proxima Bold';
+    font-size: 13px;
+    font-weight: bold;
+    height: 32px;
+    margin: 0 17px 15px;
+    padding: 5px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    width: 88px;
+    float: left; }
+	 #rewardial-plugin .fs-trade-back-to-community:hover{
+		opacity:0.6;
+	 }
+  #rewardial-plugin .fs-stamp-shape-portrait {
+    height: 77px;
+    margin-top: 49px;
+    width: 53px; }
+  #rewardial-plugin .fs-stamp-shape-square {
+    height: 71px;
+    margin-top: 53px;
+    width: 71px; }
+  #rewardial-plugin .fs-stamp-shape-landscape {
+    height: 55px;
+    margin-top: 61px;
+    width: 74px; }
+  #rewardial-plugin .fs-stamp-holder-portrait {
+    background: url("../img/trade-stamp-portrait.png") no-repeat scroll 0 0/100% auto transparent;
+    height: 150px;
+    text-align: center;
+    width: 150px;
+    -webkit-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%; }
+  #rewardial-plugin .fs-stamp-holder-square {
+    background: url("../img/trade-stamp-square.png") no-repeat scroll 0 0/100% auto transparent;
+    height: 150px;
+    text-align: center;
+    width: 150px;
+    -webkit-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%; }
+  #rewardial-plugin .fs-stamp-holder-landscape {
+    background: url("../img/trade-stamp-landscape.png") no-repeat scroll 0 0/100% auto transparent;
+    height: 150px;
+    text-align: center;
+    width: 150px;
+    -webkit-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%; }
+  #rewardial-plugin .fs-trade-offer .fs-stamp-shape-portrait {
+    bottom: 24px;
+    left: 49px; }
+  #rewardial-plugin .fs-trade-offer .fs-stamp-shape-landscape {
+    bottom: 34px;
+    left: 38px; }
+  #rewardial-plugin .fs-reward-box {
+    color: #bb252b;
+    float: right;
+    font-size: 15px;
+    margin-right: 10px;
+    width: 30px; }
+  #rewardial-plugin .fs-signup-agreement {
+    margin-right: 5px; }
+  #rewardial-plugin #fs-sign-up label {
+    float: left;
+    font-size: 11px;
+    padding: 5px; }
+  #rewardial-plugin .fs-trades-requests-button {
+    background: url("../img/trades-requests.png");
+    color: #fff;
+    margin: 0 auto;
+    padding: 5px 10px;
+    text-align: center;
+    width: 200px;
+    margin-top: 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: 'Proxima Bold';
+    font-size: 14px;
+    border-radius: 3px;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box; }
+  #rewardial-plugin .fs-stamp-need-2 {
+    opacity: 0.5;
+	}
+	#rewardial-plugin .fs-stamp-need-2 a{
+		background:#fff;
+	}
+	#rewardial-plugin .rewardial-not-needed {
+		background:url('../img/empty-tag.png');
+		height:20px;
+		width:20px;
+		position:absolute;
+		z-index:2;
+	}
+	#rewardial-plugin .rewardial-tag-portrait{
+		top:40px;
+		right:40px;
+	}
+	#rewardial-plugin .rewardial-tag-landscape{
+		right:31px;
+		top:52px;
+	}
+	#rewardial-plugin .rewardial-tag-square{
+		right:32px;
+		top:44px;
+	}
+  #rewardial-plugin .fs-shop-content .fs-inner-stamp img {
+    width: 190px;
+    height: 177px;
+    margin: 0 auto;
+    max-width: 200px; }
+  #rewardial-plugin .clear {
+    clear: both;
+    display: block; }
+  #rewardial-plugin .quest-rewards {
+    clear: right;
+    float: right;
+    font-family: 'Proxima Bold';
+    margin-right: 30px;
+    margin-top: 20px; }
+  #rewardial-plugin .responsive-my-profile, #rewardial-plugin .responsive-account-menu {
+    display: none; }
+  #rewardial-plugin .fs-friends-flexslider .flex-direction-nav .flex-next, #rewardial-plugin .fs-envelopes-flexslider .flex-direction-nav .flex-next {
+    opacity: 1;
+    background: url("../img/arrow-right.png") no-repeat scroll center center transparent; }
+  #rewardial-plugin .fs-friends-flexslider .flex-direction-nav .flex-prev, #rewardial-plugin .fs-envelopes-flexslider .flex-direction-nav .flex-prev {
+    opacity: 1;
+    background: url("../img/arrow-left.png") no-repeat scroll center center transparent; }
+  #rewardial-plugin .fs-friends-carousel .fs-friends-flexslider:hover .flex-prev, #rewardial-plugin .fs-stamps-carousel .fs-envelopes-flexslider:hover .flex-prev {
+    opacity: 1;
+    left: -50px; }
+  #rewardial-plugin .fs-friends-carousel .fs-friends-flexslider, #rewardial-plugin .fs-stamps-carousel .fs-envelopes-flexslider {
+    padding-bottom: 15px; }
+  #rewardial-plugin .fs-friends-carousel .fs-friends-flexslider:hover .flex-next, #rewardial-plugin .fs-stamps-carousel .fs-envelopes-flexslider:hover .flex-next {
+    opacity: 1;
+    right: -50px; }
+  #rewardial-plugin .fs-friends-carousel .flex-direction-nav a, #rewardial-plugin .fs-stamps-carousel .fs-envelopes-flexslider .flex-direction-nav a {
+    height: 100px;
+    text-indent: -9999px;
+    margin: 80px 0 0 0;
+    top: 30%; }
+  #rewardial-plugin .fs-stamps-carousel .fs-envelopes-flexslider .flex-direction-nav .flex-prev {
+    margin-left: 70px; }
+  #rewardial-plugin .fs-stamps-carousel .fs-envelopes-flexslider .flex-direction-nav .flex-next {
+    margin-right: 70px; }
+  #rewardial-plugin .fs-friends-carousel .flex-direction-nav a.flex-next:before, #rewardial-plugin .fs-stamps-carousel .fs-envelopes-flexslider .flex-direction-nav a.flex-next:before {
+    content: ""; }
+  #rewardial-plugin .fs-friends-carousel .flex-direction-nav a.flex-prev:before, #rewardial-plugin .fs-stamps-carousel .fs-envelopes-flexslider .flex-direction-nav a.flex-prev:before {
+    content: ""; }
+  #rewardial-plugin .fs-friends-carousel .slides > li {
+    margin: 0 5px; }
+  #rewardial-plugin .fs-stamp {
+    padding-bottom: 15px; position:relative; }
+	#rewardial-plugin .fs-envelopes-flexslider .featured-envelope{
+		background: linear-gradient(to bottom, #dedede 18%, #ffffff 53%, #cdcdcd 99%)!important;
+border: 3px solid #dddddd;
+	}
+  #rewardial-plugin .fs-account-info {
+    padding: 5px; }
+  #rewardial-plugin .fs-trade-popup-friend.mobile {
+    display: none; }
+  #rewardial-plugin .fs-envelopes-flexslider.flexslider {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    margin: 0; }
+  #rewardial-plugin .responsive-premium {
+    display: none; }
+  #rewardial-plugin .fs-friends-flexslider.flexslider {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    margin: 0 0 30px 0; }
+  #rewardial-plugin .fs-trade-popup-content .mobile {
+    display: none; }
+  #rewardial-plugin .fs-envelopes-flexslider .flex-viewport {
+    height: auto !important; }
+  #rewardial-plugin .fs-friends-flexslider .flex-control-paging {
+    display: none; }
+  #rewardial-plugin .fs-bought-stamp-name {
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px 5px 5px 0; }
+  #rewardial-plugin .fs-friends-flexslider .flex-direction-nav .flex-prev {
+    margin-left: 65px;
+    position: absolute; }
+  #rewardial-plugin .fs-friends-flexslider .flex-direction-nav .flex-next {
+    margin-right: 65px;
+    position: absolute; }
+  #rewardial-plugin .fs-mobilequest .quest-label {
+    height: auto !important; }
+
+/*# sourceMappingURL=style2.css.map */
+#rewardial-plugin .rewardial-server-inactive{
+	background: url("../img/bg-login.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    bottom: 1px;
+    box-sizing: content-box;
+	-moz-box-sizing:content-box;
+    height: 48px;
+    position: fixed;
+    right: 0;
+    width: 221px;
+    z-index: 9999;
+}
+#rewardial-plugin .rewardial-server-inactive .rewardial-server-message{
+	color: #fff;
+    float: right;
+    font-size: 20px;
+    margin-right: 25px;
+    margin-top: 5px;
+}
+
+
+/* added css */
+
+#rewardial-plugin .fs-close-shop ,.fs-close-community{
+	color: #bb252b;
+}
+#rewardial-plugin .fs-close-shop:hover, .fs-close-shop:active, .fs-close-shop:focus  {
+	color: #bb252b;
+}
+#rewardial-plugin .fs-close-logged a{
+	 color: #bb252b;
+    left: -10px;
+    position: relative;
+    top: -2px;
+}
+#rewardial-plugin .fs-close-logged a:hover {
+	color: #bb252b;
+}
+#rewardial-plugin .fs-options ul {
+	list-style: none;
+	width: 170px;
+}
+#rewardial-plugin #fs-overlay {
+	font-family: 'Proxima Regular';
+}
+#rewardial-plugin button:hover,
+#rewardial-plugin button:focus,
+#rewardial-plugin .contributor-posts-link:hover,
+#rewardial-plugin #fs-overlay input[type="button"]:hover,
+#rewardial-plugin #fs-overlay input[type="button"]:focus,
+#rewardial-plugin #fs-overlay input[type="reset"]:hover,
+#rewardial-plugin #fs-overlay input[type="reset"]:focus,
+#rewardial-plugin #fs-overlay input[type="submit"]:hover,
+#rewardial-plugin #fs-overlay input[type="submit"]:focus {
+	background-color: transparent!important;
+	color: #fff;
+}
+#rewardial-plugin #fs-overlay button, #rewardial-plugin .contributor-posts-link, #rewardial-plugin #fs-overlay input[type="button"], #rewardial-plugin #fs-overlay input[type="reset"], #rewardial-plugin #fs-overlay input[type="submit"], #rewardial-plugin #fs-overlay .fs-shop-box button, 
+#rewardial-plugin .fs-shop-box .contributor-posts-link, #rewardial-plugin .fs-shop-box input[type="button"], #rewardial-plugin .fs-shop-box input[type="reset"], #rewardial-plugin .fs-shop-box input[type="submit"] {
+	outline:none;
+	background-color: transparent;
+}
+#rewardial-plugin button, .contributor-posts-link, #rewardial-plugin input[type="button"], #rewardial-plugin input[type="reset"], #rewardial-plugin input[type="submit"]  {
+	outline:none;
+}
+#rewardial-plugin #fs-overlay button, #rewardial-plugin .contributor-posts-link, #rewardial-plugin #fs-overlay input[type="button"], #rewardial-plugin #fs-overlay input[type="reset"], #rewardial-plugin #fs-overlay input[type="submit"] {
+	background-color: transparent;
+}
+
+#rewardial-plugin #fs-overlay h2, #rewardial-plugin #fs-overlay h3, #rewardial-plugin #fs-overlay h4 {
+	font-family: 'Proxima Bold';
+	font-weight:normal;
+}
+#rewardial-plugin #fs-overlay #fs-quests{ 
+	margin: 0 auto; 
+}
+#rewardial-plugin #quest-list {
+	width: 90%;	 
+}
+#rewardial-plugin #quest-list .quest {
+	margin: 20px 0 10px 10px;
+	padding: 5px 0 0;
+	width: 90%;
+}
+#rewardial-plugin #quest-list .quest .headers p {
+	font-family: 'Proxima Regular';
+}
+#rewardial-plugin .quest-action {
+	font-family: 'Proxima Extrabold', Arial, Helvetica, sans-serif;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 13px;
+	color: #606060;
+	background: #fefefe; /* Old browsers */
+	background: -moz-linear-gradient(top,  #fefefe 0%, #dbdbdb 79%, #ffffff 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fefefe), color-stop(79%,#dbdbdb), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #fefefe 0%,#dbdbdb 79%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #fefefe 0%,#dbdbdb 79%,#ffffff 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #fefefe 0%,#dbdbdb 79%,#ffffff 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #fefefe 0%,#dbdbdb 79%,#ffffff 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+	  border: 1px solid #d6d6d6;
+	border-top-color: #f1f1f1;
+	-moz-box-shadow:
+		0px 1px 3px rgba(255,255,255,0),
+		inset 0px 0px 10px rgba(255,255,255,0);
+	-webkit-box-shadow:
+		0px 1px 3px rgba(255,255,255,0),
+		inset 0px 0px 10px rgba(255,255,255,0);
+	box-shadow:
+		0px 1px 3px rgba(255,255,255,0),
+		inset 0px 0px 10px rgba(255,255,255,0);
+	text-shadow:
+		0px 1px 0px rgba(255,255,255,1),
+		0px -1px 0px rgba(255,255,255,1);
+    bottom: 0;
+    margin-top: 10px;
+    padding: 5px 10px;
+}
+#rewardial-plugin .quest-action:hover, #rewardial-plugin .quest-action:active {
+	background: #f0f0f0; /* Old browsers */
+	background: -moz-linear-gradient(top,  #fefefe 0%, #f0f0f0 79%, #ffffff 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fefefe), color-stop(79%,#f0f0f0), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #fefefe 0%,#f0f0f0 79%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #fefefe 0%,#f0f0f0 79%,#ffffff 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #fefefe 0%,#f0f0f0 79%,#ffffff 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #fefefe 0%,#f0f0f0 79%,#ffffff 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#f0f0f0',GradientType=0 ); /* IE6-9 */
+}
+#rewardial-plugin .quest-completed:before {
+	content:'✓ ';
+}
+#rewardial-plugin .quest-completed {
+	color: #41a62a;
+	padding-top: 10px;
+	background-color: transparent;	
+}
+#rewardial-plugin .quest-completed:hover, #rewardial-plugin .quest-completed:active {
+	
+}
+#rewardial-plugin .quest-continue{
+	background-color: #f1bb01;
+}
+#rewardial-plugin .quest-continue:hover, #rewardial-plugin .quest-continue:active {
+	background-color: #dc9a0d;
+}
+#rewardial-plugin .quest-accept {
+	
+}
+
+#rewardial-plugin .quest-finished{
+	padding-top: 10px;
+	background-color: transparent;
+	color: #BB252B;
+	border: none;
+	
+}
+#rewardial-plugin .quest-finished:before {
+	content:'⨯ ';
+}
+#rewardial-plugin .quest-retry { margin-top:5px;}
+#rewardial-plugin #fs-overlay h2 {
+	margin-left: 55px;
+	margin-top:10px;
+}
+#rewardial-plugin #question-place h2{
+	text-transform: uppercase;
+}
+#rewardial-plugin #fs-quests #question-place .question-text  {
+	color: #333;
+	text-transform: initial;
+	margin: 0;
+}
+#rewardial-plugin #fs-overlay #fs-quests .quest-answer {
+	 background: url("../img/question-bg.png") repeat scroll center top / contain rgba(0, 0, 0, 0);
+	color: #555;
+	font-size: 18px;
+	margin: 2%;
+	width:42%;
+	font-weight: normal;
+}
+#rewardial-plugin #fs-overlay #fs-quests .quest-answer:hover, #rewardial-plugin #fs-overlay #fs-quests .quest-answer .quest-answer:active {
+	background: url('../img/active-question-bg.png') repeat scroll center top / contain rgba(0, 0, 0, 0);
+	color: #333;
+	font-weight: normal;
+}
+#rewardial-plugin #back-to-quest {
+	background: url("../img/btn-back.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Proxima Bold';
+    font-size: 18px;
+    font-weight: bold;
+    height: 32px;
+    margin: 15px 0 15px 20px;
+    text-align: center;
+    text-indent: -99999px;
+    text-transform: uppercase;
+    width: 78px;
+	padding:0;
+}
+
+#rewardial-plugin #back-to-quest:hover, #rewardial-plugin #back-to-quest:active {
+	opacity:0.6;
+}
+#rewardial-plugin #quest-list .quest h3 {
+	 padding-bottom: 20px;
+	 padding-top: 5px;
+	 margin-left:0;
+}
+
+
+#rewardial-plugin .fs-shop-header-steps {
+    background: none repeat scroll 0 0 #fdfdfd;
+    
+}
+
+
+#rewardial-plugin .fs-logo-steps {
+	margin-top: 0;
+	}
+
+#rewardial-plugin .fs-text-header {
+	margin-top: 0;
+}
+#rewardial-plugin #fs-quests header .fs-divisor {
+	clear: both;
+	position: relative;
+	margin-bottom:0;
+}
+#rewardial-plugin #fs-quests .fs-divisor {
+	clear: both;
+	margin-bottom:0;
+	display:none;
+}
+#rewardial-plugin #question-place {
+	overflow: hidden;
+}
+#rewardial-plugin #question-place .row {
+	overflow: hidden;
+}
+#rewardial-plugin #fs-shop-box .fs-shop-content {
+	height: auto;
+	padding:0 5px;
+	 max-height: 450px;
+    min-height: 450px;
+}
+
+#rewardial-plugin .fs-steps-boxes {
+	height: auto;
+	padding: 0;
+	width: 860px;
+	margin:0 auto;
+	text-align:center;
+	clear:both;
+}
+#rewardial-plugin .fs-box1, #rewardial-plugin .fs-box2, #rewardial-plugin .fs-box3, #rewardial-plugin .fs-box4 {
+	height: 50px;
+}
+
+#rewardial-plugin .fs-trade-popup-content .fs-stamp-holder-image{
+	display:none;
+}
+#rewardial-plugin .pop-up-trade{ position:relative;}
+#rewardial-plugin .fs-trade-popup-user{ display: inline-block;
+    margin-left: 3px;
+    position: relative;
+    width: 200px;}
+#rewardial-plugin .fs-trade-popup-friend{ display: inline-block;
+    float: right;
+    margin-right: 7px;
+    position: relative;
+    width: 200px;}
+#rewardial-plugin .fs-trade-avatar-img{
+	height: 30px;
+    left: 19px;
+    position: absolute;
+    top: 4px;
+    width: 30px;
+    z-index: 1;
+}
+#rewardial-plugin .fs-trade-avatar-frame{
+	background: url("../img/avatar-frame2.png") no-repeat scroll center center / 100% auto rgba(0, 0, 0, 0);
+    height: 37px;
+    position: absolute;
+    width: 37px;
+    z-index: 2;
+	left:15px;
+}
+#rewardial-plugin .fs-trade-success{
+	text-align:center;
+	width:300px;
+	margin:0 auto;
+	padding: 30px;
+}
+#rewardial-plugin .fs-trade-success span{
+	color:#bb252b;
+}
+#rewardial-plugin .pop-up-trade .fs-trade-message{ display:none;}
+#rewardial-plugin .fs-friends-carousel .fs-section-title{
+	width:200px;
+}
+#rewardial-plugin .fs-stamps-carousel .fs-my-stockbook{
+	background: url("../img/my-stockbook-btn.png") repeat scroll 0 0 / contain rgba(0, 0, 0, 0);
+    border-radius: 3px;
+    color: #646464;
+    float: right;
+    font-family: 'Proxima Bold';
+    font-size: 13px;
+    height: auto;
+    padding: 5px 10px;
+    text-align: center;
+    text-transform: uppercase;
+	margin-top:5px;
+}
+#rewardial-plugin .fs-my-stockbook:hover{
+	opacity:0.6;
+}
+#rewardial-plugin .fs-stamps-carousel h1{
+	display: inline-block;
+    width: 200px;
+}
+#rewardial-plugin .fs-friends-carousel .fs-my-stockbook{
+	background: url("../img/my-stockbook-btn.png") repeat scroll 0 0 / contain rgba(0, 0, 0, 0);
+    border-radius: 3px;
+    color: #646464;
+    float: right;
+    font-family: 'Proxima Bold';
+    font-size: 13px;
+    height: auto;
+    padding: 5px 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+#rewardial-plugin .flexslider .slides > li {
+	display:inline;
+}
+#rewardial-plugin .fs-collection-complete-rewards {
+	background: none repeat scroll 0 0 #fff;
+    min-height: 300px;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: -250px;
+    position: fixed;
+    top: 50%;
+    width: 500px;
+	display:none;
+	z-index:999999;
+	border:5px solid #dedede;
+	padding:10px;
+}
+#rewardial-plugin .fs-collection-complete-rewards .fs-envelope-level-up{
+	padding: 10px 30px;
+}
+#rewardial-plugin .fs-collection-complete-rewards .fs-rewards-line{
+	
+}
+#rewardial-plugin .fs-collection-complete-rewards h3{
+	color: #c0232a;
+    margin: 50px auto 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+#rewardial-plugin .fs-collection-complete-rewards .fs-completion-rewards {
+	padding:20px;
+	text-align:center;
+	clear:both;
+	width:80%;
+	margin:0 auto;
+}
+#rewardial-plugin .fs-collection-complete-rewards .fs-completion-level-up{
+	padding:20px;
+}
+
+#rewardial-plugin .fs-collection-complete-rewards .fs-completion-rewards .fs-rewards-background {
+	background: url('../img/points-bg-right.png') no-repeat scroll top right rgba(0, 0, 0, 0);
+	height: 61px;
+	width: auto;
+	text-align: center;
+	margin-right: 6px;
+	padding-right: 16px;
+	display: block;
+}
+#rewardial-plugin .fs-collection-complete-rewards .fs-completion-rewards .fs-rewards-background span{
+	background: url('../img/points-bg-left.png') no-repeat rgba(0, 0, 0, 0);
+	display: block;
+	padding: 3px 0 15px 24px;
+}
+#rewardial-plugin .fs-collection-complete-rewards .fs-completion-rewards .fs-completion-reward-fame{
+	 background: url("../img/fame-icon.png") no-repeat scroll right 5px bottom 2px rgba(0, 0, 0, 0);
+}
+#rewardial-plugin .fs-collection-complete-rewards .fs-completion-rewards .fs-completion-reward-credits{
+	 background: url("../img/bg-credits-profile-stockbook.png") no-repeat scroll right 5px bottom 2px rgba(0, 0, 0, 0);
+}
+#rewardial-plugin .fs-collection-complete-rewards .fs-completion-rewards .fs-completion-reward-collector{
+	 background: url("../img/collector-icon.png") no-repeat scroll right 5px bottom 2px rgba(0, 0, 0, 0);
+}
+#rewardial-plugin .fs-collection-complete-rewards .fs-completion-rewards .fs-completion-reward-premium{
+	 background: url("../img/bg-premium-profile-stockbook.png") no-repeat scroll right 5px bottom 2px rgba(0, 0, 0, 0);
+}
+#rewardial-plugin .fs-collection-complete-rewards .fs-completion-rewards .fs-completion-reward-social{
+	 background: url("../img/social-icon.png") no-repeat scroll right 5px bottom 2px rgba(0, 0, 0, 0);
+}
+#rewardial-plugin .fs-collection-complete-rewards .fs-completion-rewards .fs-completion-reward-persuasion{
+	 background: url("../img/persuasion-icon.png") no-repeat scroll right 5px bottom 2px rgba(0, 0, 0, 0);
+}
+#rewardial-plugin .fs-collection-complete-rewards .fs-completion-rewards .fs-completion-reward-knowledge{
+	 background: url("../img/knowledge-icon.png") no-repeat scroll right 5px bottom 2px rgba(0, 0, 0, 0);
+}
+#rewardial-plugin .fs-collection-complete-rewards .fs-completion-rewards .fs-rewards-line {
+	display:inline-block;
+	background-color: #fff;
+	border-radius: 30px;
+	margin: 20px 2px 0px 2px;
+	padding: 0px 30px;
+}
+#rewardial-plugin .fs-collection-complete-rewards .fs-completion-rewards .fs-stamps-name{
+	color:#c0232a;
+}
+#rewardial-plugin .fs-collection-complete-rewards .fs-collection-complete-close {
+	text-align:right;
+	padding:10px;
+	color:#c0232a;
+	cursor:pointer;
+}
+#rewardial-plugin .fs-collection-complete-rewards .level-up-generic {
+	background: url('../img/levels-pop-bg.png');
+	width: 128px;
+	height: 128px;
+	text-align: center;
+	vertical-align: middle;
+	margin: 0 auto;
+}
+#rewardial-plugin .fs-collection-complete-rewards .level-up-fame{
+	background: url('../img/levels-pop-bg.png');
+	width: 128px;
+	height: 128px;
+	text-align: center;
+	vertical-align: middle;
+	margin: 0 auto;
+}
+#rewardial-plugin .fs-collection-complete-rewards .level-up-collector{
+	background: url('../img/levels-pop-bg.png');
+	width: 128px;
+	height: 128px;
+	text-align: center;
+	vertical-align: middle;
+	margin: 0 auto;
+}
+#rewardial-plugin .fs-collection-complete-rewards .level-up-explorer{
+	background: url('../img/levels-pop-bg.png');
+	width: 128px;
+	height: 128px;
+	text-align: center;
+	vertical-align: middle;
+	margin: 0 auto;
+}
+#rewardial-plugin .fs-collection-complete-rewards .level-up-persuasion{
+	background: url('../img/levels-pop-bg.png');
+	width: 128px;
+	height: 128px;
+	text-align: center;
+	vertical-align: middle;
+	margin: 0 auto;
+}
+#rewardial-plugin .fs-collection-complete-rewards .level-up-knowledge{
+	background: url('../img/levels-pop-bg.png');
+	width: 128px;
+	height: 128px;
+	text-align: center;
+	vertical-align: middle;
+	margin: 0 auto;
+}
+#rewardial-plugin .fs-collection-complete-rewards .level-up-social{
+	background: url('../img/levels-pop-bg.png');
+	width: 128px;
+	height: 128px;
+	text-align: center;
+	vertical-align: middle;
+	margin: 0 auto;
+}
+#rewardial-plugin .fs-collection-complete-rewards .level-up-spender{
+	background: url('../img/levels-pop-bg.png');
+	width: 128px;
+	height: 128px;
+	text-align: center;
+	vertical-align: middle;
+	margin: 0 auto;
+}
+#rewardial-plugin .fs-collection-complete-rewards .level-up-icon{
+	background:url('../img/generic-user-icon.png');
+	background-size:contain;
+}
+#rewardial-plugin .fs-collection-complete-rewards .level-up-container .level-up-icon{
+	height:21px;
+	width:21px;
+	margin:0 auto;
+}
+#rewardial-plugin .fs-collection-complete-rewards .level-up-fame .level-up-icon{
+	background:url('../img/fame-icon@2x.png');
+	background-size:contain;
+}
+#rewardial-plugin .fs-collection-complete-rewards .level-up-collector .level-up-icon{
+	background:url('../img/collector-icon@2x.png');
+	background-size:contain;
+}
+#rewardial-plugin .fs-collection-complete-rewards .level-up-explorer .level-up-icon{
+	background:url('../img/explorer-icon@2x.png');
+	background-size:contain;
+}
+#rewardial-plugin .fs-collection-complete-rewards .level-up-persuasion .level-up-icon{
+	background:url('../img/persuasion-icon@2x.png');
+	background-size:contain;
+}
+#rewardial-plugin .fs-collection-complete-rewards .level-up-knowledge .level-up-icon{
+	background:url('../img/knowledge-icon@2x.png');
+	background-size:contain;
+}
+#rewardial-plugin .fs-collection-complete-rewards .level-up-social .level-up-icon{
+	background:url('../img/social-icon@2x.png');
+	background-size:contain;
+}
+#rewardial-plugin .fs-collection-complete-rewards .level-up-spender .level-up-icon{
+	background:url('../img/spender-icon@2x.png');
+	background-size:contain;
+}
+#rewardial-plugin .fs-collection-complete-rewards .level-up-level{
+	padding-top:35px;
+	font-size:25px;
+}
+#rewardial-plugin .fs-collection-complete-rewards .level-up-message{
+	text-align:center;
+}
+#rewardial-plugin .fs-collection-complete-rewards .level-up-container{
+	width:50%;
+	display:inline-block;
+}
+
+
+#rewardial-plugin .fs-envelopes-flexslider .fs-envelope-level-container{
+	border: 1px solid #dedede;
+    margin: 10px;
+    width: 80%;
+	background:#fff;
+}
+#rewardial-plugin .fs-envelopes-flexslider .fs-envelope-level-container .fs-envelope-level-bar{
+	background:none repeat scroll 0 0 #009933;
+	height:7px;
+}
+#rewardial-plugin .fs-quests-tabs-container{ 
+	margin-left:55px;
+}
+#rewardial-plugin .fs-quests-tabs-container .fs-quests-tab{
+	font-family: 'Proxima Extrabold', Arial, Helvetica, sans-serif;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 13px;
+	color: #606060;
+	padding: 5px 15px;
+
+	background: #fefefe; /* Old browsers */
+	background: -moz-linear-gradient(top,  #fefefe 0%, #dbdbdb 79%, #ffffff 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fefefe), color-stop(79%,#dbdbdb), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #fefefe 0%,#dbdbdb 79%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #fefefe 0%,#dbdbdb 79%,#ffffff 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #fefefe 0%,#dbdbdb 79%,#ffffff 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #fefefe 0%,#dbdbdb 79%,#ffffff 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+
+	border: 1px solid #d6d6d6;
+	border-top-color: #f1f1f1;
+	-moz-box-shadow:
+		0px 1px 3px rgba(255,255,255,0),
+		inset 0px 0px 10px rgba(255,255,255,0);
+	-webkit-box-shadow:
+		0px 1px 3px rgba(255,255,255,0),
+		inset 0px 0px 10px rgba(255,255,255,0);
+	box-shadow:
+		0px 1px 3px rgba(255,255,255,0),
+		inset 0px 0px 10px rgba(255,255,255,0);
+	text-shadow:
+		0px 1px 0px rgba(255,255,255,1),
+		0px -1px 0px rgba(255,255,255,1);
+		width:100px;
+		display:inline-block;
+		text-align:center;
+		cursor:pointer;
+		margin-top:15px;
+}
+#rewardial-plugin .fs-quests-tabs-container .q-active, #rewardial-plugin .fs-quests-tabs-container .fs-quests-tab:hover{
+	background: -moz-linear-gradient(
+		top,
+		#fefefe 0%,
+		#f0f0f0 79%,
+		#ffffff);
+	background: -webkit-gradient(
+		linear, left top, left bottom,
+		from(#fefefe),
+		color-stop(0.79, #f0f0f0),
+		to(#ffffff));
+}
+#rewardial-plugin .invisible { display:none; }
+#rewardial-plugin .fs-desktopquest { border:none; }
+#rewardial-plugin .fs-desktopquest th { border:none; }
+#rewardial-plugin .fs-desktopquest td { border:none; }
+#rewardial-plugin .fs-desktopquest p { height:auto!important; }
+
+#rewardial-plugin .fs-no-quests-available {
+	color: #c0232a;
+    padding: 10px;
+}
+#rewardial-plugin .fs-bought-big-image .fs-bought-new-tag{
+	position:absolute;
+	top:0;
+	right:0;
+}
+#rewardial-plugin .fs-bought-envelope-inner-image .fs-bought-new-tag{
+	height: 35px;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 35px;
+}
+#rewardial-plugin .fs-bought-big-image .invisible{
+	display:none;
+}
+#rewardial-plugin .fs-bought-envelope-inner-image .invisible{
+	display:none;
+}
+#rewardial-plugin .icon-bg-Credits{
+	background: url("../img/bg-credits-profile-stockbook.png") no-repeat scroll right center rgba(0, 0, 0, 0);
+    padding-right: 30px;
+}
+#rewardial-plugin .icon-bg-Fame{
+	background: url("../img/fame-icon.png") no-repeat scroll right center rgba(0, 0, 0, 0);
+    padding-right: 30px;
+}
+#rewardial-plugin .icon-bg-Knowledge{
+	background: url("../img/knowledge-icon.png") no-repeat scroll right center rgba(0, 0, 0, 0);
+    padding-right: 30px;
+}
+#rewardial-plugin .icon-bg-Social{
+	background: url("../img/social-icon.png") no-repeat scroll right center rgba(0, 0, 0, 0);
+    padding-right: 30px;
+}
+#rewardial-plugin .icon-bg-Persuasion{
+	background: url("../img/persuasion-icon.png") no-repeat scroll right center rgba(0, 0, 0, 0);
+    padding-right: 30px;
+}
+#rewardial-plugin .icon-bg-Spender{
+	background: url("../img/spender-icon.png") no-repeat scroll right center rgba(0, 0, 0, 0);
+    padding-right: 30px;
+}
+#rewardial-plugin .fs-community .fs-new-trades { 
+	background-color: #00679d;
+    border: 1px solid #23a8d0;
+    border-radius: 50%;
+    color: #fff;
+    font-family: "Proxima Regular";
+    height: auto;
+    min-width: 20px;
+	position:absolute;
+	top:0;
+	right:0;
+	text-align:center;
+}
+#rewardial-plugin .fs-quest .fs-new-quests { 
+	background-color: #00679d;
+    border: 1px solid #23a8d0;
+    border-radius: 50%;
+    color: #fff;
+    font-family: "Proxima Regular";
+    height: auto;
+    min-width: 20px;
+	position:absolute;
+	top:0;
+	right:0;
+	text-align:center;
+}
+#rewardial-plugin #upload-avatar-form {
+	display:none;
+}
+#rewardial-plugin .not-enough-money {
+	padding:20px;
+	color:#c0232a;
+	text-align:center;
+	clear:both;
+	font-size:20px;
+}
+#rewardial-plugin #rewardial-loader{
+	left: 65px;
+    position: absolute;
+    top: -40px;
+    width: 100px;
+	z-index:999999999;
+	display:none;
+}
+#rewardial-plugin #rewardial-loader img{
+	width:100%;
+}
+#rewardial-plugin #rewardial-loader-out{
+	left: 65px;
+    position: absolute;
+    top: -40px;
+    width: 100px;
+	z-index:999999999;
+	display:none;
+}
+#rewardial-plugin #rewardial-loader-out img{
+	width:100%;
+}
+#rewardial-plugin .no-duplicates {
+	margin-top: 100px;
+    padding: 5px;
+    text-align: center;
+}
+#rewardial-plugin .fs-btn-login{
+	background:url('../img/btn-login.png');
+	background-size:cover;
+	background-repeat:no-repeat;
+	width:59px;
+	height:20px;
+}
+#rewardial-plugin .rewardial-logo{
+	height: 55px;
+    width: 249px;
+}
+#rewardial-plugin .facebook-share-button{
+
+}
+#rewardial-plugin .fs-envelope-level-up{
+	color: #009933 !important;
+    position: absolute;
+    right: 13px;
+    top: 45px;
+    min-width: 30px;
+}
+#rewardial-plugin .envelope-level-up{
+	margin: 0 auto;
+	width: 80%;
+}
+#rewardial-plugin .fs-collection-complete-rewards .facebook-login-status{
+	padding: 10px;
+	text-align: center;
+	font-size:20px;
+	margin: 0 0 12px;
+	color:#c2312a;
+}
+#rewardial-plugin #fs-notifier3 .rwd-credits{
+	background: url("../img/bg-credits-profile-stockbook.png");
+	width: 16px;
+	height: 12px;
+	display: inline-block;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#rwd-notifications{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 99999;
+}
+.rwd-central-notifications{
+	background: none repeat scroll 0 0 #fff;
+    border: 5px solid #dedede;
+    height: 200px;
+    padding: 10px;
+    width: 500px;
+	margin-left:-250px;
+	margin-top:-250px;
+	position:absolute;
+	display:none;
+	box-sizing:content-box;
+}
+.rwd-central-notifications .rwd-notifications-close{
+	text-align:right;
+	clear:both;
+	width:50px;
+	float:right;
+	color:#c0232a;
+	cursor:pointer;
+	
+}
+.rwd-central-notifications .rwd-notification-message{
+	clear:both;
+	padding:10px;
+	text-align:center;
+}
+.rwd-central-notifications .rwd-notification-remember{
+	padding:10px;
+	text-align:center;
+}
+#rwd-first-login{
+	position:fixed;
+	right:220px;
+	bottom:100px;
+
+}
+#rwd-first-login:after{
+	content: '';
+	position: absolute;
+	left: 100%;
+	top: 15%;
+	margin-right: -8px;
+	width: 0;
+	height: 0;
+	border-bottom: 16px solid #dedede;
+	border-right: 16px solid rgba(213, 34, 34, 0);
+}
+.rwd-notification-message .fs-shop{
+	 background: none repeat scroll 0 0 #c0232a;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 0 auto;
+    padding: 3px 10px;
+    width: 90px;
+	margin-top:10px;
+}
+.rwd-notification-message .fs-community{
+	 background: none repeat scroll 0 0 #c0232a;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 0 auto;
+    padding: 3px 10px;
+    width: 140px;
+	margin-top:10px;
+}
+.rwd-redirect-main{
+	color:#000;
+}
+
+#parent {
+	width: 220px;
+	height: 100%;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+}
+#parent .rwd-bubble,.rwd-bubble-1 {
+    height: 80px;
+    width: 80px;
+    background-color: #fff;
+    color: #000;
+    z-index: 9999;
+    line-height: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+	font-size:12px;
+	margin-top:30px;
+	border:1px solid #c0232a;
+
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
+	display:none;
+}
+
+#rewardial-plugin .fs-support {
+	text-align:center;
+	font-size:13px;
+}
+#rewardial-plugin .fs-support a{
+	color:#c0232a;
+}
+#rewardial-plugin .rwd-bubble-content{
+	margin-top:20px;
+}
+#rewardial-plugin .rwd-bubble-prize{
+	color:#c0232a;
+	font-size:16px;
+}
+#rewardial-plugin .rwd-bubble-prize-action{
+	color:#777;
+	font-size:12px;
+}
+#rewardial-plugin #parent .rwd-bubble-login{
+	height:100px;
+	width:100px;
+	line-height:16px;
+	padding:5px;
+	cursor:pointer;
+}
+#rewardial-plugin #parent .rwd-bubble-login .rwd-bubble-content{
+	color:#c0232a;
+	margin-top:34px;
+}
+#rewardial-plugin #parent .rwd-bubble-login:hover{
+	border:2px solid #c0232a;
+}
+#rewardial-plugin .rewardial-shop-tabs{
+	width:70%;
+	display:inline-block;
+	margin-bottom:10px;
+	height:25px;
+}
+#rewardial-plugin .rewardial-shop-tabs span{
+	padding:5px;
+	border:2px solid #dedede;
+	cursor:pointer;
+	text-transform:uppercase;
+	font-size:13px;
+}
+#rewardial-plugin .rewardial-my-stockbook{
+	display:inline-block;
+	width:20%;
+	margin-top:10px;
+	height:25px;
+}
+#rewardial-plugin .rewardial-shop-tabs .shop-tab-active{
+	background: url("../img/bg-btns.png") no-repeat center center;
+}
+#rewardial-plugin .rewardial-gifts-box{
+	background:url('../img/gifts-soon.jpg') no-repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
+	height:390px;
+	width:100%;
+	display:none;
+}
+
+/* end added css */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*******************************************************************************
+** Responsive css **
+*******************************************************************************/
+  /* iPads (landscape) ----------- */
+  /* iPads (portrait) ----------- */
+  /* Smartphones (landscape) ----------- */
+  /* Big smartphones (portrait) (ie: Galaxy 3 has 360)*/
+  /* Smartphones (portrait) (ie: Galaxy 1) */ 
+  @media only screen and (max-width: 1024px) {
+    #rewardial-plugin .fs-desktopquest {
+      display: none; }
+    #rewardial-plugin .fs-mobilequest {
+      display: block;
+      padding: 15px; }
+    #rewardial-plugin .fs-mobilequest .quest-label {
+      font-weight: bold; }
+    #rewardial-plugin .fs-shop-box {
+      -moz-box-sizing: content-box;
+      box-sizing: content-box;
+      top: 10%;
+      height: auto;
+      z-index: 9999;
+      background: #fff;
+      position: absolute;
+      left: 50%;
+      width: 980px;
+      margin-left: -490px; }
+    #rewardial-plugin #fs-community-box {
+      box-sizing: content-box;
+      height: auto;
+      left: 50%;
+      background: #e9e9e9;
+      margin-left: -490px;
+      position: absolute;
+      top: 10%;
+      width: 980px;
+      z-index: 9999; }
+    #rewardial-plugin #fs-overlay {
+      height: auto;
+      left: 50%;
+      margin-left: -490px;
+      position: absolute;
+      background: #fff;
+      top: 10%;
+      width: 980px;
+      z-index: 99999; }
+    #rewardial-plugin .fs-shop-box, #rewardial-plugin #fs-community-box, #rewardial-plugin #fs-overlay {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      left: 0;
+      right: 0;
+      box-sizing: border-box; }
+    #rewardial-plugin .fs-logo {
+      margin: 30px 5px 0 35px; }
+    #rewardial-plugin .fs-stamps-carousel, #rewardial-plugin .fs-friends-carousel {
+      width: 85%; }
+    #rewardial-plugin .fs-account-premium {
+      margin: 30px 0 0; }
+    #rewardial-plugin #fs-trade-stamp-receive, #rewardial-plugin #fs-trade-stamp-original {
+      clear: both;
+      float: none;
+      border: 1px solid #dedede;
+      margin: 10px auto;
+      width: 97%; }
+    #rewardial-plugin #fs-trade-stamp-receive .nav {
+      padding: 10px;
+      clear: both; }
+    #rewardial-plugin .fs-trade-popup-content li {
+      display: inline-block;
+      float: left; }
+    #rewardial-plugin .fs-trade-stamp-area {
+      clear: both;
+      float: none;
+      margin: 0 auto;
+      width: 98%; }
+    #rewardial-plugin .fs-trade-stamp-right {
+      display: inline-block;
+      float: none;
+      margin-bottom: 15px;
+      margin-left: 10px;
+      width: 41%; }
+    #rewardial-plugin .fs-trade-stamp-left {
+      display: inline-block;
+      float: none;
+      margin-left: 10px;
+      min-height: 303px;
+      text-align: right;
+      width: 43%; }
+    #rewardial-plugin .fs-trade-popup-friend, #rewardial-plugin .fs-trade-popup-user {
+      display: none; }
+    #rewardial-plugin .fs-trade-popup-friend.mobile {
+      display: block;
+      display: inline-block;
+      float: none;
+      margin-right: 7px;
+      margin-top: 10px;
+      padding-left: 45px;
+      position: relative;
+      width: 200px; }
+    #rewardial-plugin .fs-trade-popup-user.mobile {
+      display: block;
+      padding-left: 45px; }
+    #rewardial-plugin .fs-trade-btns {
+      margin: 0 auto;
+      width: 285px; }
+    #rewardial-plugin .fs-trade-btns .fs-trade-button-middle {
+      margin: 0; }
+    #rewardial-plugin .fs-bought-envelope-sideinfo {
+      float: left; }
+    #rewardial-plugin .fs-logo-steps {
+      float: none;
+      margin: 15px auto;
+      text-align: center; }
+    #rewardial-plugin .fs-text-header {
+      float: none;
+      height: 150px;
+      margin: 0 auto;
+      width: 90%; }
+    #rewardial-plugin #fs-quests header .fs-divisor {
+      clear: both;
+      margin: 0;
+      position: relative;
+      top: 0; }
+    #rewardial-plugin .fs-shop-content {
+      margin-top: 15px;
+      height: auto;
+      padding: 5px 5px; } }
+  @media only screen and (max-width: 800px) {
+    #rewardial-plugin .fs-friends-carousel .flex-direction-nav a, #rewardial-plugin .fs-stamps-carousel .fs-envelopes-flexslider .flex-direction-nav a {
+      top:40%;
+    }
+    #rewardial-plugin .fs-box1, #rewardial-plugin .fs-box2, #rewardial-plugin .fs-box3, #rewardial-plugin .fs-box4 {
+      float: none;
+      height: 50px;
+      margin: 0 auto; }
+    #rewardial-plugin #fs-overlay #fs-quests .quest-answer {
+      background: url("../img/question-bg.png") repeat-x scroll center top transparent;
+      color: #555;
+      display: block;
+      float: none;
+      font-size: 18px;
+      font-weight: normal;
+      margin: 10px auto;
+      width: 85%; }
+    #rewardial-plugin #fs-quests #question-place .question-text {
+      margin: 0; }
+    #rewardial-plugin .fs-section-title-steps {
+      text-align: Center; }
+    #rewardial-plugin .quest-rewards {
+      clear: right;
+      text-align: center;
+      float: none;
+      font-family: 'Proxima Bold';
+      margin: 0 auto; }
+    #rewardial-plugin #back-to-quest {
+      background: url("../img/bg-btns.png") no-repeat scroll center center transparent;
+      color: #333;
+      display: block;
+      float: none;
+      font-weight: normal;
+      margin: 0 auto;
+      text-align: center;
+      text-transform: uppercase;
+      width: 80px; } }
+  @media only screen and (max-width: 768px) {
+    #rewardial-plugin #quest-list .quest h3 {
+      float: none;
+      text-align: center; }
+    #rewardial-plugin #fs-overlay h2 {
+      text-align: Center; }
+    #rewardial-plugin .quest-title {
+      text-align: Center; }
+    #rewardial-plugin .quest-title .quest-action {
+      display: inline-block;
+      float: none;
+      margin-bottom: 5px;
+      margin-top: 0; } }
+  @media only screen and (max-width: 640px) {
+    #rewardial-plugin .fs-stamps-carousel {
+      width: 80%; } 
+/*    #rewardial-plugin .fs-friends-carousel .flex-direction-nav a, #rewardial-plugin .fs-stamps-carousel .fs-envelopes-flexslider .flex-direction-nav a {
+      top: 37%;
+    }*/
+
+    }
+  @media only screen and (max-width: 580px) {
+	
+    #rewardial-plugin .fs-trade-offer-stamp {
+      padding-left: 0;
+      text-align: left; }
+    #rewardial-plugin .you-receive, #rewardial-plugin .you-offer {
+      text-align: left;
+      padding: 0; }
+    #rewardial-plugin .fs-trade-stamp-left, #rewardial-plugin .fs-trade-stamp-right {
+      display: block;
+      float: none;
+      margin: 0 auto;
+      min-height: 303px;
+      text-align: left;
+      width: 195px; }
+    #rewardial-plugin .fs-trade-btns {
+      width: 255px;
+      margin: 0 auto; }
+    #rewardial-plugin .fs-trade-btns .fs-trade-button-middle {
+      margin: 0; }
+    #rewardial-plugin .fs-trade-btns .fs-trade-back-to-community {
+      margin-right: 0; } }
+  @media only screen and (max-width: 480px) {
+	#rewardial-plugin {
+		display:none!important;
+	}
+  /* RETINA DISPLAY */
+  
+	#rewardial-plugin .fs-login {
+		background: url("../img/bg-login@2X.png") no-repeat scroll center center / cover rgba(0, 0, 0, 0);
+	}
+	#rewardial-plugin .fs-logged .fs-btn-login{
+		background: url("../img/bg-logged@2x.png") no-repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
+	}
+	#rewardial-plugin .fs-btn-login{
+		background:url('../img/btn-login@2x.png') no-repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
+	}
+	#rewardial-plugin .fs-submit {
+		background-image: url("../img/btn-submit@2x.png") no-repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
+	}
+	#rewardial-plugin .fs-btn-fb {
+		background: url("../img/btn-fb@2x.png") no-repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
+	}
+	#rewardial-plugin .fs-signup {
+		background: url("../img/btn-register@2x.png") no-repeat scroll center center / cover rgba(0, 0, 0, 0);
+	}
+	#rewardial-plugin .fs-credits {
+		background: url("../img/btn-credits2@2x.png") no-repeat scroll center center / cover rgba(0, 0, 0, 0);
+	}
+	#rewardial-plugin .fs-buy-now {
+		background: url("../img/btn-buy-now@2x.png") no-repeat scroll center center / cover rgba(0, 0, 0, 0);
+	}
+	#rewardial-plugin .fs-friend-wrapper .fs-btn-trade {
+		background: url("../img/btn-trade-plugin@2x.png") no-repeat scroll center center / cover transparent;
+	}
+	#rewardial-plugin .fs-btn-collect-one {
+		background: url("../img/btn-colect@2x.png") no-repeat scroll 0 0 / cover transparent;
+	}
+	#rewardial-plugin .fs-btn-collect {
+		background: url("../img/btn-colect-all@2x.png") no-repeat scroll 0 0 / cover transparent;
+	}
+	#rewardial-plugin .fs-btn-sell-now {
+		background: url("../img/btn-sell-now@2x.png") no-repeat scroll 0 0 / cover transparent;
+	}
+	#rewardial-plugin .fs-trade-button-middle {
+		background: url("../img/btn-offer@2x.png") no-repeat scroll 0 0 / 100% auto transparent;
+	}
+	#rewardial-plugin .fs-trade-back-to-community {
+		background: url("../img/btn-cancel@2x.png") no-repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
+		padding:0;
+	}
+	/******************/
+	
+	#rwd-notifications {
+		display:none!important;
+	}
+    #rewardial-plugin .fs-friends-carousel .flex-direction-nav a, #rewardial-plugin .fs-stamps-carousel .fs-envelopes-flexslider .flex-direction-nav a {
+      top: 46%;
+    }
+    #rewardial-plugin .fs-bought-description {
+      width: 90%;
+      margin-bottom: 20px; }
+    #rewardial-plugin .fs-bought-envelope-sideinfo, #rewardial-plugin .fs-bought-big-image {
+      width: 90%;
+      float: none;
+      margin: 0 auto;
+      clear: both; }
+	#rewardial-plugin .fs-collection-complete-rewards {
+		width:100%; padding:0; margin:0; position:fixed; left:0; top:0;
+	}
+	#rewardial-plugin #fs-shop-box .fs-shop-content {
+		max-height:1200px!important;
+		height:auto;
+	}
+	#rewardial-plugin #fs-shop-box .fs-shop-box-inner {
+		border:0;
+	}
+	#rewardial-plugin #fs-shop-box{
+		border:10px solid #c7c7c7;
+	}
+	  }
+  @media only screen and (max-width: 390px) {
+    #rewardial-plugin .fs-pop-account .fs-account-premium {
+      display: none; }
+    #rewardial-plugin .fs-headerwrap {
+      padding: 0; }
+    #rewardial-plugin #fs-overlay h2 {
+      margin: 0; }
+    #rewardial-plugin .fs-logo a img {
+      width: 100%; }
+    #rewardial-plugin .fs-logo {
+      margin: 10px;
+      width: 61%;
+      float: none; }
+    #rewardial-plugin .close-quest span {
+      display: block;
+      float: left;
+      margin-right: 5px; }
+    #rewardial-plugin .fs-close-shop, #rewardial-plugin .fs-close-community {
+      top: 20px;
+      text-transform: uppercase;
+      padding: 5px; }
+    #rewardial-plugin .fs-close-shop span, #rewardial-plugin .fs-close-community span {
+      display: block;
+      float: left;
+      margin-right: 5px; }
+    #rewardial-plugin .fs-account-credits {
+      font-size: 13px;
+      margin: 3px;
+      height: auto;
+      padding: 5px 10px 5px 25px;
+      width: 45px;
+      display: inline-block;
+      border-radius: 5px;
+      border: 1px solid #e9e9e9;
+      background: #f3f3f3 url(../img/cred.png) no-repeat left;
+      background-position: 10px; }
+    #rewardial-plugin .fs-account-premium {
+      font-size: 13px;
+      margin: 3px;
+      height: auto;
+      padding: 5px 20px 5px 25px;
+      width: 20px;
+      display: inline-block;
+      border-radius: 5px;
+      border: 1px solid #e9e9e9;
+      background: #f3f3f3 url(../img/cure.png) no-repeat left;
+      background-position: 10px; }
+    #rewardial-plugin .fs-account-credits span, #rewardial-plugin .fs-account-premium span {
+      display: none; }
+    #rewardial-plugin .fs-account-credits br, #rewardial-plugin .fs-account-premium br {
+      display: none; }
+    #rewardial-plugin .fs-envelopes-flexslider, #rewardial-plugin .fs-featured-controls {
+      display: none; }
+    #rewardial-plugin .fs-stamps-carousel .responsive-shop:After {
+      clear: both;
+      display: block;
+      content: " "; }
+    #rewardial-plugin .fs-stamps-carousel .responsive-shop {
+      margin: 0; }
+    #rewardial-plugin .fs-stamps-carousel {
+      width: 100%; }
+    #rewardial-plugin .fs-stamp {
+      width: 100% !important;
+      margin: 10px 0; }
+    #rewardial-plugin .fs-inner-stamp {
+      width: 100%; }
+    #rewardial-plugin .fs-buy-now {
+      width: 140px; }
+    #rewardial-plugin .fs-stamps-carousel .responsive-shop {
+      margin: 0;
+      padding: 10px;
+      display: block; }
+    #rewardial-plugin .fs-stamps-carousel .fs-section-title {
+      text-align: Center; }
+    #rewardial-plugin .fs-account-options {
+      display: none; }
+    #rewardial-plugin .responsive-account-menu {
+      display: block; }
+    #rewardial-plugin .responsive-account-menu ul {
+      list-style: none outside none;
+      margin: 0 auto;
+      width: 205px; }
+    #rewardial-plugin .responsive-account-menu li {
+      border-left: 1px solid #ccc !important;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+	  border-right: 1px solid #ccc;
+      display: inline-block;
+      float: left;
+      width: auto; }
+    #rewardial-plugin .responsive-account-menu li.fs-quest {
+      border-right: 1px solid #ccc !important; }
+    #rewardial-plugin .responsive-my-profile {
+      display: block; }
+    #rewardial-plugin .fs-profile-link {
+      margin: 0 7px 7px 12px; }
+    #rewardial-plugin .fs-account-links-quest {
+      clear: both;
+      display: block;
+      margin: 0 auto;
+      width: 265px; }
+    #rewardial-plugin .fs-trade-popup-content li {
+      display: block;
+      float: none; }
+    #rewardial-plugin .fs-account-links {
+      clear: both;
+      display: block;
+      margin: 0 auto;
+      width: 265px; } }
+  @media only screen and (max-width: 320px) {
+    #rewardial-plugin .fs-friends-carousel .flex-direction-nav a, #rewardial-plugin .fs-stamps-carousel .fs-envelopes-flexslider .flex-direction-nav a {
+      top: 40%; }
+    #rewardial-plugin .fs-pop-account {
+      width: 100%;
+      margin: 0;
+      bottom: 5px; }
+    #rewardial-plugin .fs-logged {
+      width: 100%; }
+    #rewardial-plugin .fs-pop-account .fs-account-premium {
+      display: block;
+      float: left;
+      margin: 5px !important; }
+    #rewardial-plugin .fs-pop-account .fs-account-premium:After {
+      display: block;
+      clear: both;
+      content: ""; }
+    #rewardial-plugin .fs-pop-account .fs-account-credits-logado .fs-credits-value {
+      font-family: 'Proxima Regular',sans-serif;
+      font-size: 13px;
+      font-weight: normal !important; }
+    #rewardial-plugin .fs-pop-account .fs-account-credits-logado {
+      background: url("../img/cred.png") no-repeat scroll 10px center #f3f3f3;
+      border: 1px solid #e9e9e9;
+      float: left;
+      border-radius: 5px;
+      display: inline-block;
+      font-size: 13px;
+      height: auto;
+      padding: 4px 20px 3px 25px;
+      margin: 5px;
+      width: auto; }
+    #rewardial-plugin .fs-account-levels {
+      clear: both; } 
+	
+/*# sourceMappingURL=responsive2.css.map */
+

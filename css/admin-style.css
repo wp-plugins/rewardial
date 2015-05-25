@@ -1,0 +1,615 @@
+
+/*****************************
+*	ADMIN PAGE
+*****************************/
+
+.user-accordion{
+	cursor:pointer;
+	border:1px solid #cccccc;
+	padding:5px;
+}
+#user-actions td{
+	border:1px solid #cccccc;
+	padding:5px;
+}
+.ui-accordion-content{
+	height:auto!important;
+}
+.fs-settings span{ display:block;}
+/* Wordpress Overview page */
+.wp-overview li{
+	display:inline-block;
+	width:150px;
+	background: none repeat scroll 0 0 #f5f5f5;
+    border: 1px solid #cccccc;
+	color: #363636;
+	font-weight: bold;
+	padding: 5px;
+	cursor:pointer;
+	text-align:center;
+}
+.wp-overview li:hover{
+	color:#2ea2cc;
+}
+.wp-overview .wp-sync-all{
+	margin-left: 4px;
+	padding: 4px 8px;
+	position: relative;
+	text-decoration: none;
+	border: 0;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	background: #e0e0e0;
+	text-shadow: none;
+	font-weight: 600;
+	font-size: 13px;
+	background: #2ea2cc;
+	color: #fff;
+	cursor:pointer;
+	margin-right:10px;
+	width:auto;
+}
+.wp-overview .wp-sync-all a{
+	color:#fff;
+	text-decoration:none;
+}
+#fs-admin-page .wp-sync-all { 
+	margin-left: 4px;
+	padding: 4px 8px;
+	position: relative;
+	top: -3px;
+	text-decoration: none;
+	border: 0;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	background: #e0e0e0;
+	text-shadow: none;
+	font-weight: 600;
+	font-size: 13px;
+	background: #2ea2cc;
+	color: #fff;
+	cursor:pointer;
+	margin-right:10px;
+	width:auto;
+}
+#fs-admin-page .wp-sync-all a{ 
+	color:#fff;
+	text-decoration:none;
+}
+.visible { display:block;}
+.invisible { display:none;}
+.tips-flexslider { width:500px; text-align:center;}
+.wp-description-about{ 
+	font-size: 14px;
+    padding: 0px 0px 0px 20px;
+    width: 80%;
+}
+.wp-upgrade-message{
+	padding:15px;
+}
+.wp-upgrade-button{
+	padding:15px;
+}
+.wp-upgrade-license-deadline{
+	padding:15px;
+}
+.wp-upgrade-buy-premium{
+	padding:15px;
+}
+.fs-users-log-filter li{ display:inline-block; cursor:pointer; padding:10px; font-size:15px; font-weight:bold; color:#2ea2cc;}
+#wp-users-log{
+	padding:10px;
+}
+#wp-users-log ul{ cursor:pointer;}
+#wp-users-log .fs-users-log{border:1px solid black;}
+#wp-users-log .fs-users-name{text-align:left;}
+#wp-users-log li{ padding:10px 30px; display:inline-block; margin-bottom:0;}
+
+#wp-users-log .fs-users-log-name{width:250px;  padding-left: 2px;}
+#wp-users-log .fs-users-log-level{width:150px; text-align:center;}
+#wp-users-log .fs-users-log-activity{width:110px;text-align:center;}
+#wp-users-log .fs-users-log-credits{width:100px;text-align:center;}
+#wp-users-log .fs-users-log-premium{width:150px;text-align:center;}
+
+#wp-users-log .fs-users-log-name-head{width:250px;}
+#wp-users-log .fs-users-log-level-head{width:150px; text-align:center;}
+#wp-users-log .fs-users-log-activity-head{width:110px;text-align:center;}
+#wp-users-log .fs-users-log-credits-head{width:100px;text-align:center;}
+#wp-users-log .fs-users-log-premium-head{width:150px;text-align:center;}
+
+#wp-users-log .wp-users-logs-titles{ font-weight:bold;font-size:15px;}
+.flexslider{
+	width:500px;
+}
+.wp-description-tips img {
+	width:400px;
+	height:299px;
+}
+.dau-container h2{
+	color:#c0232a;
+	padding:10px;
+	width:100%;
+	text-align:center;
+}
+.mau-container h2{
+	color:#c0232a;
+	padding:10px;
+	width:100%;
+	text-align:center;
+}
+.wp-dau-username, .wp-mau-username {
+	padding:10px;
+	font:15px;
+	font-weight:bold;
+}
+.wp-dau-username span, .wp-mau-username span {
+	padding:0 20px;
+}
+.fs-users-activities{
+	padding:5px 20px;
+	margin-bottom: 15px;
+}
+.fs-users-activities .fs-activity-action{
+	width:100px;
+}
+.fs-users-activities .fs-activity-link{
+	width:500px;
+}
+.fs-users-activities .fs-activity-credit{
+	width:50px;
+}
+.fs-users-activities .fs-activity-date{
+	width:100px;
+}
+.wp-upgrade-message {
+	padding: 15px;
+	font-size: 16px;
+	line-height: 1.6em;
+	font-weight: bold;
+	width: 80%;
+}
+.wp-upgrade-license-deadline {
+	padding: 15px;
+	color: red;
+	font-weight: bold;
+}
+.wp-upgrade-buy-premium, .wp-upgrade-button {
+	font-weight: bold;
+}
+
+.wp-upgrade-button button.wp-upgrade-year, .wp-upgrade-buy-premium button.wp-upgrade-buy, .wp-upgrade-button button.wp-upgrade-month{
+	margin-left: 4px;
+	padding: 4px 8px;
+	position: relative;
+	top: -3px;
+	text-decoration: none;
+	border: 0;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	background: #e0e0e0;
+	text-shadow: none;
+	font-weight: 600;
+	font-size: 13px;
+	background: #2ea2cc;
+	color: #fff;
+	cursor:pointer;
+	margin-right:10px;
+}
+.fs-activity-title{
+	font-weight:bold;
+	font-size:15px;
+	color:#c0232a;
+}
+
+.fs-users-activities ul{
+	border-bottom:1px solid #ddd;
+	border-left:1px solid #ddd;
+	border-right:1px solid #ddd;
+}
+.fs-activity-title-head{
+	border:1px solid #ddd;
+	background-color:#fff;
+}
+.fs-users-log-head{
+	font-weight:bold;
+	font-size:13px;
+}
+.wp-overview-metrics-dau {
+	float: left;
+    margin: 2%;
+    width: 46%;
+}
+.wp-overview-metrics-mau{
+	float: left;
+    margin: 2%;
+    width: 46%;
+}
+/*
+.wp-overview-metrics-dau table{
+	max-height:300px;
+	height:300px;
+	overflow:hidden;
+	overflow-y:scroll;
+}
+.wp-overview-metrics-mau table{
+	max-height:300px;
+	height:300px;
+	overflow:hidden;
+	overflow-y:scroll;
+}*/
+.fs-metrics-head{
+	font-size:14px; 
+	font-weight:bold;
+	color:#2ea2cc;
+}
+.wp-overview-metrics-content td{
+	padding:10px;
+}
+.flex-direction-nav a { overflow:unset!important;}
+.fs-users-log .dashicons-arrow-down {
+	margin-left: 3px;
+    margin-top: 8px;
+}
+
+
+/*** Admin page ***/
+#fs-admin-page .fs-register-block{
+	width:45%;
+	float:left;
+	clear: left;
+	min-height: 320px;
+	text-align:center;
+}
+#fs-admin-page .fs-add-account{
+	width:45%;
+	float:left;
+	clear: right;
+	min-height: 320px;
+	text-align:center;
+}
+#fs-admin-page .fs-success{
+	color: #4F8A10;
+	background-color: #DFF2BF;
+	padding:10px;
+	font-weight:bold;
+}
+#fs-admin-page .fs-choose-location{
+	text-align: center;
+}
+#fs-admin-page .fs-accept-communication{
+	text-align: center;
+	clear:both;
+}
+#fs-admin-page .fs-accept-communication .rewardial-accept-communication{
+	width: auto;
+	display: inline-block;
+}
+#fs-register-admin-submit, #fs-add-admin-submit{
+	background: none repeat scroll 0 0 #2ea2cc;
+    border: 0 none;
+    border-radius: 2px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    margin-left: 4px;
+    margin-right: 10px;
+    padding: 4px 8px;
+    position: relative;
+    text-decoration: none;
+    text-shadow: none;
+    top: -3px;
+}
+#fs-admin-page input{
+	padding:10px;
+	display:block;
+	margin:10px auto;
+}
+
+#adminmenu li#toplevel_page_focused-stamps li.wp-first-item{
+	display:none;
+}
+#quest-alerts table,#quest-list table{
+	margin-bottom:30px;
+}
+#quest-list table th{
+	font-weight: bold;
+	width: 20%;
+	text-align: right;
+}
+
+#quest-list table td,#quest-list table th{
+	padding:2px 10px;
+}
+#quest-list table td p,#quest-list table th p{
+	margin:2px 0px;
+}
+.focused-stamps_page_fs-quests .alert_users{
+	font-weight:bold;
+}
+.focused-stamps_page_fs-quests .wp-overview li:not(.wp-sync-all) a{
+	text-decoration:none;
+	color:#363636;
+}
+.toplevel_page_fs-overview .welcome-panel,.focused-stamps_page_fs-quests .welcome-panel{
+	padding-bottom:30px;
+	padding-top:10px;
+}
+.focused-stamps_page_fs-quests .welcome-panel h4{
+	margin-top:5px;
+}
+/* **************************** */
+.rewardial-admin-server-inactive .rewardial-admin-server-message {
+	 color: #c0232a;
+    font-size: 15px;
+    padding: 15px;
+    text-transform: uppercase;
+}
+#quest-list {
+	width:49%;
+	float:left;
+}
+#quest-alerts{
+	width:48%;
+	float:left;
+	margin-left:10px;
+}
+/* Settings page */
+.fs-settings-page-attributes .fs-attributes-list td{
+	padding:10px;
+	text-transform:capitalize;
+}
+.fs-settings-page-box{
+	float: left;
+	min-height:350px;
+    padding: 2%;
+    width: 43%;
+	text-align:center;
+	background:#fefefe;
+	border:1px solid #dedede;
+	position:relative;
+	margin:1%;
+}
+.fs-settings-page-box h4{
+	font-size: 20px;
+}
+.fs-settings-page-website-type .fs-website-info{
+	float: left;
+    width: 50%;
+	text-align:left;
+}
+.fs-settings-page-website-type .fs-website-support{
+	float: left;
+}
+.fs-settings-page-website-type .fs-website-logo{
+	float: left;
+    width: 50%;
+}
+.fs-settings-page-website-type .fs-website-logo img{
+	width:125px;
+}
+.fs-settings-page-website-type .fs-website-deadline{
+	float: right;
+    width: 50%;
+}
+.fs-settings-page-website-type .fs-website-deadline .fs-website-licensed{
+	margin: 0 auto;
+    width: 125px;
+}
+
+.fs-settings-page-box .fs-redirect-button{
+	background: none repeat scroll 0 0 #2ea2cc;
+    border-radius: 2px;
+    bottom: 10px;
+    clear: both;
+    color: #fff;
+    left: 48%;
+    margin: 0 auto;
+    padding: 4px 8px;
+    position: absolute;
+}
+.fs-settings-page-box .fs-redirect-button a{
+	color:#fff;
+	text-decoration:none;
+}
+.fs-settings-page-tasks .fs-actions-list li div { 
+	display:inline-block;
+}
+.fs-settings-page-box table{
+	width:90%;
+	margin:0 auto;
+	text-align:left;
+}
+.fs-settings-page-tasks .fs-actions-list th {
+	padding:5px;
+}
+.fs-settings-page-tasks .fs-actions-list td span {
+	float: left;
+    text-transform: capitalize;
+    width: 95px;
+	padding:5px;
+}
+.fs-settings-page-tasks .fs-actions-list{
+	text-transform:capitalize;
+}
+.fs-settings-page-envelopes td, .fs-settings-page-envelopes th { padding:5px; }
+.fs-settings-page-attributes td div{ padding:5px 5px 5px 0; }
+.fs-settings-page-website-type td, .fs-settings-page-website-type th { padding:5px; }
+/* Quest Page */
+
+
+#quest-alerts .fs-redirect-button, .wp-overview-content .fs-redirect-button,#quest-list .fs-redirect-button{
+	background: none repeat scroll 0 0 #2ea2cc;
+    border-radius: 2px;
+    clear: both;
+    color: #fff;
+    margin: 0 auto;
+    padding: 4px 8px;
+	width:100px;
+	margin-bottom:10px;
+	text-align:center;
+}
+#quest-alerts .fs-redirect-button a, .wp-overview-content .fs-redirect-button a, #quest-list .fs-redirect-button a{
+	color:#fff;
+	text-decoration:none;
+}
+#quest-list h3,#quest-alerts h3{
+	text-align:center;
+	margin:10px;
+}
+#quest-list .welcome-panel{
+	padding:20px;
+}
+#quest-alerts .wp-list-table {
+	margin:20px;
+	width:90%;
+}
+/* Overview page */
+
+.wp-overview-description-content {
+	float: left;
+    width: 99%;
+	background:#fefefe;
+	border:1px solid #dedede;
+}
+.wp-description-tips {
+	margin:30px auto!important;
+}
+.wp-overview-upgrade-content{
+	float: left;
+    width: 48%;
+	background:#fefefe;
+	border:1px solid #dedede;
+	margin-left:2%;
+	padding-left:1%;
+}
+.wp-overview-metrics-content{
+	 background: none repeat scroll 0 0 #fefefe;
+    border: 1px solid #dedede;
+    clear: both;
+    float: left;
+    margin-top: 20px;
+    width: 99%;
+}
+.wp-overview-content h3{
+	text-align:center;
+}
+.wp-overview-metrics-content .dau-container{
+	float:left;
+	margin: 1%;
+    width: 47%;
+}
+.wp-overview-metrics-content .mau-container{
+	float:left;
+	margin: 1%;
+    width: 47%;
+}
+#local-dau-graph{ float:left; }
+#local-mau-graph{ float:left; }
+
+.wp-overview-content .flex-control-nav { display:none; }
+
+.fs-settings-welcome{
+	width: 500px;
+	position: fixed;
+	height: 260px;
+	left: 50%;
+	top: 50%;
+	margin-left: -250px;
+	margin-top: -130px;
+	padding: 10px;
+	background: #fff;
+	border: 5px solid #dedede;
+	z-index:50;
+}
+.fs-settings-welcome .welcome-text{
+	padding: 10px;
+	font-size:15px;
+	margin-bottom:20px;
+	margin-top:20px;
+	font-family:'Arial';
+	width:65%;
+	display:inline-block;
+	font-weight:bold;
+}
+.fs-settings-welcome .welcome-text .welcome-first{
+	font-size:14px;
+	color:#666666;
+	margin-bottom:20px;
+}
+.fs-settings-welcome .welcome-text .welcome-second{
+	font-size:12px;
+	color:#666666;
+}
+.fs-settings-welcome .rwd-welcome-image{
+	width:30%;
+	display:inline-block;
+}
+.fs-settings-welcome .rwd-welcome-image img{
+	width:70%;
+	margin:0 auto;
+}
+.fs-settings-welcome .welcome-skip{
+	width: auto;
+	float: left;
+	margin-left: 30px;
+	background-color: #2ea2cc;
+	padding: 5px 20px;
+	color: #fff;
+}
+.fs-settings-welcome .welcome-skip a{
+	color:#fff;
+	text-decoration:none;
+}
+.fs-settings-welcome .welcome-continue{
+	width: auto;
+	float: right;
+	margin-right: 30px;
+	background-color: #2ea2cc;
+	padding: 5px 20px;
+	color: #fff;
+	text-align: right;
+}
+.fs-settings-welcome .welcome-continue a{
+	color:#fff;
+	text-decoration:none;
+}
+.settings-overlay{
+	position: fixed;
+	background: rgba(0, 0, 0, 0.5);
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+	min-width: 100%;
+	/* display: none; */
+	z-index: 49;
+}
+.continue-blockquote{
+	height:50px;
+	font-size:11px;
+	font-style:italic;
+}
+.fs-reset-options{
+	clear:both;
+}
+#rewardial-reset-blog{
+	margin-left: 4px;
+	padding: 4px 8px;
+	position: relative;
+	text-decoration: none;
+	border: 0;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	background: #e0e0e0;
+	text-shadow: none;
+	font-weight: 600;
+	font-size: 13px;
+	background: #2ea2cc;
+	color: #fff;
+	cursor:pointer;
+	margin-right:10px;
+	width:100px;
+	text-align:center;
+}
