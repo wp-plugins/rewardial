@@ -19,7 +19,7 @@ Within Rewardial Engagement, online readers can join a collectibles hunt game wh
 - They feel socially engaged while connecting with other website users to exchange duplicate collectibles.
 
 Key plugin features
-===================
+-------------------
 
 1. Configurable RPG-style reader profile (RPG = Role Playing Game)
 2. Rewards system with configurable actions priorities
@@ -119,8 +119,6 @@ After having successfully performed above steps, you should now be able to see a
 
 == Frequently Asked Questions ==
 
-=  =
-
 
 
 == Screenshots ==
@@ -131,10 +129,6 @@ After having successfully performed above steps, you should now be able to see a
 4. And another collectible example, from the *Plants* category: Collectible_example-Plants.png
 
 == Changelog ==
-
-= 0.99 =
-
-
 
 == Upgrade Notice ==
 
