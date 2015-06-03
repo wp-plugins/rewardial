@@ -137,6 +137,9 @@ After having successfully performed above steps, you should now be able to see a
 
 == Changelog ==
 
+= 0.9.9.3 =
+* Fixed versioning problems
+
 = 0.9.9.1 =
 * Remove call to `jk_load_dashicons()`
 
