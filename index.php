@@ -758,10 +758,6 @@ function get_user_ip(){
 		echo $overview;
 	}
 	
-	add_action( 'wp_enqueue_scripts', 'jk_load_dashicons' );
-	function jk_load_dashicons() {
-		wp_enqueue_style( 'dashicons' );
-	}
 	function fs_custom_admin_head(){
 		$url = plugins_url('rewardial');
 		echo '<link rel="stylesheet" type="text/css" href="'.$url.'/css/admin-style.css">';
