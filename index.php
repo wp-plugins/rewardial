@@ -1,7 +1,7 @@
 <?php
 /* 
 Plugin Name: Rewardial
-Version: 0.9.9.02
+Version: 0.9.9.1
 Author: Puga Software
 Description: Gamified engagement solution for bloggers.
 */
