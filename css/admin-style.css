@@ -397,7 +397,7 @@
     width: 125px;
 }
 
-.fs-settings-page-box .fs-redirect-button{
+.fs-redirect-button{
 	background: none repeat scroll 0 0 #2ea2cc;
     border-radius: 2px;
     bottom: 10px;
@@ -408,7 +408,7 @@
     padding: 4px 8px;
     position: absolute;
 }
-.fs-settings-page-box .fs-redirect-button a{
+.fs-redirect-button a{
 	color:#fff;
 	text-decoration:none;
 }
@@ -612,4 +612,56 @@
 	margin-right:10px;
 	width:100px;
 	text-align:center;
+}
+.rwd-gifts-container{
+	width: 90%;
+	margin: 0 auto;
+	padding: 20px;
+	background: #fefefe;
+	position:relative;
+}
+.rwd-gifts-content{
+	clear:both;
+	text-align:center;
+}
+.rwd-gifts-content .rwd-gift-title{
+	display:inline-block;
+	width:10%;
+}
+.rwd-gifts-content .rwd-gift-image{
+	display:inline-block;
+	width:10%;
+}
+.rwd-gifts-content .rwd-gift-image img{
+	width:100%;
+}
+.rwd-gifts-content .rwd-gift-description{
+	display:inline-block;
+	width:35%;
+	text-align:left;
+}
+.rwd-gifts-content .rwd-gift-price{
+	display:inline-block;
+	width:10%;
+}
+.rwd-gifts-content .rwd-gift-min-level{
+	display:inline-block;
+	width:10%;
+}
+.rwd-gifts-content .rwd-gift-collection{
+	display:inline-block;
+	width:10%;
+}
+.rwd-gifts-container .fs-redirect-button{
+	bottom:0;
+	margin-bottom:-30px;
+}
+.rwd-orders-table td{
+	padding:5px;
+}
+.rwd-success{
+	color:green;
+}
+.rwd-error{
+	color:#c0232a;
 }

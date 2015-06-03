@@ -2835,10 +2835,76 @@ border: 3px solid #dddddd;
 	background: url("../img/bg-btns.png") no-repeat center center;
 }
 #rewardial-plugin .rewardial-gifts-box{
-	background:url('../img/gifts-soon.jpg') no-repeat scroll 0 0 / cover rgba(0, 0, 0, 0);
+	/*background:url('../img/gifts-soon.jpg') no-repeat scroll 0 0 / cover rgba(0, 0, 0, 0);*/
 	height:390px;
 	width:100%;
 	display:none;
+	overflow-y:scroll;
+}
+#rewardial-plugin .rewardial-gifts-box .rewardial-gift-content{
+	width:240px;
+	float:left;
+	position:relative;
+	-moz-box-sizing: content-box;
+    box-sizing: content-box;
+    margin: 0 22px 20px 0;
+    text-align: center;
+    padding-top: 20px;
+    background: -moz-linear-gradient(top, #fcfcfc 18%, #ecedee 53%, #ffffff 99%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(18%, #fcfcfc), color-stop(53%, #ecedee), color-stop(99%, #ffffff));
+    background: -webkit-linear-gradient(top, #fcfcfc 18%, #ecedee 53%, #ffffff 99%);
+    background: -o-linear-gradient(top, #fcfcfc 18%, #ecedee 53%, #ffffff 99%);
+    background: -ms-linear-gradient(top, #fcfcfc 18%, #ecedee 53%, #ffffff 99%);
+    background: linear-gradient(to bottom, #fcfcfc 18%, #ecedee 53%, #ffffff 99%);
+    -webkit-box-shadow: 1px 1px 3px 1px rgba(220, 220, 220, 0.6);
+    box-shadow: 1px 1px 4px 1px rgba(220, 220, 220, 0.6);
+}
+#rewardial-plugin .rewardial-gift-title{
+	clear:both;
+	font-weight: bold;
+}
+#rewardial-plugin .rewardial-gift-image{
+	width:200px;
+	margin:0 auto;
+	height:170px;
+}
+#rewardial-plugin .rewardial-gift-image img{
+	max-height: 170px;
+    max-width: 170px;
+    width: auto;
+}
+#rewardial-plugin .rewardial-gift-price{
+	/*background: rgba(0, 0, 0, 0) url("../img/bg-premium-profile-stockbook.png") no-repeat scroll left center;*/
+    display: block;
+    width: 100%;
+	clear:both;
+	color: green;
+}
+#rewardial-plugin .rewardial-gift-buy{
+	 background: rgba(0, 0, 0, 0) url("../img/btn-buy-now.png") no-repeat scroll center center;
+    cursor: pointer;
+    display: block;
+    height: 25px;
+    margin: 5px auto;
+    padding: 5px;
+    width: 150px;
+}
+#rewardial-plugin .rewardial-gift-buy:hover{
+	opacity:0.6;
+}
+#rewardial-plugin .rewardial-gift-content .rewardial-gift-qty{
+	padding:5px;
+}
+#rewardial-plugin .rewardial-gift-message{
+	position:relative;
+	height: 20px;
+    padding: 5px;
+}
+#rewardial-plugin .rewardial-gift-message .rwd-success{
+	color:green;
+}
+#rewardial-plugin .rewardial-gift-message .rwd-error{
+	color:#c0232a;
 }
 
 /* end added css */

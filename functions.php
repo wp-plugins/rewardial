@@ -1556,8 +1556,58 @@ function add_rewardial_plugin_callback(){
 								
 							  </ul>
 							</div>
-							<div class="rewardial-gifts-box">
+							<?php 
+								$key3 = get_option('focusedstamps_secret_key');
+								$timer3 = time();
+								$string3 = get_site_url().$timer3;
+								$secret_key3 = hash_hmac('sha1',$string3,$key3);
 								
+								$api_url3 = get_fs_api_url('/get_gifts');
+								
+								$data3 = array('link'=>get_site_url(),'time'=>$timer3,'code'=>$secret_key3);
+								$gifts_response3 = curl_posting($data3,$api_url3);
+								
+								if($gifts_response3){
+									$gifts3 = json_decode($gifts_response3,true);
+								}else{
+									$gifts3 = array();
+								}
+								
+								$main_app_link3 = str_replace('/api','',get_fs_api_url());
+							?>
+							<div class="rewardial-gifts-box">
+								<?php if($gifts3){ ?>
+									<?php foreach($gifts3 as $gift){ ?>
+										<div class="rewardial-gift-content">
+											<div class="rewardial-gift-title">
+												<?php echo $gift['BlogGift']['title']; ?>
+											</div>
+											<div class="rewardial-gift-image" title="<?php echo $gift['BlogGift']['description']; ?>">
+												<img src="<?php echo $main_app_link3.'files/blogs/'.$gift['BlogGift']['blog_id'].'/'.$gift['BlogGift']['image']; ?>">
+											</div>
+											<div class="rewardial-gift-price">
+												<?php
+													switch($gift['BlogGift']['payment_type']){
+														case 0:
+															echo $gift['BlogGift']['price'].' credits';
+														break;
+														
+														case 1:
+															echo $gift['collection_name'];
+														break;
+													
+													}
+												?> 
+											</div>
+											<div class="rewardial-gift-buy" id="rwd-buy-gift-<?php echo $gift['BlogGift']['id']; ?>">
+												
+											</div>
+											
+											<div class="rewardial-gift-message" id="rwd-gift-message-<?php echo $gift['BlogGift']['id']; ?>"></div>
+										</div>
+										
+									<?php } ?>
+								<?php } ?>
 							</div>
 						 </div><!-- .stamps-carousel -->
 					</section>

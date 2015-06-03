@@ -216,6 +216,32 @@
 		});
 	});
 	
+	jQuery('.rwd-order-status-button').each(function(){
+		jQuery(this).click(function(){
+
+			var order_id = jQuery(this).attr('id').replace('rwd-order-status-','');
+			var value_selected = jQuery('#rwd-order-status-select-'+order_id).val();
+			var link = jQuery('.fs-siteurl').val();
+			
+			jQuery.ajax({
+				url: ajaxurl,
+				data: {"action":'change_order_status',"order_id":order_id,"status":value_selected},
+				type:"post",
+				success:function(r){
+					var response = jQuery.parseJSON(r);
+					if(response.status == 200){
+						jQuery('.rwd-order-status-message').html('');
+						jQuery('#rwd-order-status-message-'+order_id).html('<span class="rwd-success">'+response.message+'</span>');
+						
+					}else{
+						jQuery('.rwd-order-status-message').html('');
+						jQuery('#rwd-order-status-message-'+order_id).html('<span class="rwd-error">'+response.message+'</span>');
+					}
+				}
+			});
+		});
+	});
+	
 
 
 

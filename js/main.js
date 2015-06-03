@@ -708,6 +708,39 @@ jQuery('.fs-signup-submit').click(function(){
 		});
 	}
 	
+	jQuery('.rewardial-gift-buy').each(function(){
+		jQuery(this).click(function(){
+			
+			var gift_id = jQuery(this).attr('id').replace('rwd-buy-gift-','');
+			//var gift_qty = jQuery('#rwd-gift-qty-'+gift_id+' input').val();
+			
+			// if(gift_qty){
+
+				jQuery.ajax({
+					url:fs_api_base+'buy_gift',
+					data:{'user_id': user_id,'link':my_link,'gift_id':gift_id},
+					type:"post",
+					success:function(resp){
+						var response = jQuery.parseJSON(resp);
+						if(response.status == 200){
+							jQuery('.rewardial-gift-message').html('');
+							jQuery('#rwd-gift-message-'+gift_id).html('<span class="rwd-success">'+response.message+'</span>');
+						}else{
+							jQuery('.rewardial-gift-message').html('');
+							jQuery('#rwd-gift-message-'+gift_id).html('<span class="rwd-error">'+response.message+'</span>');
+						}
+					}
+				});
+				
+			// }else{
+				// jQuery('.rewardial-gift-message').html('');
+				// jQuery('#rwd-gift-message-'+gift_id).html('<span class="rwd-error">Please select quantity</span>');
+			// }
+		});
+	
+	});
+	
+	
 	// if there is something new bought, reward the current user
 	
 	var bought = getCookie('rewardial_bought');
