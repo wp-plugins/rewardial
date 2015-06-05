@@ -8,8 +8,6 @@ Description: Gamified engagement solution for bloggers.
 
 global $wpdb;
 
-
-
 	function curl_posting($fields,$url)
 	{
 		
@@ -55,7 +53,12 @@ global $wpdb;
 		$test = curl_posting(array('link'=>get_site_url(),'active'=>1),$api_url.'/activate_blog'); // save active plugin on the main platform
 		
 		$api_url_log = get_fs_api_url('/save_blog_logs');
-		$data2 = array('action'=>'activate','link'=>get_site_url(),'version'=>'0.9902');
+        $plugin_data = get_plugin_data( __FILE__);
+        $plugin_version  = 'unavailable';        
+        if ( isset($plugin_data['Version']) ) {
+            $plugin_version  = $plugin_data['Version'];
+        }
+		$data2 = array('action'=>'activate','link'=>get_site_url(),'version'=>$plugin_version);
 		curl_posting($data2,$api_url_log);
 		
 		if (!get_option('fs_api_base'))
@@ -99,7 +102,14 @@ global $wpdb;
 		curl_posting($data,$api_url);
 		
 		$api_url_log = get_fs_api_url('/save_blog_logs');
-		$data2 = array('action'=>'deactivate','link'=>get_site_url(),'version'=>'0.9902');
+        $plugin_data = get_plugin_data( __FILE__);
+        
+        $plugin_version  = 'unavailable';        
+        if ( isset($plugin_data['Version']) ) {
+            $plugin_version  = $plugin_data['Version'];
+        }
+        
+		$data2 = array('action'=>'deactivate','link'=>get_site_url(),'version'=>$plugin_version);
 		curl_posting($data2,$api_url_log);
 	}
 	register_activation_hook(__FILE__,'fs_after_activate_plugin');
