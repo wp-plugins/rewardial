@@ -8,6 +8,8 @@ Description: Gamified engagement solution for bloggers.
 
 global $wpdb;
 
+
+
 	function curl_posting($fields,$url)
 	{
 		
@@ -53,7 +55,7 @@ global $wpdb;
 		$test = curl_posting(array('link'=>get_site_url(),'active'=>1),$api_url.'/activate_blog'); // save active plugin on the main platform
 		
 		$api_url_log = get_fs_api_url('/save_blog_logs');
-        $plugin_data = get_plugin_data( __FILE__);
+		$plugin_data = get_plugin_data( __FILE__);
         $plugin_version  = 'unavailable';        
         if ( isset($plugin_data['Version']) ) {
             $plugin_version  = $plugin_data['Version'];
@@ -102,8 +104,8 @@ global $wpdb;
 		curl_posting($data,$api_url);
 		
 		$api_url_log = get_fs_api_url('/save_blog_logs');
-        $plugin_data = get_plugin_data( __FILE__);
         
+        $plugin_data = get_plugin_data( __FILE__);
         $plugin_version  = 'unavailable';        
         if ( isset($plugin_data['Version']) ) {
             $plugin_version  = $plugin_data['Version'];
@@ -300,8 +302,7 @@ function get_user_ip(){
 			add_submenu_page( 'fs-overview', 'Overview', 'Overview', 'manage_options', 'fs-overview', 'fs_overview');
 			//add_submenu_page( 'fs-overview', 'Quests', 'Quests', 'manage_options', 'fs-quests', 'fs_quests_page');
 			add_submenu_page( 'fs-overview', 'Settings', 'Settings', 'manage_options', 'fs-settings', 'fs_settings_page');
-			add_submenu_page( 'fs-overview', 'Gifts', 'Gifts', 'manage_options', 'fs-gifts', 'fs_gifts_page');
-			add_submenu_page( 'fs-overview', 'Gift orders', 'Gift orders', 'manage_options', 'fs-gift-orders', 'fs_gift_orders_page');
+			
 			$api_url = get_fs_api_url('/check_rstk_option');
 			$data = array('link'=>get_site_url());
 			$result = curl_posting($data,$api_url);
@@ -330,180 +331,6 @@ function get_user_ip(){
 		
 		echo $content;
 		
-	}
-	add_action( 'wp_ajax_change_order_status', 'rew_ajax_change_order_status' );
-	add_action( 'wp_ajax_nopriv_change_order_status', 'rew_ajax_change_order_status' );
-	function rew_ajax_change_order_status(){
-		
-		$order_id = intval($_POST['order_id']);
-		$value_selected = intval($_POST['status']);
-		
-		$key = get_option('focusedstamps_secret_key');
-		$timer = time();
-		$string = get_site_url().$timer;
-		$secret_key = hash_hmac('sha1',$string,$key);
-		
-		$api_url = get_fs_api_url('/order_status');
-		
-		$data = array('link'=>get_site_url(),'time'=>$timer,'code'=>$secret_key,'order_id'=>$order_id,'status'=>$value_selected);
-		$order_status = curl_posting($data,$api_url);
-		if($order_status){
-			$status = json_decode($order_status,true);
-			
-			echo json_encode(array('status'=>$status['status'],'message'=>$status['message'])); die();
-		}else{
-			echo json_encode(array('status'=>'error','message'=>'Invalid request')); die();
-		}
-		//add_option('testttttttttttttttttttttttttttt',$order_id.'testttttttt'.$value_selected);
-		
-	}
-	function fs_gift_orders_page(){
-		global $wpdb;
-		
-		$key = get_option('focusedstamps_secret_key');
-		$timer = time();
-		$string = get_site_url().$timer;
-		$secret_key = hash_hmac('sha1',$string,$key);
-		
-		$api_url = get_fs_api_url('/get_gift_orders');
-		
-		$data = array('link'=>get_site_url(),'time'=>$timer,'code'=>$secret_key);
-		$gifts_response = curl_posting($data,$api_url);
-		if($gifts_response){
-			$gift_orders = json_decode($gifts_response,true);
-		}else{
-			$gift_orders = array();
-		}
-		
-		$main_app_link = str_replace('/api','',get_fs_api_url());
-		
-		
-		ob_start(); ?>
-		
-		<div class="rwd-gifts-container">
-			<h3>Gift Orders</h3>
-				<table class="rwd-orders-table">
-					<tr>
-						<th>Gift title</th>
-						<th>Date created</th>
-						<th>User email</th>
-						<th>Status</th>
-						<th>Message</th>
-					</tr>
-				<?php if($gift_orders){ ?>
-					<?php foreach($gift_orders as $g_order){ ?>
-						
-						<?php foreach($g_order['orders'] as $order){ ?>
-							
-							<tr class="rwd-order-content">
-								<td class="rwd-order-gift-name">
-									<?php echo $g_order['gift']['BlogGift']['title']; ?>
-								</td>
-								<td class="rwd-order-gift-date">
-									<?php echo date('d-m-y h:m:s',$order['order']['BlogOrder']['created']); ?>
-								</td>
-								<td class="rwd-order-gift-user">
-									<?php echo $order['user']['user_email']; ?>
-								</td>
-								
-								<td class="rwd-order-status-change">
-									<select id="rwd-order-status-select-<?php echo $order['order']['BlogOrder']['id']; ?>">
-										<option value="0" <?php if($order['order']['BlogOrder']['status'] == 0) echo 'selected="selected"'; ?>>Confirmed</option>
-										<option value="1" <?php if($order['order']['BlogOrder']['status'] == 1) echo 'selected="selected"'; ?>>Shipped</option>
-										<option value="2" <?php if($order['order']['BlogOrder']['status'] == 2) echo 'selected="selected"'; ?>>Closed</option>
-									</select>
-									<button class="rwd-order-status-button" id="rwd-order-status-<?php echo $order['order']['BlogOrder']['id']; ?>">Save</button>
-								</td>
-								<td class="rwd-order-status-message" id="rwd-order-status-message-<?php echo $order['order']['BlogOrder']['id']; ?>">
-									
-								</td>
-								
-							</tr>
-							
-						<?php } ?>
-						
-					<?php } ?>	
-				<?php } ?>
-			</table>
-		
-		
-		</div>
-		
-		<?php $content = ob_get_clean();
-		
-		echo $content;
-	}
-	function fs_gifts_page(){
-		
-		global $wpdb;
-		
-			$app_link1 = str_replace('/api','/admin',get_fs_api_url());
-			$code_s1 = get_option('focusedstamps_secret_key');
-			$my_string1 = time();
-			$final_encode1 = hash_hmac('sha1',$my_string1,$code_s1);
-		
-		$key = get_option('focusedstamps_secret_key');
-		$timer = time();
-		$string = get_site_url().$timer;
-		$secret_key = hash_hmac('sha1',$string,$key);
-		
-		$api_url = get_fs_api_url('/get_gifts');
-		
-		$data = array('link'=>get_site_url(),'time'=>$timer,'code'=>$secret_key);
-		$gifts_response = curl_posting($data,$api_url);
-		if($gifts_response){
-			$gifts = json_decode($gifts_response,true);
-		}else{
-			$gifts = array();
-		}
-		
-		$main_app_link = str_replace('/api','',get_fs_api_url());
-		//var_dump($gifts_response);
-		
-		ob_start(); ?>
-		
-		<div class="rwd-gifts-container">
-			<h3>Gifts</h3>
-			
-				<?php if($gifts){ ?>
-					<?php foreach($gifts as $gift){ ?>
-						<div class="rwd-gifts-content">
-							<div class="rwd-gift-image">
-								<img src="<?php echo $main_app_link.'files/blogs/'.$gift['BlogGift']['blog_id'].'/'.$gift['BlogGift']['image']; ?>">
-							</div>
-							<div class="rwd-gift-title">
-								<?php echo $gift['BlogGift']['title']; ?>
-							</div>
-							<div class="rwd-gift-description">
-								<?php echo $gift['BlogGift']['description']; ?>
-							</div>
-							<div class="rwd-gift-price">
-								<?php echo $gift['BlogGift']['price']; ?>
-							</div>
-							<div class="rwd-gift-min-level">
-								<?php echo $gift['BlogGift']['min_level']; ?>
-							</div>
-							<div class="rwd-gift-collection">
-								<?php echo $gift['collection_name']; ?>
-							</div>
-						</div>
-						
-						
-					<?php } ?>	
-					<div class="fs-redirect-button">
-						<a target="_blank" href="<?php echo $app_link1.'?time='.$my_string1.'&code='.$final_encode1.'&link='.get_site_url().'&page=gifts'; ?>">Edit</a>
-					</div>
-				<?php } ?>
-			
-		
-		
-		</div>
-		
-		<?php $content = ob_get_clean();
-		
-		echo $content;
-	
-	
 	}
 	function fs_user_info(){
 		// add content before the plugin is loaded
@@ -582,6 +409,19 @@ function get_user_ip(){
 		}else{
 			add_option('rewardial_info',json_encode($plugin_data));
 		}
+        
+        if(isset($_GET['onboarding']) and $_GET['onboarding'] == 1) {
+            $api_url_log = get_fs_api_url('/save_blog_logs');
+            $plugin_version  = 'unavailable';        
+            if ( isset($plugin_data['Version']) ) {
+                $plugin_version  = $plugin_data['Version'];
+            }
+           
+            $api_url_log = get_fs_api_url('/save_blog_logs');
+            $data_plugin = array('action'=>'first_install','link'=>get_site_url(),'version'=>$plugin_version);
+            curl_posting($data_plugin,$api_url_log);          
+        }
+        
 		global $wpdb;
 		$data = array('link'=>get_site_url());
 		$all_settings = curl_posting($data,get_fs_api_url('/settings_page'));
@@ -942,7 +782,7 @@ function get_user_ip(){
 		<?php $overview = ob_get_clean();
 		echo $overview;
 	}
-
+	
 	function fs_custom_admin_head(){
 		$url = plugins_url('rewardial');
 		echo '<link rel="stylesheet" type="text/css" href="'.$url.'/css/admin-style.css">';
