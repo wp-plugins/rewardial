@@ -1130,18 +1130,22 @@ jQuery('.fs-signup-submit').click(function(){
 					jQuery('.fs-stamps-carousel .responsive-shop').remove();
 					jQuery('.fs-stamps-carousel').append('<ul class="responsive-shop">'+shop+'</ul>');
 					
-					var notifier = JSON.parse(decodeURIComponent(getCookie('rwd_notifier')));
-					if(notifier.check_shop_visit){
-						jQuery('#rwd-first-shop').show();
-						jQuery.ajax({
-							url: fs_ajax,
-							data: {'action':'notifications_permanently_expire','type':'rwd-first-shop'},
-							type: 'post',
-							success:function(resp){
-								
-							}
-						});
-					}
+                    
+                    if ( getCookie('rwd_notifier') != "" ) {
+                        var notifier = JSON.parse(decodeURIComponent(getCookie('rwd_notifier')));
+                                        
+                        if(notifier.check_shop_visit){
+                            jQuery('#rwd-first-shop').show();
+                            jQuery.ajax({
+                                url: fs_ajax,
+                                data: {'action':'notifications_permanently_expire','type':'rwd-first-shop'},
+                                type: 'post',
+                                success:function(resp){
+                                    
+                                }
+                            });
+                        }
+                    }
 					
 					var shop_full_content = jQuery('.fs-shop-content').html();
 					//console.log(shop_full_content);
@@ -1179,17 +1183,18 @@ jQuery('.fs-signup-submit').click(function(){
 					type:"post",
 					success:function(r){
 						var response = jQuery.parseJSON(r);
-						if(response.response == 'success') {	
-						
+						if(response.response == 'success') {							
 							
 							// if(response.duplicates.length && response.old_duplicates.length){
 								if(parseInt(response.duplicates)%10 < parseInt(response.old_duplicates)%10){ // check if the number of duplicates aquired have passed the 10th multiple 
-									var storedAry = JSON.parse(decodeURIComponent(getCookie('rwd_notifier')));
-									if(storedAry.duplicates_show){
-										// show the duplicates notification window
-										jQuery('#rwd-10-duplicates').show();
+                                    if ( getCookie('rwd_notifier') != "" ) {
+                                        var storedAry = JSON.parse(decodeURIComponent(getCookie('rwd_notifier')));
+                                        if(storedAry.duplicates_show){
+                                            // show the duplicates notification window
+                                            jQuery('#rwd-10-duplicates').show();
 
-									}
+                                        }
+                                    }
 								}
 							// }
 							jQuery('.fs-credits-value').html(parseInt(response.credits)+parseInt(response.bonusCredits));
