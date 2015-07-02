@@ -17,7 +17,9 @@
 	var wp_url = jQuery('#fs-plugin-url').val()+'/';
 	var my_link = jQuery('#rewardial-blog-url').val();
 		
-	
+	if(!number_of_actions_rewarded){
+		var number_of_actions_rewarded = 1;
+	}
 	var page_like_callback = function(url, html_element){
 		/*console.log("page_like_callback");
 		console.log(url);

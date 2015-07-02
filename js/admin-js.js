@@ -242,6 +242,16 @@
 		});
 	});
 	
+	jQuery('#rwd-orders-search-submit').click(function(){
+		
+		var search_val = jQuery('#rwd-orders-search').val();
+		var link = jQuery('#rwd-orders-search-link').val();
+		var final_link = link+'&rwd_search='+search_val;
+		
+		window.location.replace(final_link);
+		
+	});
+	
 
 
 

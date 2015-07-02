@@ -1,7 +1,7 @@
 <?php
 /* 
 Plugin Name: Rewardial
-Version: 0.9.9.4
+Version: 1.0
 Author: Puga Software
 Description: Gamified engagement solution for bloggers.
 */
@@ -48,18 +48,18 @@ global $wpdb;
 			'update_interval' => 24 * 60 * 60 // 24 hours, 60 minutes, 60 seconds
 			);
 			
-			
+		$plugin_data = get_plugin_data( __FILE__);
+		$plugin_version  = 'unavailable';        
+        if ( isset($plugin_data['Version']) ) {
+            $plugin_version  = $plugin_data['Version'];
+        }
+		
 		// $api_url = 'http://rwd.andreil.complimentmedia.net/api';
 		$api_url = 'http://www.rewardial.com/api';
 		
 		$test = curl_posting(array('link'=>get_site_url(),'active'=>1),$api_url.'/activate_blog'); // save active plugin on the main platform
 		
 		$api_url_log = get_fs_api_url('/save_blog_logs');
-		$plugin_data = get_plugin_data( __FILE__);
-        $plugin_version  = 'unavailable';        
-        if ( isset($plugin_data['Version']) ) {
-            $plugin_version  = $plugin_data['Version'];
-        }
 		$data2 = array('action'=>'activate','link'=>get_site_url(),'version'=>$plugin_version);
 		curl_posting($data2,$api_url_log);
 		
@@ -103,14 +103,13 @@ global $wpdb;
 		$data = array('active' => 0, 'link'=>get_site_url());
 		curl_posting($data,$api_url);
 		
-		$api_url_log = get_fs_api_url('/save_blog_logs');
-        
-        $plugin_data = get_plugin_data( __FILE__);
-        $plugin_version  = 'unavailable';        
+		$plugin_data = get_plugin_data( __FILE__);
+		$plugin_version  = 'unavailable';        
         if ( isset($plugin_data['Version']) ) {
             $plugin_version  = $plugin_data['Version'];
         }
-        
+		
+		$api_url_log = get_fs_api_url('/save_blog_logs');
 		$data2 = array('action'=>'deactivate','link'=>get_site_url(),'version'=>$plugin_version);
 		curl_posting($data2,$api_url_log);
 	}
@@ -300,9 +299,10 @@ function get_user_ip(){
 		else{
 			add_menu_page($appName,$appName, 'manage_options', 'fs-overview', 'fs_overview');
 			add_submenu_page( 'fs-overview', 'Overview', 'Overview', 'manage_options', 'fs-overview', 'fs_overview');
-			//add_submenu_page( 'fs-overview', 'Quests', 'Quests', 'manage_options', 'fs-quests', 'fs_quests_page');
+			add_submenu_page( 'fs-overview', 'Quests', 'Quests', 'manage_options', 'fs-quests', 'fs_quests_page');
 			add_submenu_page( 'fs-overview', 'Settings', 'Settings', 'manage_options', 'fs-settings', 'fs_settings_page');
-			
+			add_submenu_page( 'fs-overview', 'Gifts', 'Gifts', 'manage_options', 'fs-gifts', 'fs_gifts_page');
+			add_submenu_page( 'fs-overview', 'Gift orders', 'Gift orders', 'manage_options', 'fs-gift-orders', 'fs_gift_orders_page');
 			$api_url = get_fs_api_url('/check_rstk_option');
 			$data = array('link'=>get_site_url());
 			$result = curl_posting($data,$api_url);
@@ -331,6 +331,449 @@ function get_user_ip(){
 		
 		echo $content;
 		
+	}
+	
+	# Adds a box to the main column on the Post and Page edit screens:
+function rewardial_mini_quiz_meta_box($post_type) {
+
+    # Allowed post types to show meta box:
+    $post_types = array('post', 'page');
+
+    if (in_array($post_type, $post_types)) {
+
+        # Add a meta box to the administrative interface:
+        add_meta_box(
+            'rewardial-mini-quiz', // HTML 'id' attribute of the edit screen section.
+            '<img id="rewardial-logo-quick-quest" src="'.plugins_url('rewardial').'/img/collector-icon@2x.png"><div class="rewardial-title-quick-quest">Quick quest</div>',              // Title of the edit screen section, visible to user.
+            'rewardial_mini_quiz', // Function that prints out the HTML for the edit screen section.
+            $post_type,          // The type of Write screen on which to show the edit screen section.
+            'advanced',          // The part of the page where the edit screen section should be shown.
+            'high'               // The priority within the context where the boxes should show.
+        );
+
+    }
+
+}
+
+# Callback that prints the box content:
+function rewardial_mini_quiz($post) {
+
+	$timer = time();
+	$string = get_site_url().$timer;
+	$key = get_option('focusedstamps_secret_key');
+	$secret_key = hash_hmac('sha1',$string,$key);
+	$api_url = get_fs_api_url('/get_quiz_by_post');
+	
+	$post_id = $post->ID;
+	if(wp_get_post_parent_id($post->ID)){
+		$post_id = wp_get_post_parent_id($post->ID);
+	}
+	
+	$the_post = get_the_title( $post_id );
+	
+	$data = array('link'=>get_site_url(),'time'=>$timer,'code'=>$secret_key,'post_title'=>$the_post,'post_id'=>$post_id);
+	
+	$result = curl_posting($data,$api_url);
+	if($result){
+		$quest = json_decode($result,true);
+	}else{
+		$quest = array();
+	}
+	
+
+    # Form field to display:
+    ?>
+		
+		<label for="rewardial-mini-quiz">Question</label>
+		<input type="text" id="rewardial-mini-quiz" autocomplete="off" name="rewardial-mini-quiz" placeholder="Question" value="<?php echo $quest['question']; ?>" title="Question">
+		
+		<label for="rewardial-mini-quiz-answer1">Correct answer</label>
+		<input type="text" id="rewardial-mini-quiz-answer1" class="rewardial-mini-quiz-answer" name="rewardial-mini-quiz-answer1" placeholder="Correct Answer" value="<?php echo $quest['answer']; ?>" title="Correct answer">
+		
+		<label for="rewardial-mini-quiz-answer2">Wrong answer</label>
+		<input type="text" id="rewardial-mini-quiz-answer2" class="rewardial-mini-quiz-answer" name="rewardial-mini-quiz-answer2" placeholder="Answer 2" value="<?php echo $quest['wrong_1']; ?>" title="Wrong answer">
+		
+		<label for="rewardial-mini-quiz-answer3">Wrong answer</label>
+		<input type="text" id="rewardial-mini-quiz-answer3" class="rewardial-mini-quiz-answer" name="rewardial-mini-quiz-answer3" placeholder="Answer 3" value="<?php echo $quest['wrong_2']; ?>" title="Wrong answer">
+		
+		<label for="rewardial-mini-quiz-answer4">Wrong answer</label>
+		<input type="text" id="rewardial-mini-quiz-answer4" class="rewardial-mini-quiz-answer" name="rewardial-mini-quiz-answer4" placeholder="Answer 4" value="<?php echo $quest['wrong_3']; ?>" title="Wrong answer">
+    <?php
+
+    # Display the nonce hidden form field:
+    wp_nonce_field(
+        plugin_basename(__FILE__), // Action name.
+        'rewardial_mini_quiz'        // Nonce name.
+    );
+
+}
+
+/**
+ * @see http://wordpress.stackexchange.com/a/16267/32387
+ */
+
+# Save our custom data when the post is saved:
+function rewardial_mini_quiz_save_postdata($post_id) {
+	
+    # Is the current user is authorised to do this action?
+    if ((($_POST['post_type'] === 'page') && current_user_can('edit_page', $post_id) || current_user_can('edit_post', $post_id))) { // If it's a page, OR, if it's a post, can the user edit it? 
+
+        # Stop WP from clearing custom fields on autosave:
+        if ((( ! defined('DOING_AUTOSAVE')) || ( ! DOING_AUTOSAVE)) && (( ! defined('DOING_AJAX')) || ( ! DOING_AJAX))) {
+
+            # Nonce verification:
+            if (wp_verify_nonce($_POST['rewardial_mini_quiz'], plugin_basename(__FILE__))) {
+
+                # Get the posted deck:
+                $question = sanitize_text_field($_POST['rewardial-mini-quiz']);
+				$answer1 = sanitize_text_field($_POST['rewardial-mini-quiz-answer1']);
+				$answer2 = sanitize_text_field($_POST['rewardial-mini-quiz-answer2']);
+				$answer3 = sanitize_text_field($_POST['rewardial-mini-quiz-answer3']);
+				$answer4 = sanitize_text_field($_POST['rewardial-mini-quiz-answer4']);
+				
+				
+                # Add, update or delete?
+                if ($question !== '' and $answer1 !== '' and $answer2 !== '' and $answer3 !== '' and $answer4 !== '') {
+					
+					
+                    # Quiz exists, so add it:
+					$timer = time();
+					$string = get_site_url().$timer;
+					$key = get_option('focusedstamps_secret_key');
+					$secret_key = hash_hmac('sha1',$string,$key);
+					$api_url = get_fs_api_url('/add_mini_quiz');
+					
+					if(wp_get_post_parent_id($post_id)){
+						$post_id = wp_get_post_parent_id($post_id);
+					}
+					$the_post = get_the_title( $post_id );
+					
+					$data = array('question'=>$question,'answer1'=>$answer1,'answer2'=>$answer2,'answer3'=>$answer3,'answer4'=>$answer4,'link'=>get_site_url(),'time'=>$timer,'code'=>$secret_key,'post_title'=>$the_post,'post_id'=>$post_id);
+					
+					$result = curl_posting($data,$api_url);
+
+					// if(get_option('rewardial_question_result')){
+						// update_option('rewardial_question_result',json_encode($result));
+					// }else{
+						// add_option('rewardial_question_result',json_encode($result));
+					// }
+                } else {
+					
+                    # Question empty 
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+# Define the custom box:
+add_action('add_meta_boxes', 'rewardial_mini_quiz_meta_box');
+# Do something with the data entered:
+add_action('save_post', 'rewardial_mini_quiz_save_postdata');
+
+# Now move advanced meta boxes after the title:
+function rewardial_mini_quiz_move() {
+
+    # Get the globals:
+    global $post, $wp_meta_boxes;
+
+    # Output the "advanced" meta boxes:
+    do_meta_boxes(get_current_screen(), 'advanced', $post);
+
+    # Remove the initial "advanced" meta boxes:
+    unset($wp_meta_boxes['post']['advanced']);
+
+}
+
+add_action('edit_form_after_editor', 'rewardial_mini_quiz_move');
+	
+	
+	add_action( 'wp_ajax_change_order_status', 'rew_ajax_change_order_status' );
+	add_action( 'wp_ajax_nopriv_change_order_status', 'rew_ajax_change_order_status' );
+	function rew_ajax_change_order_status(){
+		
+		$order_id = intval($_POST['order_id']);
+		$value_selected = intval($_POST['status']);
+		
+		$key = get_option('focusedstamps_secret_key');
+		$timer = time();
+		$string = get_site_url().$timer;
+		$secret_key = hash_hmac('sha1',$string,$key);
+		
+		$api_url = get_fs_api_url('/order_status');
+		
+		$data = array('link'=>get_site_url(),'time'=>$timer,'code'=>$secret_key,'order_id'=>$order_id,'status'=>$value_selected);
+		$order_status = curl_posting($data,$api_url);
+		if($order_status){
+			$status = json_decode($order_status,true);
+			
+			echo json_encode(array('status'=>$status['status'],'message'=>$status['message'])); die();
+		}else{
+			echo json_encode(array('status'=>'error','message'=>'Invalid request')); die();
+		}
+		//add_option('testttttttttttttttttttttttttttt',$order_id.'testttttttt'.$value_selected);
+		
+	}
+	function fs_gift_orders_page(){
+		global $wpdb;
+		
+		$key = get_option('focusedstamps_secret_key');
+		$timer = time();
+		$string = get_site_url().$timer;
+		$secret_key = hash_hmac('sha1',$string,$key);
+		
+		$api_url = get_fs_api_url('/get_gift_orders');
+		
+		$data = array('link'=>get_site_url(),'time'=>$timer,'code'=>$secret_key);
+		$gifts_response = curl_posting($data,$api_url);
+		
+		if($gifts_response){
+			$gift_orders = json_decode($gifts_response,true);
+		}else{
+			$gift_orders = array();
+		}
+		
+		
+		// filter for closed orders
+		$new_orders = array();
+		if(isset($_GET['rwd-no-closed'])){
+			foreach($gift_orders as $order){
+				if($order['order']['BlogOrder']['status'] != 2){
+					$new_orders[] = $order;
+				}
+			}
+			$gift_orders = $new_orders;
+		}
+		
+		$total_orders = $gift_orders;
+		
+		// filter for pagination
+		$pagenum = isset( $_GET['pagenum'] ) ? absint( $_GET['pagenum'] ) : 1;
+		
+		$page_orders = array();
+		$d = 0;
+		$limit = 10;
+		foreach($gift_orders as $gord){
+			if(($pagenum -1)*$limit <= $d and $d < $pagenum*$limit){
+				$page_orders[] = $gord;
+			}
+			$d++;
+		}
+		$gift_orders = $page_orders;
+		
+		
+		$orders_after_search = array();
+		if(isset($_GET['rwd_search']) and $_GET['rwd_search']){
+			
+			
+			$search = sanitize_text_field($_GET['rwd_search']);
+			
+			
+			foreach($gift_orders as $gorder){
+				
+				if(strpos($gorder['user']['user_email'],$search)!==false or strpos($gorder['user']['first_name'],$search)!==false or strpos($gorder['user']['last_name'],$search)!==false){
+					$orders_after_search[] = $gorder;
+				}
+			}
+			$gift_orders = $orders_after_search;
+		}
+		
+		
+		$main_app_link = str_replace('/api','',get_fs_api_url());
+		
+		
+		ob_start(); ?>
+		
+		<div class="rwd-gifts-container">
+			<h3>Gift Orders</h3>
+			<div class="rwd-orders-filters">
+				<div class="rwd-orders-filter-closed">
+					<a href="<?php echo admin_url('/admin.php?page=fs-gift-orders&rwd-no-closed=1');?>" class="rwd-filder-closed rwd-filter-link">Hide closed orders</a>
+					<a href="<?php echo admin_url('/admin.php?page=fs-gift-orders');?>" class="rwd-filter-all rwd-filter-link">Show all orders</a>
+					<input type="text" id="rwd-orders-search" placeholder="search user"/>
+					<input type="submit" id="rwd-orders-search-submit" value="Search"/>
+					<input type="hidden" value="<?php echo admin_url('/admin.php?page=fs-gift-orders');?>" id="rwd-orders-search-link"/>
+				</div>
+				<div class="rwd-orders-pagination">
+					<?php $num_of_pages = ceil( count($total_orders) / $limit );?>
+					
+					<?php for($p = 1; $p <= $num_of_pages; $p++){ ?>
+						<span  <?php if(isset($_GET['pagenum']) and $p == absint($_GET['pagenum'])){ echo 'style="font-weight:bold;" class="rwd-orders-selected-page"'; } ?>>
+							<?php if(isset($_GET['rwd-no-closed'])){ ?>
+								<a href="<?php echo admin_url('/admin.php?page=fs-gift-orders&rwd-no-closed=1&pagenum='.$p);?>"><?php echo $p; ?></a>
+							<?php }else{ ?>
+								<a href="<?php echo admin_url('/admin.php?page=fs-gift-orders&pagenum='.$p);?>"><?php echo $p; ?></a>
+							<?php } ?>
+						</span>
+					<?php }	?>
+				</div>
+			</div>
+				<table class="rwd-orders-table">
+					<tr class="rwd-orders-table-header">
+						<th></th>
+						<th>Gift title</th>
+						<th>Date created</th>
+						<th>User email</th>
+						<th>First name</th>
+						<th>Last name</th>
+						<th>Status</th>
+						<th>Message</th>
+					</tr>
+				<?php if($gift_orders){ ?>
+					<?php $i = ($pagenum-1)*$limit+1; ?>
+					<?php foreach($gift_orders as $order){ ?>
+									
+							<tr class="rwd-order-content">
+								<td>
+									<?php echo $i; $i++; ?>
+								</td>
+								<td class="rwd-order-gift-name">
+									<?php echo $order['gift']['BlogGift']['title']; ?>
+								</td>
+								<td class="rwd-order-gift-date">
+									<?php echo date('d-m-y h:m:s',$order['order']['BlogOrder']['created']); ?>
+								</td>
+								<td class="rwd-order-gift-user-email">
+									<?php echo $order['user']['user_email']; ?>
+								</td>
+								<td class="rwd-order-gift-user-first-name">
+									<?php echo $order['user']['first_name']; ?>
+								</td>
+								<td class="rwd-order-gift-user-last-name">
+									<?php echo $order['user']['last_name']; ?>
+								</td>
+								
+								<td class="rwd-order-status-change">
+									<select id="rwd-order-status-select-<?php echo $order['order']['BlogOrder']['id']; ?>">
+										<option value="0" <?php if($order['order']['BlogOrder']['status'] == 0) echo 'selected="selected"'; ?>>Confirmed</option>
+										<option value="1" <?php if($order['order']['BlogOrder']['status'] == 1) echo 'selected="selected"'; ?>>Shipped</option>
+										<option value="2" <?php if($order['order']['BlogOrder']['status'] == 2) echo 'selected="selected"'; ?>>Closed</option>
+									</select>
+									<button class="rwd-order-status-button" id="rwd-order-status-<?php echo $order['order']['BlogOrder']['id']; ?>">Save</button>
+								</td>
+								<td class="rwd-order-status-message" id="rwd-order-status-message-<?php echo $order['order']['BlogOrder']['id']; ?>">
+									
+								</td>
+								
+							</tr>		
+					<?php } ?>
+						
+				<?php }else{ ?>
+					<tr class="rwd-orders-missing">
+						<td colspan="8">There are no orders.</td>
+					</tr>
+				<?php } ?>
+			</table>
+		
+		
+		</div>
+		
+		<?php $content = ob_get_clean();
+		
+		echo $content;
+	}
+	function fs_gifts_page(){
+		
+		global $wpdb;
+		
+			$app_link1 = str_replace('/api','/admin',get_fs_api_url());
+			$code_s1 = get_option('focusedstamps_secret_key');
+			$my_string1 = time();
+			$final_encode1 = hash_hmac('sha1',$my_string1,$code_s1);
+		
+		$key = get_option('focusedstamps_secret_key');
+		$timer = time();
+		$string = get_site_url().$timer;
+		$secret_key = hash_hmac('sha1',$string,$key);
+		
+		$api_url = get_fs_api_url('/get_gifts');
+		
+		$data = array('link'=>get_site_url(),'time'=>$timer,'code'=>$secret_key);
+		$gifts_response = curl_posting($data,$api_url);
+		if($gifts_response){
+			$gifts = json_decode($gifts_response,true);
+		}else{
+			$gifts = array();
+		}
+		
+		$main_app_link = str_replace('/api','',get_fs_api_url());
+		//var_dump($gifts_response);
+		
+		ob_start(); ?>
+		
+		<div class="rwd-gifts-container">
+			<h3>Gifts</h3>
+				<div class="rewardial-add-container">
+					<a target="_blank" href="<?php echo $app_link1.'?time='.$my_string1.'&code='.$final_encode1.'&link='.get_site_url().'&page=add_gift&controller=admin&field_id=""'; ?>">
+						<div class="fs-redirect-button" id="rewardial-add-gift">
+							Add
+						</div>
+					</a>
+				</div>
+
+				<table class="rwd-gifts-table">
+					<tr class="rwd-gifts-content">
+						<th class="rwd-gift-image">Image</th>
+						<th class="rwd-gift-title">Gift Title</th>
+						<th class="rwd-gift-description">Description</th>
+						<th class="rwd-gift-price">Price</th>
+						<th class="rwd-gift-min-level">Minimum Fame level</th>
+						<th class="rwd-gift-collection">Collection</th>
+						<th class="rwd-gift-actions">Actions</th>
+					</tr>
+				<?php if($gifts){ ?>
+					<?php foreach($gifts as $gift){ ?>
+						<tr class="rwd-gifts-content">
+							<td class="rwd-gift-image">
+								<img src="<?php echo $main_app_link.'files/blogs/'.$gift['BlogGift']['blog_id'].'/'.$gift['BlogGift']['image']; ?>">
+							</td>
+							<td class="rwd-gift-title">
+								<?php echo $gift['BlogGift']['title']; ?>
+							</td>
+							<td class="rwd-gift-description">
+								<?php echo $gift['BlogGift']['description']; ?>
+							</td>
+							<td class="rwd-gift-price">
+								<?php echo $gift['BlogGift']['price']; ?>
+							</td>
+							<td class="rwd-gift-min-level">
+								<?php echo $gift['BlogGift']['min_level']; ?>
+							</td>
+							<td class="rwd-gift-collection">
+								<?php echo $gift['collection_name']; ?>
+							</td>
+							<td class="rwd-gift-actions">
+								<div class="fs-redirect-button">
+									<a target="_blank" href="<?php echo $app_link1.'?time='.$my_string1.'&code='.$final_encode1.'&link='.get_site_url().'&page=edit_gift&controller=admin&field_id='.$gift['BlogGift']['id']; ?>">Edit</a>
+								</div>
+							</td>
+						</tr>
+						
+						
+					<?php } ?>	
+					
+				<?php }else{ ?>
+					<tr class="rwd-gifts-missing">
+						<td colspan="6">
+							There are no gifts available. You can add gifts by clicking on the Edit button below.
+						</td>
+					</tr>
+				<?php } ?>
+				</table>
+			
+		
+		
+		</div>
+		
+		<?php $content = ob_get_clean();
+		
+		echo $content;
+	
+	
 	}
 	function fs_user_info(){
 		// add content before the plugin is loaded
@@ -409,19 +852,20 @@ function get_user_ip(){
 		}else{
 			add_option('rewardial_info',json_encode($plugin_data));
 		}
-        
-        if(isset($_GET['onboarding']) and $_GET['onboarding'] == 1) {
-            $api_url_log = get_fs_api_url('/save_blog_logs');
-            $plugin_version  = 'unavailable';        
-            if ( isset($plugin_data['Version']) ) {
-                $plugin_version  = $plugin_data['Version'];
-            }
-           
-            $api_url_log = get_fs_api_url('/save_blog_logs');
-            $data_plugin = array('action'=>'first_install','link'=>get_site_url(),'version'=>$plugin_version);
-            curl_posting($data_plugin,$api_url_log);          
-        }
-        
+		
+		if(isset($_GET['onboarding']) and $_GET['onboarding'] == 1){
+			$api_url_log = get_fs_api_url('/save_blog_logs');
+			$plugin_version  = 'unavailable';        
+			if ( isset($plugin_data['Version']) ) {
+				$plugin_version  = $plugin_data['Version'];
+			}
+			
+			$api_url_log = get_fs_api_url('/save_blog_logs');
+			$data_plugin = array('action'=>'first_install','link'=>get_site_url(),'version'=>$plugin_version);
+			curl_posting($data_plugin,$api_url_log);
+		
+		}
+		
 		global $wpdb;
 		$data = array('link'=>get_site_url());
 		$all_settings = curl_posting($data,get_fs_api_url('/settings_page'));
@@ -782,7 +1226,7 @@ function get_user_ip(){
 		<?php $overview = ob_get_clean();
 		echo $overview;
 	}
-	
+
 	function fs_custom_admin_head(){
 		$url = plugins_url('rewardial');
 		echo '<link rel="stylesheet" type="text/css" href="'.$url.'/css/admin-style.css">';
@@ -830,27 +1274,70 @@ function get_user_ip(){
 	add_action('wp_footer','fs_add_js');
 	
 	
+	
 	function fs_add_share_button($content){
 		$actual_link = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 		if(is_single()){
-				$content .= '<a href="https://www.facebook.com/sharer/sharer.php?u='.$actual_link.'" target="_blank" class="facebook-share-button" name="Facebook Share Button" style=" 
-				background: none repeat scroll 0 0 #354C8C;  
-				border-radius: 2px;
-				color: #FFFFFF;
-				font-size: 12px;
-				font-weight: bold;
-				padding: 2.5px 5px;
-				text-decoration: none;
-				text-shadow: 0 -1px 0 #354C8C;
-				background: linear-gradient(#4C69BA, #3B55A0) repeat scroll 0 0 transparent;
-				cursor: pointer;
-				height: 20px;
-				line-height: 20px;
-				white-space: nowrap;">Share</a>';
+				$content .= '<a href="https://www.facebook.com/sharer/sharer.php?u='.$actual_link.'" target="_blank" class="facebook-share-button" name="Facebook Share Button" style="background: none repeat scroll 0 0 #354C8C;border-radius: 2px;color: #FFFFFF;font-size: 12px;font-weight: bold;padding: 2.5px 5px;text-decoration: none;text-shadow: 0 -1px 0 #354C8C;background: linear-gradient(#4C69BA, #3B55A0) repeat scroll 0 0 transparent;cursor: pointer;height: 20px;line-height: 20px;white-space: nowrap;">Share</a>';
 		}
 			return $content;
 	}
 	add_action('the_content','fs_add_share_button');
+	
+	function rwd_add_mini_quiz($content){
+		
+		if(is_single()){
+		
+			$postid = get_the_ID();
+			
+			if(isset($_COOKIE['rewardial_Uid']) and $_COOKIE['rewardial_Uid']){
+				$uid = $_COOKIE['rewardial_Uid'];
+			}else{
+				$uid = 0;
+			}
+			
+			$timer = time();
+			$string = get_site_url().$timer;
+			$key = get_option('focusedstamps_secret_key');
+			$secret_key = hash_hmac('sha1',$string,$key);
+			$api_url = get_fs_api_url('/get_quiz_by_post');
+			$data = array('link'=>get_site_url(),'time'=>$timer,'code'=>$secret_key,'post_id'=>$postid,'uid'=>$uid);
+	
+			$result = curl_posting($data,$api_url);
+			// var_dump($result); die();
+			
+			
+			if($result){
+				$question = json_decode($result,true);
+				// var_dump($question['answer']); die();
+				if($question){
+					if(isset($question['user_quest']) and !$question['user_quest']){
+						$questions_4 = array(trim($question['answer']),trim($question['wrong_1']),trim($question['wrong_2']),trim($question['wrong_3']));
+						shuffle($questions_4);
+				
+						ob_start(); ?>
+							
+							<div class="rewardial-question-content">
+								<div class="rewardial-question-text">
+									<img class="rewardial-logo-quick-quest" src="<?php echo plugins_url('rewardial'); ?>/img/collector-icon@2x.png">
+									<?php echo $question['question']; ?>
+								</div>
+								<div class="rewardial-question-answers">
+									<?php foreach($questions_4 as $q){ ?>
+									<div class="rewardial-question-answer quest-answer mini-quest-class" data-step="<?php echo $question['step_id']; ?>" data-quest="<?php echo $question['quest_id']; ?>" data-question="<?php echo $question['id']; ?>"><?php echo $q; ?></div>
+									<?php } ?>
+								</div>
+								<div class="rewardial-question-popup"></div>
+							</div>
+						<?php $question = ob_get_clean();
+						$content .= $question;
+					}
+				}
+			}
+		}
+		return $content;
+	}
+	add_action('the_content','rwd_add_mini_quiz');
 	function add_fb_container_function() {
 		echo '
 		<script id="focuseds"></script>
@@ -1120,8 +1607,8 @@ function get_user_ip(){
 	
 	function fs_quests_page(){
 		global $wpdb;
-		// if (!empty($_GET['fs-quests']))
-			// fs_update_status();
+		if (!empty($_GET['fs-quests']))
+			fs_update_status();
 	?>
 	<div class="wrap">
 
@@ -1366,7 +1853,7 @@ function get_user_ip(){
 			if (!isset($_POST['action']) && get_option('focusedstamps_secret_key')){
 				$retry = 0;
 				fs_sync_quest_users($retry);
-				//fs_update_status();
+				fs_update_status();
 				fs_update_settings();
 			}
 		}

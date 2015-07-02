@@ -60,6 +60,22 @@ function rewardial_facebook_login_callback(){
 
 }
 
+add_action( 'wp_ajax_nopriv_check_pagetype', 'rwd_check_pagetype_callback' );
+add_action( 'wp_ajax_check_pagetype', 'rwd_check_pagetype_callback');
+function rwd_check_pagetype_callback(){
+
+	$link = sanitize_text_field($_POST['link']);
+	$check_link = explode('#',$link);
+	$final_link = $check_link[0];
+	
+	if(is_single()){
+		echo json_encode(array('status'=>200,'message'=>'page is post type')); die();
+	}else{
+		echo json_encode(array('status'=>300,'message'=>'page is not post type')); die();
+	}
+	
+}
+
 
 add_action( 'wp_ajax_nopriv_anonymous_actions', 'rwd_anonymous_actions_callback' );
 add_action( 'wp_ajax_anonymous_actions', 'rwd_anonymous_actions_callback');
@@ -76,11 +92,12 @@ function rwd_anonymous_actions_callback(){
 	
 	if(isset($_COOKIE['rewardial_anonymous']) and $_COOKIE['rewardial_anonymous']){
 		// var_dump($_COOKIE['rewardial_anonymous']);
-		$cookie = html_entity_decode($_COOKIE['rewardial_anonymous']);
+		$cookie = base64_decode($_COOKIE['rewardial_anonymous']);
 		$content = json_decode($cookie,true);
 	}else{
 		$content = array();
 	}
+	$ok = 0;
 	// var_dump('content '.$content);
 	switch($_POST['type']){
 		case 'comment':
@@ -88,7 +105,7 @@ function rwd_anonymous_actions_callback(){
 
 				$data = $content;
 				$data[] = array("action"=>"comment","link"=>$final_link,"data"=>$comment);
-				$final_data = htmlentities(json_encode($data,JSON_UNESCAPED_SLASHES));
+				$final_data = base64_encode(json_encode($data,JSON_UNESCAPED_SLASHES));
 				setcookie('rewardial_anonymous',$final_data,$after_10years,'/');
 			
 			break;
@@ -103,7 +120,7 @@ function rwd_anonymous_actions_callback(){
 			if($ok == 0){
 				$data = $content;
 				$data[] = array("action"=>"like","link"=>$final_link);
-				$final_data = htmlentities(json_encode($data,JSON_UNESCAPED_SLASHES));
+				$final_data = base64_encode(json_encode($data,JSON_UNESCAPED_SLASHES));
 				setcookie('rewardial_anonymous',$final_data,$after_10years,'/');
 			}	
 			break;
@@ -118,7 +135,7 @@ function rwd_anonymous_actions_callback(){
 			if($ok == 0){
 				$data = $content;
 				$data[] = array("action"=>"unlike","link"=>$final_link);
-				$final_data = htmlentities(json_encode($data,JSON_UNESCAPED_SLASHES));
+				$final_data = base64_encode(json_encode($data,JSON_UNESCAPED_SLASHES));
 				setcookie('rewardial_anonymous',$final_data,$after_10years,'/');
 			}
 			break;
@@ -133,7 +150,7 @@ function rwd_anonymous_actions_callback(){
 			if($ok == 0){
 				$data = $content;
 				$data[] = array("action"=>"share","link"=>$final_link);
-				$final_data = htmlentities(json_encode($data,JSON_UNESCAPED_SLASHES));
+				$final_data = base64_encode(json_encode($data,JSON_UNESCAPED_SLASHES));
 				setcookie('rewardial_anonymous',$final_data,$after_10years,'/');
 			}
 			break;
@@ -147,13 +164,60 @@ function rwd_anonymous_actions_callback(){
 			if($ok == 0){
 				$data = $content;
 				$data[] = array("action"=>"reading","link"=>$final_link);
-				$final_data = htmlentities(json_encode($data,JSON_UNESCAPED_SLASHES));
+				$final_data = base64_encode(json_encode($data,JSON_UNESCAPED_SLASHES));
+				setcookie('rewardial_anonymous',$final_data,$after_10years,'/');
+			}
+			break;
+		case 'mini-quest':
+			$ok = 0;
+			foreach($content as $con){
+				if($con['action'] == 'mini-quest' and $con['link'] == $final_link){
+					$ok = 1;
+				}
+			}
+			$data_to_add = intval($_POST['question_id']).'-'.sanitize_text_field($_POST['answer']);
+			if($ok == 0){
+				$data = $content;
+				$data[] = array("action"=>"mini-quest","link"=>$final_link,"data"=>$data_to_add);
+				$final_data = base64_encode(json_encode($data,JSON_UNESCAPED_SLASHES));
 				setcookie('rewardial_anonymous',$final_data,$after_10years,'/');
 			}
 			break;
 	}
+	echo json_encode(array('status'=>$ok));
 	//var_dump($content);
 	die();
+}
+
+add_action( 'wp_ajax_nopriv_check_anonymous_reading', 'check_anonymous_reading_callback' );
+add_action( 'wp_ajax_check_anonymous_reading', 'check_anonymous_reading_callback');
+function check_anonymous_reading_callback(){
+	$page_read = 0;
+	$actions = 0;
+	if(isset($_COOKIE['rewardial_anonymous']) and $_COOKIE['rewardial_anonymous']){
+		
+		$cookie = base64_decode($_COOKIE['rewardial_anonymous']);
+		$content = json_decode($cookie,true);
+		
+		if($content){
+	
+			$link = sanitize_text_field($_POST['link']);
+			$check_link = strtok($link,'?');
+			$final_link = strtok($check_link,'#');
+			
+			foreach($content as $con){
+				if($con['link'] == $final_link and $con['action'] == 'reading'){
+					$page_read = 1;
+				}
+				$actions++;
+			}
+			
+		}
+		
+	}
+	
+	echo json_encode(array('read_status'=>$page_read,'actions'=>$actions)); die();
+
 }
 function rwd_get_uid($uid){
 	
@@ -194,7 +258,7 @@ function get_ip(){
 }
 
 add_action( 'wp_ajax_nopriv_unique_visitor', 'rwd_unique_visitor_callback' );
-add_action( 'wp_ajax_add_unique_visitor', 'rwd_unique_visitor_callback');
+add_action( 'wp_ajax_unique_visitor', 'rwd_unique_visitor_callback');
 function rwd_unique_visitor_callback(){
 
 	if (isset($_SERVER)) {
@@ -213,23 +277,25 @@ function rwd_unique_visitor_callback(){
 	$api_url = get_option('fs_api_base');
 	
 	$cook = '';
-	$cook = html_entity_decode($_COOKIE['rewardial_anonymous']);
+	if(isset($_COOKIE['rewardial_anonymous'])){
+		$cook = base64_decode($_COOKIE['rewardial_anonymous']);
+	}
 	
-	$data = array('ip'=>$ip,'link'=>get_site_url(),'time_spent'=>$_POST['time_spent'],'actions'=>$cook);
+	$data = array('ip'=>$ip,'link'=>get_site_url(),'time_spent'=>0,'actions'=>$cook);
 	$save_daily_visitor = curl_posting($data,$api_url.'/unique_visitors');
 	
 	die();
 
 }
 add_action( 'wp_ajax_nopriv_get_blog_info', 'rwd_get_blog_info_callback' );
-add_action( 'wp_ajax_add_get_blog_info', 'rwd_get_blog_info_callback');
+add_action( 'wp_ajax_get_blog_info', 'rwd_get_blog_info_callback');
 function rwd_get_blog_info_callback(){
 	$plugin_info = get_option('rewardial_info');
 	echo $plugin_info; die();
 }
 
 add_action( 'wp_ajax_nopriv_save_user', 'rwd_save_user_callback' );
-add_action( 'wp_ajax_add_save_user', 'rwd_save_user_callback');
+add_action( 'wp_ajax_save_user', 'rwd_save_user_callback');
 function rwd_save_user_callback(){
 	global $wpdb;
 	// $id_user = intval($_POST['uid']);
@@ -241,54 +307,8 @@ function rwd_save_user_callback(){
 	$rwd_rewards = '';
 	$addd_credit = 0;
 	$addd_fame = 0;
-	if(isset($_COOKIE['rewardial_anonymous']) and $_COOKIE['rewardial_anonymous']){
-		//var_dump($_COOKIE['rewardial_anonymous']);
-		$cook = html_entity_decode($_COOKIE['rewardial_anonymous']);
-		$api_url = get_option('fs_api_base');
-		$rwd_key = get_option('focusedstamps_secret_key');
-		$rwd_time = time();
-		$rwd_string = $rwd_time.$id_user;
-		$rwd_code = hash_hmac('sha1',$rwd_string,$rwd_key);
-		$rwd_link = get_site_url();
-		
-		$rwd_userdata = array('user_id'=>$id_user,'time'=>$rwd_time,'code'=>$rwd_code,'link'=>$rwd_link,'actions'=>$cook,'ip'=>get_ip());
-		$rwd_data = curl_posting($rwd_userdata,$api_url.'/save_anonymous_actions');
-		
-		if($rwd_data){
-			$rwd_rewards = json_decode($rwd_data,true);
-			if($rwd_rewards){
-				// save the credits into the local profile 
-				foreach($rwd_rewards as $key=>$val){
-					$attr = $wpdb->get_results($wpdb->prepare(" SELECT * FROM ".$wpdb->prefix."focusedstamps_attributes WHERE name = %s",$key),ARRAY_A);
-					if($attr){
-						$current_value = $wpdb->get_results($wpdb->prepare(" SELECT * FROM ".$wpdb->prefix."focusedstamps_attributes_users WHERE attribute_id = %s AND user_id = %s",$attr[0]['id'],$id_user),ARRAY_A);
-						if($current_value){
-							$new_value = $current_value[0]['value'] + $val;
-							$wpdb->update($wpdb->prefix.'focusedstamps_attributes_users',array('value'=>$new_value),array('attribute_id'=>$attr[0]['id'],'user_id'=>$id_user));
-						}else{
-							$wpdb->insert($wpdb->prefix.'focusedstamps_attributes_users',array('attribute_id'=>$attr[0]['id'],'user_id'=>$id_user,'value'=>$val));
-						}
-					}
-				}
-				$user_current = $wpdb->get_results($wpdb->prepare(" SELECT * FROM ".$wpdb->prefix."focusedstamps_users WHERE uid = %s",$id_user),ARRAY_A);
-				$addd_credit = $rwd_rewards['credits'];
-				$addd_fame = $rwd_rewards['fame'];
-				$final_credit = $user_current[0]['credits'] + $addd_credit;
-				$final_fame = $user_current[0]['fame'] + $addd_fame;
-				$wpdb->update($wpdb->prefix.'focusedstamps_users',array('fame'=>$final_fame,'credits'=>$final_credit),array("uid"=>$id_user));
-			}
-		}
-		// var_dump($rwd_data);
-		// expire the cookie 
-		setcookie('rewardial_anonymous','',time() - 3600,'/');
-		
-		
-		// add the rewards to the display when logging in :  $rwd_rewards
-	}
 	
-	// echo json_encode(array('rwd_rewards'=>$rwd_rewards)); die();
-	// echo 'test';
-	// die();
+
 	if(empty($user)){
 		
 		$username = sanitize_text_field($_POST['username']);
@@ -354,11 +374,15 @@ function rwd_save_user_callback(){
 		
 		// create the cookie for the notifications and for the action counting
 			$notifier = array('actions'=>1,'actions_show'=>1,'duplicates'=>0,'duplicates_show'=>1,'shop_reminder'=>time(),'community_reminder'=>time(),'first_login_active'=>1,'first_shop_visit'=>time(),'check_shop_visit'=>1);
-			if(isset($_COOKIE['rwd_notifier']) and $_COOKIE['rwd_notifier']){
+			$cookie_expire = time()+86400*30*12*50; // 50 years
+			$display_shop_reminder = 0;
+			$display_community_reminder = 0;
+			$display_5th_action = 0;
+			if(isset($_COOKIE['rwd_notifier']) and $_COOKIE['rwd_notifier'] and json_decode(stripslashes(base64_decode($_COOKIE['rwd_notifier'])),true)){
 				
-				$cookie_expire = time()+86400*30*12*50; // 50 years
 				
-				$notif = json_decode(stripslashes($_COOKIE['rwd_notifier']),true);
+				
+				$notif = json_decode(stripslashes(base64_decode($_COOKIE['rwd_notifier'])),true);
 				
 				$notif['actions']++;
 				$first_login_notify = $notif['first_login_active'];
@@ -388,16 +412,59 @@ function rwd_save_user_callback(){
 					}
 				}
 				
-				setcookie('rwd_notifier',json_encode($notif),$cookie_expire,"/"); // 50 years
+				setcookie('rwd_notifier',base64_encode(json_encode($notif)),$cookie_expire,"/"); // 50 years
 				
 			}else{
-				setcookie('rwd_notifier',json_encode($notifier),$cookie_expire,"/"); // 50 years
+				setcookie('rwd_notifier',base64_encode(json_encode($notifier)),$cookie_expire,"/"); // 50 years
 				$first_login_notify = 1;
 				$display_shop_reminder = 0;
 				$display_community_reminder = 0;
 				$display_5th_action = 0;
 			}
-			
+			if(isset($_COOKIE['rewardial_anonymous']) and $_COOKIE['rewardial_anonymous']){
+				//var_dump($_COOKIE['rewardial_anonymous']);
+				$cook = base64_decode($_COOKIE['rewardial_anonymous']);
+				$api_url = get_option('fs_api_base');
+				$rwd_key = get_option('focusedstamps_secret_key');
+				$rwd_time = time();
+				$rwd_string = $rwd_time.$id_user;
+				$rwd_code = hash_hmac('sha1',$rwd_string,$rwd_key);
+				$rwd_link = get_site_url();
+				
+				$rwd_userdata = array('user_id'=>$id_user,'time'=>$rwd_time,'code'=>$rwd_code,'link'=>$rwd_link,'actions'=>$cook,'ip'=>get_ip());
+				$rwd_data = curl_posting($rwd_userdata,$api_url.'/save_anonymous_actions');
+
+				if($rwd_data){
+					$rwd_rewards = json_decode($rwd_data,true);
+					if($rwd_rewards){
+						// save the credits into the local profile 
+						foreach($rwd_rewards as $key=>$val){
+							$attr = $wpdb->get_results($wpdb->prepare(" SELECT * FROM ".$wpdb->prefix."focusedstamps_attributes WHERE name = %s",$key),ARRAY_A);
+							if($attr){
+								$current_value = $wpdb->get_results($wpdb->prepare(" SELECT * FROM ".$wpdb->prefix."focusedstamps_attributes_users WHERE attribute_id = %s AND user_id = %s",$attr[0]['id'],$id_user),ARRAY_A);
+								if($current_value){
+									$new_value = $current_value[0]['value'] + $val;
+									$wpdb->update($wpdb->prefix.'focusedstamps_attributes_users',array('value'=>$new_value),array('attribute_id'=>$attr[0]['id'],'user_id'=>$id_user));
+								}else{
+									$wpdb->insert($wpdb->prefix.'focusedstamps_attributes_users',array('attribute_id'=>$attr[0]['id'],'user_id'=>$id_user,'value'=>$val));
+								}
+							}
+						}
+						$user_current = $wpdb->get_results($wpdb->prepare(" SELECT * FROM ".$wpdb->prefix."focusedstamps_users WHERE uid = %s",$id_user),ARRAY_A);
+						$addd_credit = $rwd_rewards['credits'];
+						$addd_fame = $rwd_rewards['fame'];
+						$final_credit = $user_current[0]['credits'] + $addd_credit;
+						$final_fame = $user_current[0]['fame'] + $addd_fame;
+						$wpdb->update($wpdb->prefix.'focusedstamps_users',array('fame'=>$final_fame,'credits'=>$final_credit),array("uid"=>$id_user));
+					}
+				}
+				// var_dump($rwd_data);
+				// expire the cookie 
+				setcookie('rewardial_anonymous','',time() - 3600,'/');
+				
+				
+				// add the rewards to the display when logging in :  $rwd_rewards
+			}
 			$add = $add + $addd_credit;
 			
 			/*******************************************************************************/
@@ -407,6 +474,50 @@ function rwd_save_user_callback(){
 			
 		echo json_encode(array('status'=>'first_login','add'=>$add,'rewarded'=>$return,'returned'=>$return,'rwd_rewards'=>$rwd_rewards,'first_login_notify'=>$first_login_notify,'display_shop_reminder'=>$display_shop_reminder,'display_community_reminder'=>$display_community_reminder,'display_5th_action'=>$display_5th_action)); die();
 	}else{
+		if(isset($_COOKIE['rewardial_anonymous']) and $_COOKIE['rewardial_anonymous']){
+			//var_dump($_COOKIE['rewardial_anonymous']);
+			$cook = base64_decode($_COOKIE['rewardial_anonymous']);
+			$api_url = get_option('fs_api_base');
+			$rwd_key = get_option('focusedstamps_secret_key');
+			$rwd_time = time();
+			$rwd_string = $rwd_time.$id_user;
+			$rwd_code = hash_hmac('sha1',$rwd_string,$rwd_key);
+			$rwd_link = get_site_url();
+			
+			$rwd_userdata = array('user_id'=>$id_user,'time'=>$rwd_time,'code'=>$rwd_code,'link'=>$rwd_link,'actions'=>$cook,'ip'=>get_ip());
+			$rwd_data = curl_posting($rwd_userdata,$api_url.'/save_anonymous_actions');
+
+			if($rwd_data){
+				$rwd_rewards = json_decode($rwd_data,true);
+				if($rwd_rewards){
+					// save the credits into the local profile 
+					foreach($rwd_rewards as $key=>$val){
+						$attr = $wpdb->get_results($wpdb->prepare(" SELECT * FROM ".$wpdb->prefix."focusedstamps_attributes WHERE name = %s",$key),ARRAY_A);
+						if($attr){
+							$current_value = $wpdb->get_results($wpdb->prepare(" SELECT * FROM ".$wpdb->prefix."focusedstamps_attributes_users WHERE attribute_id = %s AND user_id = %s",$attr[0]['id'],$id_user),ARRAY_A);
+							if($current_value){
+								$new_value = $current_value[0]['value'] + $val;
+								$wpdb->update($wpdb->prefix.'focusedstamps_attributes_users',array('value'=>$new_value),array('attribute_id'=>$attr[0]['id'],'user_id'=>$id_user));
+							}else{
+								$wpdb->insert($wpdb->prefix.'focusedstamps_attributes_users',array('attribute_id'=>$attr[0]['id'],'user_id'=>$id_user,'value'=>$val));
+							}
+						}
+					}
+					$user_current = $wpdb->get_results($wpdb->prepare(" SELECT * FROM ".$wpdb->prefix."focusedstamps_users WHERE uid = %s",$id_user),ARRAY_A);
+					$addd_credit = $rwd_rewards['credits'];
+					$addd_fame = $rwd_rewards['fame'];
+					$final_credit = $user_current[0]['credits'] + $addd_credit;
+					$final_fame = $user_current[0]['fame'] + $addd_fame;
+					$wpdb->update($wpdb->prefix.'focusedstamps_users',array('fame'=>$final_fame,'credits'=>$final_credit),array("uid"=>$id_user));
+				}
+			}
+			// var_dump($rwd_data);
+			// expire the cookie 
+			setcookie('rewardial_anonymous','',time() - 3600,'/');
+			
+			
+			// add the rewards to the display when logging in :  $rwd_rewards
+		}
 		// check if $user[0]['last_login'] 
 		if($user[0]['last_login'] < mktime(0,0,0)){
 			
@@ -464,10 +575,14 @@ function rwd_save_user_callback(){
 			
 			// create the cookie for the notifications and for the action counting
 			$notifier = array('actions'=>1,'actions_show'=>1,'duplicates'=>0,'duplicates_show'=>1,'shop_reminder'=>time(),'community_reminder'=>time(),'first_login_active'=>1,'first_shop_visit'=>time(),'check_shop_visit'=>1);
-			if(isset($_COOKIE['rwd_notifier']) and $_COOKIE['rwd_notifier']){
+			$cookie_expire = time()+86400*30*12*50; // 50 years
+			$display_shop_reminder = 0;
+			$display_community_reminder = 0;
+			$display_5th_action = 0;
+			if(isset($_COOKIE['rwd_notifier']) and $_COOKIE['rwd_notifier'] and json_decode(stripslashes(base64_decode($_COOKIE['rwd_notifier'])),true)){
 			
-				$cookie_expire = time()+86400*30*12*50; // 50 years
-				$notif = json_decode(stripslashes($_COOKIE['rwd_notifier']),true);
+
+				$notif = json_decode(stripslashes(base64_decode($_COOKIE['rwd_notifier'])),true);
 
 				$notif['actions']++;
 				
@@ -499,10 +614,10 @@ function rwd_save_user_callback(){
 					}
 				}
 				
-				setcookie('rwd_notifier',json_encode($notif),$cookie_expire,"/"); // 50 years
+				setcookie('rwd_notifier',base64_encode(json_encode($notif)),$cookie_expire,"/"); // 50 years
 				
 			}else{
-				setcookie('rwd_notifier',json_encode($notifier),$cookie_expire,"/"); // 50 years
+				setcookie('rwd_notifier',base64_encode(json_encode($notifier)),$cookie_expire,"/"); // 50 years
 				$first_login_notify = 1;
 				$display_shop_reminder = 0;
 				$display_community_reminder = 0;
@@ -527,7 +642,7 @@ function rwd_save_user_callback(){
 }
 
 add_action( 'wp_ajax_nopriv_save_comment', 'rwd_save_comment_callback' );
-add_action( 'wp_ajax_add_save_comment', 'rwd_save_comment_callback');
+add_action( 'wp_ajax_save_comment', 'rwd_save_comment_callback');
 function rwd_save_comment_callback(){
 	global $wpdb;
 	$uid = rwd_get_uid($_COOKIE['rewardial_Uid']);
@@ -597,10 +712,12 @@ function rwd_save_comment_callback(){
 			
 			// create the cookie for the notifications and for the action counting
 			$notifier = array('actions'=>1,'actions_show'=>1,'duplicates'=>0,'duplicates_show'=>1,'shop_reminder'=>time(),'community_reminder'=>time(),'first_login_active'=>1,'first_shop_visit'=>time(),'check_shop_visit'=>1);
-			if(isset($_COOKIE['rwd_notifier']) and $_COOKIE['rwd_notifier']){
+			$cookie_expire = time()+86400*30*12*50; // 50 years
+			$display_5th_action = 0;
+			if(isset($_COOKIE['rwd_notifier']) and $_COOKIE['rwd_notifier'] and json_decode(stripslashes(base64_decode($_COOKIE['rwd_notifier'])),true)){
 				
-				$cookie_expire = time()+86400*30*12*50; // 50 years
-				$notif = json_decode(stripslashes($_COOKIE['rwd_notifier']),true);
+				
+				$notif = json_decode(stripslashes(base64_decode($_COOKIE['rwd_notifier'])),true);
 				
 				$notif['actions']++;
 				
@@ -612,10 +729,10 @@ function rwd_save_comment_callback(){
 					}
 				}
 				
-				setcookie('rwd_notifier',json_encode($notif),$cookie_expire,"/"); // 50 years
+				setcookie('rwd_notifier',base64_encode(json_encode($notif)),$cookie_expire,"/"); // 50 years
 				
 			}else{
-				setcookie('rwd_notifier',json_encode($notifier),$cookie_expire,"/"); // 50 years
+				setcookie('rwd_notifier',base64_encode(json_encode($notifier)),$cookie_expire,"/"); // 50 years
 				$first_login_notify = 1;
 				$display_shop_reminder = 0;
 				$display_community_reminder = 0;
@@ -634,7 +751,7 @@ function rwd_save_comment_callback(){
 	echo json_encode(array("add"=>$add,'rewarded'=>$return,'returned'=>$return,'display_5th_action'=>$display_5th_action)); die();
 }
 add_action( 'wp_ajax_nopriv_save_reading_time', 'rwd_save_reading_time_callback' );
-add_action( 'wp_ajax_add_save_reading_time', 'rwd_save_reading_time_callback');
+add_action( 'wp_ajax_save_reading_time', 'rwd_save_reading_time_callback');
 function rwd_save_reading_time_callback(){
 	global $wpdb;
 	$uid = rwd_get_uid($_COOKIE['rewardial_Uid']);
@@ -692,10 +809,11 @@ function rwd_save_reading_time_callback(){
 		
 		// create the cookie for the notifications and for the action counting
 		$notifier = array('actions'=>1,'actions_show'=>1,'duplicates'=>0,'duplicates_show'=>1,'shop_reminder'=>time(),'community_reminder'=>time(),'first_login_active'=>1,'first_shop_visit'=>time(),'check_shop_visit'=>1);
-			if(isset($_COOKIE['rwd_notifier']) and $_COOKIE['rwd_notifier']){
+		$cookie_expire = time()+86400*30*12*50; // 50 years
+		$display_5th_action = 0;
+			if(isset($_COOKIE['rwd_notifier']) and $_COOKIE['rwd_notifier'] and json_decode(stripslashes(base64_decode($_COOKIE['rwd_notifier'])),true)){
 				
-				$cookie_expire = time()+86400*30*12*50; // 50 years
-				$notif = json_decode(stripslashes($_COOKIE['rwd_notifier']),true);
+				$notif = json_decode(stripslashes(base64_decode($_COOKIE['rwd_notifier'])),true);
 				
 				$notif['actions']++;
 				
@@ -707,10 +825,10 @@ function rwd_save_reading_time_callback(){
 					}
 				}
 				
-				setcookie('rwd_notifier',json_encode($notif),$cookie_expire,"/"); // 50 years
+				setcookie('rwd_notifier',base64_encode(json_encode($notif)),$cookie_expire,"/"); // 50 years
 				
 			}else{
-				setcookie('rwd_notifier',json_encode($notifier),$cookie_expire,"/"); // 50 years
+				setcookie('rwd_notifier',base64_encode(json_encode($notifier)),$cookie_expire,"/"); // 50 years
 				$first_login_notify = 1;
 				$display_shop_reminder = 0;
 				$display_community_reminder = 0;
@@ -727,7 +845,7 @@ function rwd_save_reading_time_callback(){
 	}
 }
 add_action( 'wp_ajax_nopriv_save_like', 'rwd_save_like_callback' );
-add_action( 'wp_ajax_add_save_like', 'rwd_save_like_callback');
+add_action( 'wp_ajax_save_like', 'rwd_save_like_callback');
 function rwd_save_like_callback(){
 	global $wpdb;
 	$username = sanitize_text_field($_POST['username']);
@@ -779,10 +897,11 @@ function rwd_save_like_callback(){
 		
 		// create the cookie for the notifications and for the action counting
 		$notifier = array('actions'=>1,'actions_show'=>1,'duplicates'=>0,'duplicates_show'=>1,'shop_reminder'=>time(),'community_reminder'=>time(),'first_login_active'=>1,'first_shop_visit'=>time(),'check_shop_visit'=>1);
-			if(isset($_COOKIE['rwd_notifier']) and $_COOKIE['rwd_notifier']){
+		$cookie_expire = time()+86400*30*12*50; // 50 years
+		$display_5th_action = 0;
+			if(isset($_COOKIE['rwd_notifier']) and $_COOKIE['rwd_notifier'] and json_decode(stripslashes(base64_decode($_COOKIE['rwd_notifier'])),true)){
 				
-				$cookie_expire = time()+86400*30*12*50; // 50 years
-				$notif = json_decode(stripslashes($_COOKIE['rwd_notifier']),true);
+				$notif = json_decode(stripslashes(base64_decode($_COOKIE['rwd_notifier'])),true);
 				
 				$notif['actions']++;
 				
@@ -794,10 +913,10 @@ function rwd_save_like_callback(){
 					}
 				}
 				
-				setcookie('rwd_notifier',json_encode($notif),$cookie_expire,"/"); // 50 years
+				setcookie('rwd_notifier',base64_encode(json_encode($notif)),$cookie_expire,"/"); // 50 years
 				
 			}else{
-				setcookie('rwd_notifier',json_encode($notifier),$cookie_expire,"/"); // 50 years
+				setcookie('rwd_notifier',base64_encode(json_encode($notifier)),$cookie_expire,"/"); // 50 years
 				$first_login_notify = 1;
 				$display_shop_reminder = 0;
 				$display_community_reminder = 0;
@@ -818,7 +937,7 @@ function rwd_save_like_callback(){
 	echo json_encode(array('add'=>$add,'return'=>$return,'returned'=>$return,'rewarded'=>$return,'display_5th_action'=>$display_5th_action)); die();
 }
 add_action( 'wp_ajax_nopriv_save_unlike', 'rwd_save_unlike_callback' );
-add_action( 'wp_ajax_add_save_unlike', 'rwd_save_unlike_callback');
+add_action( 'wp_ajax_save_unlike', 'rwd_save_unlike_callback');
 function rwd_save_unlike_callback(){
 	global $wpdb;
 	$username = sanitize_text_field($_POST['username']);
@@ -869,10 +988,11 @@ function rwd_save_unlike_callback(){
 		
 		// create the cookie for the notifications and for the action counting
 		$notifier = array('actions'=>1,'actions_show'=>1,'duplicates'=>0,'duplicates_show'=>1,'shop_reminder'=>time(),'community_reminder'=>time(),'first_login_active'=>1,'first_shop_visit'=>time(),'check_shop_visit'=>1);
-			if(isset($_COOKIE['rwd_notifier']) and $_COOKIE['rwd_notifier']){
+		$cookie_expire = time()+86400*30*12*50; // 50 years
+		$display_5th_action = 0;
+			if(isset($_COOKIE['rwd_notifier']) and $_COOKIE['rwd_notifier'] and json_decode(stripslashes(base64_decode($_COOKIE['rwd_notifier'])),true)){
 				
-				$cookie_expire = time()+86400*30*12*50; // 50 years
-				$notif = json_decode(stripslashes($_COOKIE['rwd_notifier']),true);
+				$notif = json_decode(stripslashes(base64_decode($_COOKIE['rwd_notifier'])),true);
 				
 				$notif['actions']--;
 				
@@ -884,10 +1004,10 @@ function rwd_save_unlike_callback(){
 					}
 				}
 				
-				setcookie('rwd_notifier',json_encode($notif),$cookie_expire,"/"); // 50 years
+				setcookie('rwd_notifier',base64_encode(json_encode($notif)),$cookie_expire,"/"); // 50 years
 				
 			}else{
-				setcookie('rwd_notifier',json_encode($notifier),$cookie_expire,"/"); // 50 years
+				setcookie('rwd_notifier',base64_encode(json_encode($notifier)),$cookie_expire,"/"); // 50 years
 				$first_login_notify = 1;
 				$display_shop_reminder = 0;
 				$display_community_reminder = 0;
@@ -909,7 +1029,7 @@ function rwd_save_unlike_callback(){
 }
 
 add_action( 'wp_ajax_nopriv_save_share', 'rwd_save_share_callback' );
-add_action( 'wp_ajax_add_save_share', 'rwd_save_share_callback');
+add_action( 'wp_ajax_save_share', 'rwd_save_share_callback');
 function rwd_save_share_callback(){
 	global $wpdb;
 	$uid = rwd_get_uid($_COOKIE['rewardial_Uid']);
@@ -965,10 +1085,11 @@ function rwd_save_share_callback(){
 					
 			// create the cookie for the notifications and for the action counting
 			$notifier = array('actions'=>1,'actions_show'=>1,'duplicates'=>0,'duplicates_show'=>1,'shop_reminder'=>time(),'community_reminder'=>time(),'first_login_active'=>1,'first_shop_visit'=>time(),'check_shop_visit'=>1);
-			if(isset($_COOKIE['rwd_notifier']) and $_COOKIE['rwd_notifier']){
+			$cookie_expire = time()+86400*30*12*50; // 50 years
+			$display_5th_action = 0;
+			if(isset($_COOKIE['rwd_notifier']) and $_COOKIE['rwd_notifier'] and json_decode(stripslashes(base64_decode($_COOKIE['rwd_notifier'])),true)){
 				
-				$cookie_expire = time()+86400*30*12*50; // 50 years
-				$notif = json_decode(stripslashes($_COOKIE['rwd_notifier']),true);
+				$notif = json_decode(stripslashes(base64_decode($_COOKIE['rwd_notifier'])),true);
 				
 				$notif['actions']++;
 				
@@ -980,10 +1101,10 @@ function rwd_save_share_callback(){
 					}
 				}
 				
-				setcookie('rwd_notifier',json_encode($notif),$cookie_expire,"/"); // 50 years
+				setcookie('rwd_notifier',base64_encode(json_encode($notif)),$cookie_expire,"/"); // 50 years
 				
 			}else{
-				setcookie('rwd_notifier',json_encode($notifier),$cookie_expire,"/"); // 50 years
+				setcookie('rwd_notifier',base64_encode(json_encode($notifier)),$cookie_expire,"/"); // 50 years
 				$first_login_notify = 1;
 				$display_shop_reminder = 0;
 				$display_community_reminder = 0;
@@ -1005,7 +1126,7 @@ function rwd_save_share_callback(){
 	}
 }
 add_action( 'wp_ajax_nopriv_notifications_permanently_expire', 'rwd_notifications_permanently_expire_callback' );
-add_action( 'wp_ajax_add_notifications_permanently_expire', 'rwd_notifications_permanently_expire_callback');
+add_action( 'wp_ajax_notifications_permanently_expire', 'rwd_notifications_permanently_expire_callback');
 function rwd_notifications_permanently_expire_callback(){
 
 	$type = sanitize_text_field($_POST['type']);
@@ -1013,7 +1134,12 @@ function rwd_notifications_permanently_expire_callback(){
 	$notifier = array('actions'=>1,'actions_show'=>1,'duplicates'=>0,'duplicates_show'=>1,'shop_reminder'=>time(),'community_reminder'=>time(),'first_login_active'=>1,'first_shop_visit'=>time(),'check_shop_visit'=>1);
 		
 	$cookie_expire = time()+86400*30*12*50; // 50 years
-	$notif = json_decode(stripslashes($_COOKIE['rwd_notifier']),true);
+	
+	if(isset($_COOKIE['rwd_notifier']) and $_COOKIE['rwd_notifier'] and json_decode(stripslashes(base64_decode($_COOKIE['rwd_notifier'])),true)){
+		$notif = json_decode(stripslashes(base64_decode($_COOKIE['rwd_notifier'])),true);
+	}else{
+		$notif = $notifier;
+	}
 				
 	if($type){
 	
@@ -1021,26 +1147,32 @@ function rwd_notifications_permanently_expire_callback(){
 		
 			case 'rwd-5-actions':
 				$notif['actions_show'] = 0;
-				setcookie('rwd_notifier',json_encode($notif),$cookie_expire,"/"); // 50 years
+				setcookie('rwd_notifier',base64_encode(json_encode($notif)),$cookie_expire,"/"); // 50 years
 			break;
 			
 			case 'rwd-10-duplicates':
 				$notif['duplicates_show'] = 0;
-				setcookie('rwd_notifier',json_encode($notif),$cookie_expire,"/"); // 50 years
+				setcookie('rwd_notifier',base64_encode(json_encode($notif)),$cookie_expire,"/"); // 50 years
 			break;
 			
 			case 'rwd-first-login':
 				$notif['first_login_active'] = 0;
-				setcookie('rwd_notifier',json_encode($notif),$cookie_expire,"/"); // 50 years
+				setcookie('rwd_notifier',base64_encode(json_encode($notif)),$cookie_expire,"/"); // 50 years
 			break;
 			
 			case 'rwd-first-shop':
 				$notif['check_shop_visit'] = 0;
-				setcookie('rwd_notifier',json_encode($notif),$cookie_expire,"/"); // 50 years
+				setcookie('rwd_notifier',base64_encode(json_encode($notif)),$cookie_expire,"/"); // 50 years
+			break;
+			
+			default:
+				
 			break;
 		}
 	
 	}
+	
+	echo json_encode(array('status'=>'success')); die();
 
 }
 
@@ -1049,14 +1181,15 @@ add_action( 'wp_ajax_add_rewardial_plugin', 'add_rewardial_plugin_callback');
 function add_rewardial_plugin_callback(){
 		$url = plugins_url('rewardial');
 		global $wpdb;
+		
 		$content = '';
+		$_10years = 10*365*24*60*60;
 
 		
 		$checkKey = get_option('focusedstamps_secret_key'); // get the secret key
 		$current_timer = time();
 		
 			$my_string = $current_timer.$_COOKIE['rewardial_Uid'];
-		
 		
 		$my_key = hash_hmac('sha1',$my_string,$checkKey);
 		ob_start(); ?>
@@ -1066,9 +1199,16 @@ function add_rewardial_plugin_callback(){
 			$new_trades = curl_posting($datac,get_fs_api_url('/get_new_trade_notification'));
 			$new_trades = json_decode($new_trades,true);
 			
-			
-			
-			$cookie_anonymous = html_entity_decode($_COOKIE['rewardial_anonymous']);
+			if(isset($_COOKIE['rewardial_anonymous']) and $_COOKIE['rewardial_anonymous']){
+				$cookie_anonymous = base64_decode($_COOKIE['rewardial_anonymous']);
+				// var_dump(json_decode(base64_decode($_COOKIE['rewardial_anonymous']),true));
+				if(!json_decode($cookie_anonymous,true)){
+					$cookie_anonymous = $_COOKIE['rewardial_anonymous'];
+					setcookie('rewardial_anonymous',base64_encode($_COOKIE['rewardial_anonymous']),$_10years,'/');
+				}
+			}else{
+				$cookie_anonymous = '';
+			}
 			
 			$datas = array('anonymous'=>base64_encode($cookie_anonymous),'link'=>get_site_url());
 			$anonymous = curl_posting($datas,get_fs_api_url('/get_anonymous_credits'));
@@ -1396,11 +1536,11 @@ function add_rewardial_plugin_callback(){
 						</div>
 						<?php 
 						
-							// $quests = fs_quests();
-							// if ($quests)
-								// $fs_class =" active";
-							// else
-								// $fs_class = '';
+							$quests = fs_quests();
+							if ($quests)
+								$fs_class =" active";
+							else
+								$fs_class = '';
 						
 						?>
 						
@@ -1413,12 +1553,12 @@ function add_rewardial_plugin_callback(){
 									<?php } ?>
 									<a href="javascript:void(0);"> <?php esc_html_e('COMMUNITY');?></a> 
 								</li>
-								<!--<li class="fs-quest<?php echo $fs_class;?>">
+								<li class="fs-quest<?php echo $fs_class;?>">
 									<?php if(isset($new_trades) and $new_trades){ ?>
 										<div class="fs-new-quests"><?php echo $new_trades['quests']; ?></div>
 									<?php } ?>
 									<a href="javascript:void(0);"> QUEST</a> 
-								</li>-->
+								</li>
 								
 							</ul>
 						</div>
@@ -1429,8 +1569,8 @@ function add_rewardial_plugin_callback(){
 				</div>
 			</div>
 			<?php 
-			// if ($quests)
-				// quest_area($quests);
+			if ($quests)
+				quest_area($quests);
 			?>
 			
 			<?php $fs_logged = ob_get_clean(); 
@@ -1449,17 +1589,6 @@ function add_rewardial_plugin_callback(){
 				event.preventDefault(); // no page reload
 			}
 		</script>
-	
-<!--<script type="text/javascript">
-  // var _gaq = _gaq || [];
-  // _gaq.push(['_setAccount', 'UA-2485345-8']);
-  // _gaq.push(['_trackPageview']);
-  // (function() {
-    // var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    // ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    // var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  // })();
-</script>-->
 
 	
 		<?php
@@ -1534,7 +1663,7 @@ function add_rewardial_plugin_callback(){
 								<ul>
 									<li class="fs-shop" id="fs-shop"><a href="javascript:void(0);">SHOP </a> </li>
 									<li class="fs-community"><a href="javascript:void(0);"> <?php esc_html_e('COMMUNITY');?></a> </li>
-									<!--<li class="fs-quest <?php echo 'active';?>"><a href="javascript:void(0);"> QUEST</a> </li>-->
+									<li class="fs-quest <?php echo 'active';?>"><a href="javascript:void(0);"> QUEST</a> </li>
 									
 								</ul>
 							</div>
@@ -1576,37 +1705,64 @@ function add_rewardial_plugin_callback(){
 								$main_app_link3 = str_replace('/api','',get_fs_api_url());
 							?>
 							<div class="rewardial-gifts-box">
-								<?php if($gifts3){ ?>
+								<?php if($gifts3){ $im = 1; ?>
+									<table>
 									<?php foreach($gifts3 as $gift){ ?>
+										<?php if($im%2 == 1){ ?>
+											<tr>
+										<?php } ?>
+										<td>
 										<div class="rewardial-gift-content">
-											<div class="rewardial-gift-title">
-												<?php echo $gift['BlogGift']['title']; ?>
+											<div class="rewardial-gift-left">
+												<div class="rewardial-gift-image" title="<?php echo $gift['BlogGift']['description']; ?>">
+													<img src="<?php echo $main_app_link3.'files/blogs/'.$gift['BlogGift']['blog_id'].'/'.$gift['BlogGift']['image']; ?>">
+												</div>
 											</div>
-											<div class="rewardial-gift-image" title="<?php echo $gift['BlogGift']['description']; ?>">
-												<img src="<?php echo $main_app_link3.'files/blogs/'.$gift['BlogGift']['blog_id'].'/'.$gift['BlogGift']['image']; ?>">
-											</div>
-											<div class="rewardial-gift-price">
-												<?php
-													switch($gift['BlogGift']['payment_type']){
-														case 0:
-															echo $gift['BlogGift']['price'].' credits';
-														break;
-														
-														case 1:
-															echo $gift['collection_name'];
-														break;
-													
-													}
-												?> 
-											</div>
-											<div class="rewardial-gift-buy" id="rwd-buy-gift-<?php echo $gift['BlogGift']['id']; ?>">
+											<div class="rewardial-gift-right">
+												<div class="rewardial-gift-title">
+													<?php echo $gift['BlogGift']['title']; ?>
+												</div>
 												
+												<div class="rewardial-gift-price">
+													<?php
+														if($gift['BlogGift']['payment_type'] == 1){
+															echo '<div class="rewardial-gift-credits rewardial-gift-price-row">Price: <b>'.$gift['BlogGift']['price'].'</b><img src="'.$url.'/img/bg-credits-profile-stockbook.png"></div>';
+														}
+														if($gift['BlogGift']['payment_type'] == 2){
+															echo '<div class="rewardial-gift-collection rewardial-gift-price-row">Collection: <b>'.$gift['collection_name'].'</b></div>';
+														}
+														if($gift['BlogGift']['payment_type'] == 3){
+															echo '<div class="rewardial-gift-credits rewardial-gift-price-row">Price: <b>'.$gift['BlogGift']['price'].'</b><img src="'.$url.'/img/bg-credits-profile-stockbook.png"></div>';
+															echo '<div class="rewardial-gift-collection rewardial-gift-price-row">Collection: <b>'.$gift['collection_name'].'</b></div>';
+														}
+														
+													?> 
+												</div>
+												<div class="rewardial-gift-fame rewardial-gift-price-row">
+													Fame Required: <b><?php echo $gift['BlogGift']['min_level']; ?></b>
+													<img src="<?php echo $url; ?>/img/fame-icon.png">
+												</div>
+												<div class="rewardial-gift-buy" id="rwd-buy-gift-<?php echo $gift['BlogGift']['id']; ?>">
+													
+												</div>
 											</div>
-											
 											<div class="rewardial-gift-message" id="rwd-gift-message-<?php echo $gift['BlogGift']['id']; ?>"></div>
+											<hr class="rewardial-gift-hr"/>
+											<div class="rewardial-gift-description">
+												<?php echo $gift['BlogGift']['description']; ?>
+											</div>
 										</div>
-										
+										</td>
+										<?php if($im%2 == 0){ ?>
+											</tr>
+										<?php } ?>
+										<?php $im++; ?>
 									<?php } ?>
+									</table>
+								<?php }else{ ?>
+									<div class="rewardial-no-gifts">
+										No gifts available.
+									</div>
 								<?php } ?>
 							</div>
 						 </div><!-- .stamps-carousel -->
@@ -1677,7 +1833,7 @@ function add_rewardial_plugin_callback(){
 						<ul>
 							<li class="fs-shop" id="fs-shop"><a href="javascript:void(0);">SHOP </a> </li>
 							<li class="fs-community"><a href="javascript:void(0);"> <?php esc_html_e('COMMUNITY');?></a> </li>
-							<!--<li class="fs-quest <?php echo 'active';?>"><a href="javascript:void(0);"> QUEST</a> </li>-->
+							<li class="fs-quest <?php echo 'active';?>"><a href="javascript:void(0);"> QUEST</a> </li>
 							
 						</ul>
 					</div>
@@ -1700,12 +1856,12 @@ function add_rewardial_plugin_callback(){
 								// get the local users from this blog
 								$data = array('uid'=>$_COOKIE['rewardial_Uid'],'link'=>get_site_url(),'key'=>$my_key,'time'=>time());
 								$locals = curl_posting($data,get_fs_api_url('/get_local_users'));
+								// var_dump($locals); die();
 								$locals = json_decode($locals,true);
 								
 								$mainweb = get_option('fs_api_base');
 								$mainwebsite = explode('api',$mainweb);
 								$weburl = $mainwebsite[0];
-								//var_dump($locals);
 								if($locals['locals']){ 
 								foreach($locals['locals'] as $local){
 									$avatar = explode('://',$local['image']);
@@ -1893,13 +2049,13 @@ function add_rewardial_plugin_callback(){
 		}
 	}
 	
-	// add_action( 'wp_ajax_nopriv_add_updated_quests', 'fs_add_quests' );
-	// add_action( 'wp_ajax_add_updated_quests', 'fs_add_quests');
-	// function fs_add_quests(){
-			// $quests = fs_quests();		
-			// if ($quests)
-				// $all_quests = quest_area($quests);
+	add_action( 'wp_ajax_nopriv_add_updated_quests', 'fs_add_quests' );
+	add_action( 'wp_ajax_add_updated_quests', 'fs_add_quests');
+	function fs_add_quests(){
+			$quests = fs_quests();		
+			if ($quests)
+				$all_quests = quest_area($quests);
 				
-			// echo $all_quests; die();
-	// }
+			echo $all_quests; die();
+	}
 ?>

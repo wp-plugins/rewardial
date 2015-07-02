@@ -53,7 +53,7 @@ if (window.matchMedia("screen and (-ms-high-contrast: active), (-ms-high-contras
 			jQuery.ajax({
 				url: fs_ajax,
 				type: 'post',
-				data: {action: 'unique_visitor','time_spent': timeSpent},
+				data: {action: 'unique_visitor'},
 				success:function(r){
 					
 				}
@@ -121,7 +121,10 @@ jQuery('#fs-signup-back').click(function(){
 var gl_user = '';
 var gl_pass = '';
 var start; 
-
+	function isURL(url){
+		var regex = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/;
+		return regex.test(url);
+	}
 	function IsEmail(email) {
 	  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	  return regex.test(email);
@@ -136,7 +139,21 @@ var start;
 	
 
 	// check rewards for reading
-	
+	// Create Base64 Object
+var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9\+\/\=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/\r\n/g,"\n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
+
+
+		// var storedAryY = JSON.parse(decodeURIComponent(Base64.decode(getCookie('rwd_notifier'))));		
+		// console.log(storedAryY);		
+
+	function isJson(str) {
+		try {
+			JSON.parse(str);
+		} catch (e) {
+			return false;
+		}
+		return true;
+	}
 	function htmlDecode( input ) {
 		return String(input)
 			.replace(/&amp;/g, '&')
@@ -144,38 +161,52 @@ var start;
 			.replace(/&lt;/g, '<')
 			.replace(/&gt;/g, '>');
 	}
+	// if(getCookie('rewardial_anonymous')){
+		// console.log(Base64.decode(getCookie('rewardial_anonymous')));
+		// var cookie_anonymous = Base64.decode(getCookie('rewardial_anonymous'));
+		// console.log(cookie_anonymous);
+		// var json_cookie_anonymous = jQuery.parseJSON(cookie_anonymous);
+	// }else{
+		// var cookie_anonymous = '';
+		// var json_cookie_anonymous = '';
+	// }
 	var check_anonymous_action = 0;
-	if(getCookie('rewardial_anonymous')){
-		var cookie_anonymous = htmlDecode(unescape(getCookie('rewardial_anonymous')));
-		var json_cookie_anonymous = jQuery.parseJSON(cookie_anonymous);
-	}else{
-		var cookie_anonymous = '';
-		var json_cookie_anonymous = '';
-	}
 	var current_page = jQuery('#rewardial-page-link').val();
 	var number_of_actions_rewarded = 1;
 	
-	if(json_cookie_anonymous){
-		jQuery.each(json_cookie_anonymous,function(index, object){
-				var link_ok = 0;
-				var action_ok = 0;
-			jQuery.each(object,function(a,val){
+	// if(json_cookie_anonymous){
+		// jQuery.each(json_cookie_anonymous,function(index, object){
+				// var link_ok = 0;
+				// var action_ok = 0;
+			// jQuery.each(object,function(a,val){
 				
-				if(a == 'link' && current_page == val){
-					link_ok = 1;
+				// if(a == 'link' && current_page == val){
+					// link_ok = 1;
+				// }
+				// if(a == 'action' && val == 'reading'){
+					// action_ok = 1;
+				// }
+			// });
+			// if(link_ok == 1 && action_ok == 1){
+				// check_anonymous_action = 1;
+			// }
+			// number_of_actions_rewarded++;
+		// });
+	// }
+	if(getCookie('rewardial_anonymous')){
+		jQuery.ajax({
+			url:fs_ajax,
+			data: { "action":'check_anonymous_reading',"link":current_page},
+			type:"post",
+			success:function(r){
+				var resp = jQuery.parseJSON(r);
+				number_of_actions_rewarded = resp.actions;
+				if(resp.read_status){
+					check_anonymous_action = 1;
 				}
-				if(a == 'action' && val == 'reading'){
-					action_ok = 1;
-				}
-			});
-			if(link_ok == 1 && action_ok == 1){
-				check_anonymous_action = 1;
 			}
-			number_of_actions_rewarded++;
 		});
 	}
-	
-	
 	
 	var focused = 0;
 	var check_post = setInterval(function(){
@@ -194,6 +225,7 @@ var start;
 	
 	function check_rewardable_reading(){
 		
+		
 			if(jQuery('body').height() < window.innerHeight){
 				if(focused > 10 && check_reward_reading == 1){
 					reward_reading();
@@ -202,23 +234,157 @@ var start;
 				}
 			}else{
 				jQuery(window).scroll( function() {
-
 					if(jQuery(window).scrollTop() >= jQuery('body').height()/2){ // 50% scroll of the page
 						scroll_down = 1;
+						
 					}
 				
 				});
-				
+				// console.log('aaa '+focused+' '+check_reward_reading+' '+scroll_down);
 				if(focused > 10 && check_reward_reading == 1 && scroll_down == 1){
 					reward_reading();
 					check_reward_reading = 0;
 					clearInterval(check_post);
 				}
-			}
+			}	
 		// }
 	}
+	/*
+	// when the content is changed without reloading the page we use this method
+	window.onpopstate = function(event) {
+	  alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
+	};
+	// if(currentHref!=window.location){
+	jQuery('.button-x').click(function(){
+		history.pushState("", "", "/2015/06/what-a-quest/");
+	});
+	jQuery('.button-y').click(function(){
+		history.pushState("", "", "/2015/06/my-last-post/");
+	});
+	jQuery('.button-z').click(function(){
+		history.pushState("", "", "/sample-page/");
+	});
+	// var numberOfEntries = window.history.length;
+	// console.log(numberOfEntries);
+	*/
+	var i = 0;
+
+(function(history){
+    var pushState = history.pushState;
+    history.pushState = function(state,desc,url) {
+        if (typeof history.onpushstate == "function") {
+            history.onpushstate({state: state,url:url});
+        }
+      
+        return pushState.apply(history, arguments);
+    }
+})(window.history);
+
+// check if the page is automatically uploaded through pushState and reward for reading if it's a new page
+var check_post_page = '';
+window.onpopstate = history.onpushstate = function(e) {
+    i++;
+	// console.log(JSON.stringify(e.url));
+    jQuery('.rewardial-question-text').text(JSON.stringify(e.url));
+	
+	var root_url = jQuery('#rewardial-blog-url').val();
+	if(isURL(e.url)){
+		var current_page = e.url;
+	}else{
+		var current_page = root_url+e.url;
+	}
+	
+	check_anonymous_action = 0;
+	number_of_actions_rewarded = 1;
+	focused = 0;
+	check_reward_reading = 1;
+	scroll_down = 0;
+	
+	// check if the page was already read
+	jQuery.ajax({
+		url:fs_ajax,
+		data: { "action":'check_anonymous_reading',"link":current_page},
+		type:"post",
+		success:function(r){
+			var resp = jQuery.parseJSON(r);
+			number_of_actions_rewarded = resp.actions;
+			if(resp.read_status){
+				check_anonymous_action = 1;
+			}
+			// get the entire page and check if it's a post page
+			jQuery.ajax({
+				 type: "GET",
+				 url:current_page,
+				 cache: false,
+				 dataType: 'html',
+				 success: function(data){
+					var page_type_input = jQuery(data).find('#rewardial-page-type');
+					page_type = page_type_input.val();
+					
+				}
+			});
+			
+		}
+	});
+	// console.log(page_type);
+	// check every second if the page was read 
+	var test_array = new Array();
+	test_array[i] = setInterval(function(){
+		if(document.hasFocus()){
+			focused++;
+			if(check_anonymous_action!=1){
+				if(jQuery('body').height() < window.innerHeight){
+					if(focused > 10 && check_reward_reading == 1){
+						reward_reading();
+						check_reward_reading = 0;
+						clearInterval(test_array[i]);
+					}
+				}else{
+					jQuery(window).scroll( function() {
+						if(jQuery(window).scrollTop() >= jQuery('body').height()/2){ // 50% scroll of the page
+							scroll_down = 1;
+							
+						}
+					
+					});
+					if(focused > 10 && check_reward_reading == 1 && scroll_down == 1){
+						reward_reading();
+						check_reward_reading = 0;
+						clearInterval(test_array[i]);
+					}
+				}
+			}else{
+				clearInterval(test_array[i]);
+			}
+		}else{
+			focused = 0;
+		}
+	},1000);
+	/*
+	MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+	var observer = new MutationObserver(function(mutations, observer) {
+		// fired when a mutation occurs
+		// console.log(mutations, observer);
+
+			
+	});
+
+	// define what element should be observed by the observer
+	// and what types of mutations trigger the callback
+	observer.observe(document, {
+	  subtree: true,
+	  attributes: true
+	  //...
+	});
+	*/
+	
+};
+	
+	// */
 	
 	
+
+
 	var LastPageVisited = getCookie('rewardial_LastPageVisited');
 	// var LastPageVisited = jQuery('#rewardial_last_page').val();
 	
@@ -234,6 +400,8 @@ var start;
 		return "";
 	}
 	
+	// }
+	// var location = 'ghjjjjjjj';
 	//get the current credit by ajax to api
 	if(user_id){
 		jQuery.ajax({
@@ -251,7 +419,6 @@ var start;
 	}
 	var credits = getCookie('rewardial_Credits');
 	var username = getCookie('rewardial_Username');
-	var timeSpent = getCookie('rewardial_TimeSpent');
 	var newComment = getCookie('rewardial_NewComment');
 	
 	
@@ -367,7 +534,7 @@ var start;
 	
 	// login function 
 	
-	localStorage.removeItem('submitted');
+	localStorage.removeItem('rwd-comment-submitted');
 	jQuery('.fs-submit').click(function(){
 		var email = jQuery('.fs-inner-box #fs-login-username').val();
 		var password = jQuery('.fs-inner-box #fs-login-password').val();
@@ -1130,22 +1297,23 @@ jQuery('.fs-signup-submit').click(function(){
 					jQuery('.fs-stamps-carousel .responsive-shop').remove();
 					jQuery('.fs-stamps-carousel').append('<ul class="responsive-shop">'+shop+'</ul>');
 					
-                    
-                    if ( getCookie('rwd_notifier') != "" ) {
-                        var notifier = JSON.parse(decodeURIComponent(getCookie('rwd_notifier')));
-                                        
-                        if(notifier.check_shop_visit){
-                            jQuery('#rwd-first-shop').show();
-                            jQuery.ajax({
-                                url: fs_ajax,
-                                data: {'action':'notifications_permanently_expire','type':'rwd-first-shop'},
-                                type: 'post',
-                                success:function(resp){
-                                    
-                                }
-                            });
-                        }
-                    }
+					if(getCookie('rwd_notifier')){
+						if(isJson(decodeURIComponent(Base64.decode(getCookie('rwd_notifier'))))){
+							var notifier = JSON.parse(decodeURIComponent(Base64.decode(getCookie('rwd_notifier'))));
+							//console.log(notifier);
+							if(notifier.check_shop_visit){
+								jQuery('#rwd-first-shop').show();
+								jQuery.ajax({
+									url: fs_ajax,
+									data: {'action':'notifications_permanently_expire','type':'rwd-first-shop'},
+									type: 'post',
+									success:function(resp){
+										
+									}
+								});
+							}
+						}
+					}
 					
 					var shop_full_content = jQuery('.fs-shop-content').html();
 					//console.log(shop_full_content);
@@ -1183,18 +1351,21 @@ jQuery('.fs-signup-submit').click(function(){
 					type:"post",
 					success:function(r){
 						var response = jQuery.parseJSON(r);
-						if(response.response == 'success') {							
+						if(response.response == 'success') {	
+						
 							
 							// if(response.duplicates.length && response.old_duplicates.length){
 								if(parseInt(response.duplicates)%10 < parseInt(response.old_duplicates)%10){ // check if the number of duplicates aquired have passed the 10th multiple 
-                                    if ( getCookie('rwd_notifier') != "" ) {
-                                        var storedAry = JSON.parse(decodeURIComponent(getCookie('rwd_notifier')));
-                                        if(storedAry.duplicates_show){
-                                            // show the duplicates notification window
-                                            jQuery('#rwd-10-duplicates').show();
+									if(getCookie('rwd_notifier')){
+										if(isJson(decodeURIComponent(Base64.decode(getCookie('rwd_notifier'))))){
+											var storedAry = JSON.parse(decodeURIComponent(Base64.decode(getCookie('rwd_notifier'))));
+											if(storedAry.duplicates_show){
+												// show the duplicates notification window
+												jQuery('#rwd-10-duplicates').show();
 
-                                        }
-                                    }
+											}
+										}
+									}
 								}
 							// }
 							jQuery('.fs-credits-value').html(parseInt(response.credits)+parseInt(response.bonusCredits));
@@ -1257,7 +1428,7 @@ jQuery('.fs-signup-submit').click(function(){
 							bought = bought + '</div>';
 							bought = bought + '<div class="fs-bought-images-bottom">';
 							jQuery.each(stamps,function(){
-								bought = bought + '<div class="fs-bought-envelope-inner-image"><a href="#" id="stampp_'+this.id+'" class="fs-display-image-slide"><input type="hidden" value="'+this.id+'" id="stamp_'+this.id+'"><div class="fs-bought-frame-'+this.Shape+'"><img src="'+img_url+'/stamps/'+this.file+'" class="fs-bought-image-'+this.Shape+'" /><img src="'+webroot_url+'/img_ws/new-tag.png" class="fs-bought-new-tag '+this.neww+'"></div></a></div>';
+								bought = bought + '<div class="fs-bought-envelope-inner-image" title="Rarity: '+this.Rarity+'"><a href="#" id="stampp_'+this.id+'" class="fs-display-image-slide"><input type="hidden" value="'+this.id+'" id="stamp_'+this.id+'"><div class="fs-bought-frame-'+this.Shape+'"><img src="'+img_url+'/stamps/'+this.file+'" class="fs-bought-image-'+this.Shape+'" /><img src="'+webroot_url+'/img_ws/new-tag.png" class="fs-bought-new-tag '+this.neww+'"></div></a></div>';
 							});
 							bought = bought + '</div>';
 							
@@ -1514,10 +1685,81 @@ jQuery('.fs-signup-submit').click(function(){
 			
 		}
 	});
+	
+	// mini quest 
+	if(getCookie('rewardial_Logged') && getCookie('rewardial_Logged') == 'on'){
+		get_answer(0);
+		
+		
+	}else{
+		var pathname = window.location.href;
+		jQuery('.rewardial-question-answer').click(function(){
+			var answer = jQuery(this).html();
+			var quest_id = jQuery(this).attr('data-quest');
+			var step_id = jQuery(this).attr('data-step');
+			var question_id = jQuery(this).attr('data-question');
+			var obj = jQuery(this);
+			var data2 = {
+				action: 'anonymous_actions',type:'mini-quest','link':pathname,answer:answer,question_id:question_id
+			};
+			jQuery.ajax({
+				url:fs_ajax,
+				type:'post',
+				data:data2,
+				success:function(response){
+					var rs = jQuery.parseJSON(response);
+					if(rs.status == 1){
+						jQuery('.rewardial-question-content').append('<div class="rewardial-question-answered">Question already answered</div>');
+						console.log('already answered this question');
+					}else{
+						jQuery.ajax({
+							url:fs_api_base+'get_quest_answer',
+							type:'post',
+							data:{answer:answer,question_id:question_id,quest_id:quest_id,step_id:step_id},
+							success:function(resp){
+								
+								var r = jQuery.parseJSON(resp);
+								
+								if(r.status == 200){
+									obj.removeClass('active');
+									obj.addClass('correct');
+									obj.css('background','green');
+									obj.css('color','#fff');
+									var credit_to_add = r.credit;
+									notify_bubble(0,credit_to_add,'answer');
+									
+									jQuery('.rewardial-question-popup').html('<span class="rwd-close-popup">X</span>You have just earned '+credit_to_add+' credits for answering correctly to the Quiz. <span class="rewardial-login-action">Login</span> to claim your reward.');
+									jQuery('.rewardial-question-popup').show();
+									jQuery('.rwd-close-popup').click(function(){
+										jQuery(this).parent().hide();
+									});
+									
+									jQuery('.rewardial-login-action').click(function(){
+										login_button_press();
+									});
+									
+								}else{
+									obj.css('background','red');
+									obj.css('color','#fff');
+								}
+								
+							}
+						});
+					}
+					
+				}
+			});
+			jQuery('.quest-answer').unbind('click');
+		
+		});
+	}
+	
+	
+	/**********************/
 
 	// for every comment add credit through ajax
 	jQuery('#commentform [type=submit]').click(function(e){
-		var submitted = localStorage['submitted'];
+		var submitted = localStorage['rwd-comment-submitted'];
 		
 		if (!submitted) {
 			e.preventDefault();
@@ -1545,7 +1787,7 @@ jQuery('.fs-signup-submit').click(function(){
 								
 								jQuery('.fs-credits-value').html(credit_after);
 							}
-							localStorage['submitted'] = "yes";
+							localStorage['rwd-comment-submitted'] = "yes";
 							jQuery('#commentform [type=submit]').trigger('click');
 						},
 						complete:function(response){
@@ -1560,7 +1802,7 @@ jQuery('.fs-signup-submit').click(function(){
 						success:function(resp){
 							
 							document.cookie = 'rewardial_anonymous_comment = new'+ '; path=/';
-							localStorage['submitted'] = "yes";
+							localStorage['rwd-comment-submitted'] = "yes";
 							jQuery('#commentform [type=submit]').trigger('click');
 						}
 						
@@ -1568,7 +1810,7 @@ jQuery('.fs-signup-submit').click(function(){
 					
 				}
 			}else{
-					localStorage['submitted'] = "yes";
+					localStorage['rwd-comment-submitted'] = "yes";
 					jQuery('#commentform [type=submit]').trigger('click');
 			}
 		}
@@ -1800,12 +2042,14 @@ jQuery('.fs-signup-submit').click(function(){
 	var quest_click = false;
 	//var credits = getCookie('rewardial_Credits');
 function save_retry_quest(quest_id){
+	
+					console.log('inside quest retry');
 	jQuery.ajax({
 		url: fs_api_base +'sync_retry_quests',
 		data: { "user_id":user_id,'quest_id':quest_id},
 		type:"post",
 		success:function(r){
-			
+			jQuery('.quest-answer').unbind('click');
 		}
 	});
 }
@@ -1813,6 +2057,7 @@ function quest_action(){
     jQuery('.quest-action').click(function(){
 		jQuery(this).css('box-shadow','0 0 10px #aaaaaa inset');
 		
+					console.log('inside quest action');
 		var quest_id = jQuery(this).attr('data-i');
 		var step_id = jQuery(this).attr('data-step');
 		
@@ -1840,6 +2085,8 @@ function quest_action(){
 }
 
 function get_question(quest_id,step_id,question_id,retry){
+	
+					console.log('inside get question');
 		data = {
 			action:'quest_question',
 			question_id: question_id,
@@ -1951,7 +2198,7 @@ function get_answer(retry){
 							jQuery('#fs-reward-'+reward_name).css('color','green');
 							jQuery('#fs-reward-'+reward_name).css('text-decoration','none');
 							var value = jQuery('.fs-'+reward_name+'-value').val();
-							var level = jQuery('.fs-'+reward_name+'-level').val();	
+							var level = jQuery('.fs-'+reward_name+'-level').val();
 							var total_points = parseInt(value)+parseInt(response.responseJSON.reward_value);
 								current_level = 25*level*level - 25*level;
 								next_level = 25*(parseInt(level)+1)*(parseInt(level)+1) - 25*(parseInt(level)+1);
@@ -2048,6 +2295,13 @@ function get_answer(retry){
 					});
 					setTimeout(function(){jQuery('#back-to-quest').click();},5000);
 				}
+				
+				if(obj.hasClass('mini-quest-class')){
+					quest_action();
+					jQuery('.quest-action').trigger('click');
+					jQuery('.quest-answer').unbind('click');
+					console.log('inside quest answer');
+				}
 				jQuery('.quest-answer').unbind('click');
 			}
 		});
@@ -2062,6 +2316,8 @@ function back_button(retry){
 			jQuery('.fs-collection-complete-rewards').html('');
 			jQuery('.fs-collection-complete-rewards').hide();
 		});
+		
+					console.log('inside quest back button');
 		jQuery.each(quest_rewards,function(index,value){
 			if(value > 0){
 				check_quest_rewards = 1;
@@ -2093,6 +2349,7 @@ function back_button(retry){
 							jQuery('.fs-logged').append(responser.responseText);
 							jQuery('#fs-overlay').removeClass('fs-inactive');
 							jQuery('#fs-overlay').addClass('fs-active');
+							jQuery('.quest-answer').unbind('click');
 							// rewardial_actions();
 							// jQuery('#quest-list').show();
 							// jQuery('.fs-quests-tab').show();

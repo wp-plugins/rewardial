@@ -398,15 +398,15 @@
 }
 
 .fs-redirect-button{
-	background: none repeat scroll 0 0 #2ea2cc;
-    border-radius: 2px;
-    bottom: 10px;
-    clear: both;
-    color: #fff;
-    left: 48%;
-    margin: 0 auto;
-    padding: 4px 8px;
-    position: absolute;
+	  background: none repeat scroll 0 0 #2ea2cc;
+  border-radius: 2px;
+  color: #fff;
+  margin: 0 auto;
+  padding: 4px 8px;
+  position: relative;
+  display: inline-block;
+  width: auto;
+  text-align: center;
 }
 .fs-redirect-button a{
 	color:#fff;
@@ -615,7 +615,7 @@
 }
 .rwd-gifts-container{
 	width: 90%;
-	margin: 0 auto;
+	margin: 20px auto;
 	padding: 20px;
 	background: #fefefe;
 	position:relative;
@@ -655,13 +655,91 @@
 .rwd-gifts-container .fs-redirect-button{
 	bottom:0;
 	margin-bottom:-30px;
+	padding:10px;
+	font-size:15px;
+	font-weight:bold;
+}
+.rwd-gifts-container h3{
+	display:inline-block;
+	width:100%;
 }
 .rwd-orders-table td{
-	padding:5px;
+	padding:5px 10px;
 }
 .rwd-success{
 	color:green;
 }
 .rwd-error{
 	color:#c0232a;
+}
+.rwd-orders-table{
+	text-align:center;
+	border-collapse:collapse;
+}
+.rwd-orders-table-header{
+	background-color:#eee;
+}
+.rwd-orders-table-header th{
+	padding:5px;
+}
+.rwd-orders-table tr:nth-child(odd){
+	background-color:#eaeaea;
+}
+.rwd-orders-pagination{
+	padding:5px 10px;
+	margin:5px;
+}
+.rwd-orders-pagination span{
+	padding:5px;
+  text-align: center;
+  margin: 0 2px;
+  font-size:15px;
+  text-transform:none;
+}
+.rwd-orders-selected-page a{
+	text-decoration:none;
+}
+.rwd-orders-filters{
+	padding:5px 10px;
+}
+.rwd-orders-filters .rwd-orders-filter-closed a{
+	padding:5px 10px;
+}
+#rewardial-add-gift{
+	width:150px;
+	margin:20px auto;
+}
+.rewardial-add-container{
+	text-align:center;
+}
+#rewardial-mini-quiz{
+	width:100%;
+	margin:10px 0;
+	
+}
+.rewardial-mini-quiz-answer{
+	width: 250px;
+	display: block;
+	margin: 10px 0;
+	padding:5px 10px;
+}
+.rwd-orders-filter-closed .rwd-filter-link{
+	background: #aaa;
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+}
+.rwd-orders-filter-closed .rwd-filter-link:hover{
+	color:#444;
+	border-top:1px solid #dedede;
+	border-bottom:1px solid #dedede;
+}
+#rewardial-logo-quick-quest{
+	display: inline-block;
+    height: 25px;
+    margin: -8px 10px;
+    width: 25px;
+}
+#rewardial-mini-quiz .rewardial-title-quick-quest{
+	display:inline-block;
 }
